@@ -1,0 +1,10 @@
+﻿  Main.cpp
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(343,19): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(344,37): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(344,17): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(347,19): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(348,37): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(348,17): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+  ミツデスマス.vcxproj -> D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).exe
+  D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).exe
+  1 個のファイルをコピーしました

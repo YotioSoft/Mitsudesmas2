@@ -25,6 +25,8 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 	// 画像の読み込み
 	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.png");
 	
+	const Font font15(15);
+	
 	bool show_stages = false;
 
 	int count = 0;
@@ -49,16 +51,16 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 		}
 
 		if (show_stages) {
-			if (SimpleGUI::Button(U"Chapter1.大きな公園", Vec2(Scene::Width()/2-120, Scene::Height()-200))) {
+			if (SimpleGUI::Button(U"Stage1.大きな公園", Vec2(Scene::Width()/2-110, Scene::Height()-250))) {
 				return 1;
 			}
-			if (SimpleGUI::Button(U"Chapter2.山の中の村", Vec2(Scene::Width()/2-120, Scene::Height()-150))) {
+			if (SimpleGUI::Button(U"Stage2.山中の平野", Vec2(Scene::Width()/2-110, Scene::Height()-200))) {
 				return 2;
 			}
-			if (SimpleGUI::Button(U"Chapter3.雪の降る街", Vec2(Scene::Width()/2-120, Scene::Height()-100))) {
+			if (SimpleGUI::Button(U"Stage3.雪の降る街", Vec2(Scene::Width()/2-110, Scene::Height()-150))) {
 				return 3;
 			}
-			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-50))) {
+			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
 				show_stages = false;
 			}
 		}
@@ -70,6 +72,8 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 				return 0;
 			}
 		}
+		
+		font15(U"(C) YotioSoft 2020").draw(Scene::Width()/2 - font15(U"(C) YotioSoft 2020").region(0, 0).size.x/2, Scene::Height()-40);
 
 		count++;
 	}
@@ -283,8 +287,8 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 			}
 			
 			if (move) {
-				if (HP >= 0.2) {
-					HP -= 0.2;
+				if (HP >= 0.1) {
+					HP -= 0.1;
 				}
 			}
 			
@@ -369,12 +373,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 			Rect(0, 0, Scene::Width(), Scene::Height()).draw(Color(50, 50, 50, 200));
 			
 			if (game_over) {
-				font60(U"ゲームオーバー").draw(Scene::Width()/2-200, Scene::Height()/2-150, Color(Palette::White));
+				font60(U"ゲームオーバー").draw(Scene::Width()/2-font60(U"ゲームオーバー").region(Point(0, 0)).size.x/2, Scene::Height()/2-150, Color(Palette::White));
 			} else {
-				font60(U"ゲームクリア").draw(Scene::Width()/2-190, Scene::Height()/2-150, Color(Palette::White));
+				font60(U"ゲームクリア").draw(Scene::Width()/2-font60(U"ゲームクリア").region(Point(0, 0)).size.x/2, Scene::Height()/2-150, Color(Palette::White));
 			}
-			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").draw(Scene::Width()/2-140, Scene::Height()/2, Color(Palette::White));
-			font(U"残り時間：" + Format(timer.s()) + U"秒").draw(Scene::Width()/2-50, Scene::Height()/2 + 50, Color(Palette::White));
+			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").draw(Scene::Width()/2-font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").region(Point(0, 0)).size.x/2, Scene::Height()/2, Color(Palette::White));
+			font(U"残り時間：" + Format(timer.s()) + U"秒").draw(Scene::Width()/2-font(U"残り時間：" + Format(timer.s()) + U"秒").region(Point(0, 0)).size.x/2, Scene::Height()/2+50, Color(Palette::White));
 			
 			if (SimpleGUI::Button(U"もう一度", Vec2(Scene::Width()/2-70, Scene::Height()-150))) {
 				audio_bgm.stop();

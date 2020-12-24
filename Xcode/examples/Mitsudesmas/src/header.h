@@ -1,9 +1,11 @@
 #pragma once
 
 #include <Siv3D.hpp> // OpenSiv3D v0.4.3
+#include <unistd.h>
 
 #define CHIP_SIZE		Size(64, 64)
 #define CHIPS_IN_A_ROW	8
+#define CURRENT_DIR		"./Mitsudesmas.app/Contents/Resources"
 
 typedef struct SquarePosition {
 	int x;

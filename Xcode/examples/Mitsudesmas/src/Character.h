@@ -6,7 +6,7 @@
 class Character
 {
 private:
-	// 画像上のインデックス（0〜11）
+	// 画像上のインデックス（0?11）
 	int index;
 
 	// キャラクターの向き

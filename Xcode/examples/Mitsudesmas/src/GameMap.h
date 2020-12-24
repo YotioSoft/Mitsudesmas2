@@ -39,7 +39,7 @@ private:
 	// 中心座標
 	SquarePosition center_square;
 
-	// 座標のオフセット（-32〜32）
+	// 座標のオフセット（-32?32）
 	Point square_position_offset = Point(0, 0);
 	
 	// 移動が遅いモード

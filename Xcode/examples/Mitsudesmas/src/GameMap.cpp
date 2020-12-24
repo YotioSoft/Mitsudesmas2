@@ -86,8 +86,9 @@ Couple* GameMap::getCouple(SquarePosition position) {
 SquarePosition GameMap::moveCamera(Point direction) {
 	int slow = 1;
 	if (slow_mode) {
-		slow = 2;
+		slow = 4;
 	}
+	
 	// (move_x, move_y)分移動
 	square_position_offset += Point(direction.x / slow, direction.y / slow);
 

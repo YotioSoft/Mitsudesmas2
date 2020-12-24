@@ -1,0 +1,19 @@
+[ライブラリ]
+・OpenSiv3D
+    - Ryo Suzuki 様、OpenSiv3D Project 様（https://siv3d.github.io/ja-jp/）
+
+[画像素材]
+・フィールドマップセット１、ウディタ２用マップセット、マップセット1
+    - ぴぽや 様(https://pipoya.net/blog/)
+・パンク吹き出し素材216
+    - フキダシデザイン 様(https://fukidesign.com/)
+
+[BGM]
+・Hawk Eye
+    - MAKOOTO 様(https://dova-s.jp/_contents/author/profile263.html)
+
+[効果音]
+・爆発1、拳銃を撃つ、ボヨヨヨーン
+    - 効果音ラボ 様(https://soundeffect-lab.info/)
+
+作成者様方にはお礼を申し上げます。

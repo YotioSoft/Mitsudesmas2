@@ -23,7 +23,9 @@ typedef struct MapStruct {
 // タイトル画面
 int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) {
 	// 画像の読み込み
-	Texture logo_img(U"./img/logo.png");
+	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.png");
+	
+	const Font font15(15);
 	
 	bool show_stages = false;
 
@@ -49,16 +51,16 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 		}
 
 		if (show_stages) {
-			if (SimpleGUI::Button(U"Chapter1.大きな公園", Vec2(Scene::Width()/2-120, Scene::Height()-200))) {
+			if (SimpleGUI::Button(U"Stage1.大きな公園", Vec2(Scene::Width()/2-110, Scene::Height()-250))) {
 				return 1;
 			}
-			if (SimpleGUI::Button(U"Chapter2.山の中の村", Vec2(Scene::Width()/2-120, Scene::Height()-150))) {
+			if (SimpleGUI::Button(U"Stage2.山中の平野", Vec2(Scene::Width()/2-110, Scene::Height()-200))) {
 				return 2;
 			}
-			if (SimpleGUI::Button(U"Chapter3.雪の降る街", Vec2(Scene::Width()/2-120, Scene::Height()-100))) {
+			if (SimpleGUI::Button(U"Stage3.雪の降る街", Vec2(Scene::Width()/2-110, Scene::Height()-150))) {
 				return 3;
 			}
-			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-50))) {
+			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
 				show_stages = false;
 			}
 		}
@@ -70,6 +72,8 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 				return 0;
 			}
 		}
+		
+		font15(U"(C) YotioSoft 2020").draw(Scene::Width()/2 - font15(U"(C) YotioSoft 2020").region(0, 0).size.x/2, Scene::Height()-40);
 
 		count++;
 	}
@@ -240,14 +244,14 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 	putSoli(game_map, characters, 10);
 	
 	// 画像の読み込み
-	Texture img_mitsudesu(U"./img/密です.png");
-	Texture img_chigaudaro(U"./img/ちーがーうーだーろー.png");
+	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
+	Texture img_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/img/ちーがーうーだーろー.png");
 	
 	// 音声の読み込み
-	Audio audio_mitsudesu(U"./audio/handgun-firing1.mp3");
-	Audio audio_move(U"./audio/bomb1.mp3");
-	Audio audio_chigaudaro(U"./audio/boyoyon1.mp3");
-	Audio audio_bgm(U"./audio/hawk_eye.mp3", Arg::loop = true);
+	Audio audio_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/audio/handgun-firing1.mp3");
+	Audio audio_move(Unicode::Widen(CURRENT_DIR) + U"/audio/bomb1.mp3");
+	Audio audio_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
+	Audio audio_bgm(Unicode::Widen(CURRENT_DIR) + U"/audio/hawk_eye.mp3", Arg::loop = true);
 	
 	// タイマー
 	Timer timer(map_struct.remining_time);
@@ -283,8 +287,8 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 			}
 			
 			if (move) {
-				if (HP >= 0.2) {
-					HP -= 0.2;
+				if (HP >= 0.1) {
+					HP -= 0.1;
 				}
 			}
 			
@@ -369,12 +373,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 			Rect(0, 0, Scene::Width(), Scene::Height()).draw(Color(50, 50, 50, 200));
 			
 			if (game_over) {
-				font60(U"ゲームオーバー").draw(Scene::Width()/2-200, Scene::Height()/2-150, Color(Palette::White));
+				font60(U"ゲームオーバー").draw(Scene::Width()/2-font60(U"ゲームオーバー").region(Point(0, 0)).size.x/2, Scene::Height()/2-150, Color(Palette::White));
 			} else {
-				font60(U"ゲームクリア").draw(Scene::Width()/2-190, Scene::Height()/2-150, Color(Palette::White));
+				font60(U"ゲームクリア").draw(Scene::Width()/2-font60(U"ゲームクリア").region(Point(0, 0)).size.x/2, Scene::Height()/2-150, Color(Palette::White));
 			}
-			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").draw(Scene::Width()/2-140, Scene::Height()/2, Color(Palette::White));
-			font(U"残り時間：" + Format(timer.s()) + U"秒").draw(Scene::Width()/2-50, Scene::Height()/2 + 50, Color(Palette::White));
+			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").draw(Scene::Width()/2-font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").region(Point(0, 0)).size.x/2, Scene::Height()/2, Color(Palette::White));
+			font(U"残り時間：" + Format(timer.s()) + U"秒").draw(Scene::Width()/2-font(U"残り時間：" + Format(timer.s()) + U"秒").region(Point(0, 0)).size.x/2, Scene::Height()/2+50, Color(Palette::White));
 			
 			if (SimpleGUI::Button(U"もう一度", Vec2(Scene::Width()/2-70, Scene::Height()-150))) {
 				audio_bgm.stop();
@@ -390,7 +394,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 	}
 }
 
-void HowToPlay() {
+int HowToPlay() {
 	// フォントを用意
 	const Font font20(20);
 	const Font font40(40);
@@ -401,18 +405,52 @@ void HowToPlay() {
 		font60(U"あそびかた").draw(30, 10);
 		
 		font40(U"ルール").draw(30, 100);
-		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、メンタルに傷がつきます。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 150);
+		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 150);
 		
 		font40(U"操作方法").draw(30, 300);
 		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー：「密です」という").draw(30, 350);
 		
+		font20(U"フリー素材・ライブラリ情報は               　　をご覧ください。").draw(30, 450);
+		
+		if (SimpleGUI::Button(U"こちら", Vec2(30 + font20(U"フリー素材・ライブラリ情報は").region(Point(30, 400)).size.x, 440))) {
+			return 1;
+		}
+		
 		if (SimpleGUI::Button(U"タイトルへ", Vec2(Scene::Width()/2-70, Scene::Height()-100))) {
+			break;
+		}
+	}
+	return 2;
+}
+
+void ReadMe() {
+	// フォントを用意
+	const Font font15(15);
+	const Font font40(40);
+	
+	TextEditState tes;
+	
+	TextReader reader(Unicode::Widen(CURRENT_DIR) + U"/sozai.txt");
+	String str, line;
+	
+	while (reader.readLine(line)) {
+		str += line + U"\n";
+	}
+	
+	while (System::Update())
+	{
+		font40(U"フリー素材・ライブラリ情報").draw(30, 10);
+		
+		font15(str).draw(30, 60);
+		
+		if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
 			return;
 		}
 	}
 }
 
 void Main() {
+	std::cout << Unicode::Widen(CURRENT_DIR) << std::endl;
 	Window::SetTitle(U"ミツデスマス");
 	
 	// 背景を水色にする
@@ -426,20 +464,22 @@ void Main() {
 	std::map<String, std::map<String, Array<Character>>> characters = LoadFiles::InitCharacters();
 	
 	// MapStructを作成
-	GameMap map1(U"./data/maps/map1.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage1(map1, 90, 20, Color(Palette::White));
 	
-	GameMap map2(U"./data/maps/map2.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage2(map2, 240, 20, Color(Palette::White));
 	
-	GameMap map3(U"./data/maps/map3.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage3(map3, 600, 40, Color(Palette::Black));
 	
 	// タイトル画面
 	while(System::Update()) {
 		switch (TitleMenu(characters)) {
 			case 0:
-				HowToPlay();
+				if (HowToPlay() == 1) {
+					ReadMe();
+				}
 				break;
 			case 1:
 				Game(stage1, map_objects, characters);

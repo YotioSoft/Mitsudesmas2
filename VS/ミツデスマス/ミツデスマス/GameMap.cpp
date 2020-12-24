@@ -88,6 +88,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	if (slow_mode) {
 		slow = 4;
 	}
+	
 	// (move_x, move_y)•ªˆÚ“®
 	square_position_offset += Point(direction.x / slow, direction.y / slow);
 

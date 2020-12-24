@@ -1,10 +1,19 @@
-﻿  Main.cpp
-D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(343,19): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(344,37): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
-D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(344,17): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+﻿  Character.cpp
+  GameMap.cpp
+  ImageTools.cpp
+  LoadFiles.cpp
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\GameMap.cpp(640,21): warning C4189: 'map_chip_name': ローカル変数が初期化されましたが、参照されていません
+  Main.cpp
+  MapChip.cpp
+  MapObject.cpp
 D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(347,19): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
 D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(348,37): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
 D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(348,17): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(351,19): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(352,37): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+D:\git\Mitsudesmas\VS\ミツデスマス\ミツデスマス\Main.cpp(352,17): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+     ライブラリ D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).lib とオブジェクト D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).exp を作成中
+LINK : warning LNK4232: 名前 ミツデスマス(debug).exe に ASCII 文字以外の文字が含まれています。932 以外の ANSI コードページを使用すると、DLL をシステムに読み込めない可能性があります
   ミツデスマス.vcxproj -> D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).exe
   D:\git\Mitsudesmas\VS\ミツデスマス\Intermediate\ミツデスマス\Debug\ミツデスマス(debug).exe
   1 個のファイルをコピーしました

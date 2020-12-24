@@ -3,34 +3,34 @@
 std::map<String, std::map<String, Array<Character>>> LoadFiles::InitCharacters() {
 	std::map<String, std::map<String, Array<Character>>>  characters;
 
-	characters[U"man"][U"player"] << Character(Image(U"img/charactors/man/player/1.png"), Direction::BOTTOM, true);
+	characters[U"man"][U"player"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/man/player/1.png"), Direction::BOTTOM, true);
 	
 	for (int i=1; i<=16; i++) {
-		characters[U"man"][U"youth"] << Character(Image(U"img/charactors/man/youth/" + Format(i) + U".png"), Direction::RIGHT, false);
+		characters[U"man"][U"youth"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/man/youth/" + Format(i) + U".png"), Direction::RIGHT, false);
 	}
 	for (int i=1; i<=20; i++) {
-		characters[U"man"][U"normal"] << Character(Image(U"img/charactors/man/normal/" + Format(i) + U".png"), Direction::RIGHT, false);
+		characters[U"man"][U"normal"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/man/normal/" + Format(i) + U".png"), Direction::RIGHT, false);
 	}
 	
 	for (int i=1; i<=5; i++) {
-		characters[U"man"][U"solo"] << Character(Image(U"img/charactors/man/middle_aged/" + Format(i) + U".png"), Direction::BOTTOM, false);
+		characters[U"man"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/man/middle_aged/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 	for (int i=1; i<=20; i++) {
-		characters[U"man"][U"solo"] << Character(Image(U"img/charactors/man/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
+		characters[U"man"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/man/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 	
 	for (int i=1; i<=17; i++) {
-		characters[U"woman"][U"youth"] << Character(Image(U"img/charactors/woman/youth/" + Format(i) + U".png"), Direction::LEFT, false);
+		characters[U"woman"][U"youth"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/youth/" + Format(i) + U".png"), Direction::LEFT, false);
 	}
 	for (int i=1; i<=27; i++) {
-		characters[U"woman"][U"normal"] << Character(Image(U"img/charactors/woman/normal/" + Format(i) + U".png"), Direction::LEFT, false);
+		characters[U"woman"][U"normal"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/normal/" + Format(i) + U".png"), Direction::LEFT, false);
 	}
 	
 	for (int i=1; i<=2; i++) {
-		characters[U"woman"][U"solo"] << Character(Image(U"img/charactors/woman/middle_aged/" + Format(i) + U".png"), Direction::BOTTOM, false);
+		characters[U"woman"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/middle_aged/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 	for (int i=1; i<=27; i++) {
-		characters[U"woman"][U"solo"] << Character(Image(U"img/charactors/woman/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
+		characters[U"woman"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 
 	return characters;
@@ -38,13 +38,13 @@ std::map<String, std::map<String, Array<Character>>> LoadFiles::InitCharacters()
 
 std::map<String, MapObject> LoadFiles::InitMapObjects() {
 	std::map<String, MapObject> map_objects;
-	Image st_map_e01_original = Image(U"img/map/chips/ST-Map-E01_customed.png");
+	Image st_map_e01_original = Image(Unicode::Widen(CURRENT_DIR) + U"/img/map/chips/ST-Map-E01_customed.png");
 	Image st_map_e01 = ImageTools::zoomImage2x(st_map_e01_original);
-	Image pipo_map_original = Image(U"img/map/chips/pipo-map001.png");
+	Image pipo_map_original = Image(Unicode::Widen(CURRENT_DIR) + U"/img/map/chips/pipo-map001.png");
 	Image pipo_map = ImageTools::zoomImage2x(pipo_map_original);
-	Image base_map_original = Image(U"img/map/chips/mapchip320x240.png");
+	Image base_map_original = Image(Unicode::Widen(CURRENT_DIR) + U"/img/map/chips/mapchip320x240.png");
 	Image base_map = ImageTools::zoomImage4x(base_map_original);
-	Image base_snow_map_original = Image(U"img/map/chips/base_snow.png");
+	Image base_snow_map_original = Image(Unicode::Widen(CURRENT_DIR) + U"/img/map/chips/base_snow.png");
 	Image base_snow_map = ImageTools::zoomImage4x(base_snow_map_original);
 
 	// ’n–Ê

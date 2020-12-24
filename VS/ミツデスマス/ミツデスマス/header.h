@@ -4,6 +4,7 @@
 
 #define CHIP_SIZE		Size(64, 64)
 #define CHIPS_IN_A_ROW	8
+#define CURRENT_DIR		"./"
 
 typedef struct SquarePosition {
 	int x;

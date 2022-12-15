@@ -141,28 +141,28 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Character.cpp">
+    <ClCompile Include="..\..\..\src\Character.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameMap.cpp">
+    <ClCompile Include="..\..\..\src\GameMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ImageTools.cpp">
+    <ClCompile Include="..\..\..\src\ImageTools.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoadFiles.cpp">
+    <ClCompile Include="..\..\..\src\LoadFiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="..\..\..\src\Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapChip.cpp">
+    <ClCompile Include="..\..\..\src\MapChip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapChipProfiles.cpp">
+    <ClCompile Include="..\..\..\src\MapChipProfiles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapObject.cpp">
+    <ClCompile Include="..\..\..\src\MapObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -797,31 +797,31 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Character.h">
+    <ClInclude Include="..\..\..\src\Character.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterProfiles.h">
+    <ClInclude Include="..\..\..\src\CharacterProfiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameMap.h">
+    <ClInclude Include="..\..\..\src\GameMap.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="header.h">
+    <ClInclude Include="..\..\..\src\header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ImageTools.h">
+    <ClInclude Include="..\..\..\src\ImageTools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="LoadFiles.h">
+    <ClInclude Include="..\..\..\src\LoadFiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapChip.h">
+    <ClInclude Include="..\..\..\src\MapChip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapChipProfiles.h">
+    <ClInclude Include="..\..\..\src\MapChipProfiles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapObject.h">
+    <ClInclude Include="..\..\..\src\MapObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

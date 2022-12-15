@@ -1,4 +1,4 @@
-﻿#include "header.h"
+#include "header.h"
 #include "Character.h"
 #include "LoadFiles.h"
 #include "GameMap.h"
@@ -23,16 +23,18 @@ typedef struct MapStruct {
 // タイトル画面
 int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) {
 	// 画像の読み込み
-	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.png");
+	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.svg");
 	
 	const Font font15(15);
 	
 	bool show_stages = false;
+    
+    auto copyright = font15(U"(C) YotioSoft 2020-2022");
 
 	int count = 0;
 	while (System::Update())
 	{
-		logo_img.draw(Scene::Width()/2- logo_img.width()/2, 100);
+		logo_img.draw(Scene::Width()/2 - logo_img.width()/2, 50);
 		characters[U"man"][U"player"][0].draw();
 
 		if (count % 5 == 0) {
@@ -73,7 +75,7 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 			}
 		}
 		
-		font15(U"(C) YotioSoft 2020").draw(Scene::Width()/2 - font15(U"(C) YotioSoft 2020").region(0, 0).size.x/2, Scene::Height()-40);
+		copyright.draw(Scene::Width()/2 - copyright.region(0, 0).size.x/2, Scene::Height()-40);
 
 		count++;
 	}
@@ -451,7 +453,7 @@ void ReadMe() {
 
 void Main() {
 	std::cout << Unicode::Widen(CURRENT_DIR) << std::endl;
-	Window::SetTitle(U"ミツデスマス");
+	Window::SetTitle(U"ミツデスマス2");
 	
 	// 背景を水色にする
 	Scene::SetBackground(ColorF(0.5, 0.7, 0.9));

@@ -8,6 +8,22 @@
 		<data>
 		L4/athdodjP+RVTjUIW1fqiGou0=
 		</data>
+		<key>Resources/audio/Hawk_Eye.mp3</key>
+		<data>
+		bUJ2SgCgQt04DWNtMHIU1JxawDY=
+		</data>
+		<key>Resources/audio/bomb1.mp3</key>
+		<data>
+		Yak1ptYYVDo6AjrQgSaYqHYaMso=
+		</data>
+		<key>Resources/audio/boyoyon1.mp3</key>
+		<data>
+		GokZ59eDdZZ9LPyCsplugooutxY=
+		</data>
+		<key>Resources/audio/handgun-firing1.mp3</key>
+		<data>
+		w+L3fKN1aaefuJAq+zTKjLtyzzk=
+		</data>
 		<key>Resources/data/maps/map1.csv</key>
 		<data>
 		wrzlYYUwG+cxyYhbB2ZM7Jxl8Sg=
@@ -608,10 +624,6 @@
 		<data>
 		ExbC6QzNDkMFO3IODI+4HlXMbPo=
 		</data>
-		<key>Resources/img/logo.png</key>
-		<data>
-		Ssbqd83VUaQsJAGEPM8emPvB5vc=
-		</data>
 		<key>Resources/img/logo.svg</key>
 		<data>
 		NdCKr5xrZPN5OoPhkzWoy0JfLL0=
@@ -664,6 +676,34 @@
 			<key>hash2</key>
 			<data>
 			tj3X9JEHRT8iXHXAk4YHZvHLUflgZRKlUZLoKr89ya4=
+			</data>
+		</dict>
+		<key>Resources/audio/Hawk_Eye.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qA1ZhpuezPySxqYpaIsNtU3ENp8rkg9iEVF381/ACVk=
+			</data>
+		</dict>
+		<key>Resources/audio/bomb1.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LG4Jmrtk6yuNZYuqWPlcRoQ1ID6+copyTA5XXBJD/Dc=
+			</data>
+		</dict>
+		<key>Resources/audio/boyoyon1.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nx5rJXrD14p2ENtqFQxEFwdJDmfakKC2ptbuA9CL8Fg=
+			</data>
+		</dict>
+		<key>Resources/audio/handgun-firing1.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pRs7iTDVg2dvH04pg+HsuFqQXlML6jGLS9iHZdHwQGc=
 			</data>
 		</dict>
 		<key>Resources/data/maps/map1.csv</key>
@@ -1714,13 +1754,6 @@
 			<key>hash2</key>
 			<data>
 			jHBMYIBkOFrICNfZYvAmS1iDwlzIm64NeIaWaxzOM7w=
-			</data>
-		</dict>
-		<key>Resources/img/logo.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			z3GHdqSmDPo5L123+fea0tBfxJ0eARm6VCABIaF0aOw=
 			</data>
 		</dict>
 		<key>Resources/img/logo.svg</key>

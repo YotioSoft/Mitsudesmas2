@@ -1,12 +1,13 @@
 ﻿/include
 /lib
-/xcode/Cities-Box/DerivedData
 /vs/.vs
 *.ilk
 *.pdb
 *.res
 *.entitlements
-VS/ミツデスマス/.vs/*
+*.pch
+VS/ミツデスマス2/.vs
+VS/ミツデスマス2/Intermediate
 
 # Xcode
 #

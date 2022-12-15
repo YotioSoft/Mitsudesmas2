@@ -632,7 +632,10 @@ void GameMap::load(FilePath file_path) {
 		}
 	}
 
+	y = 0;
 	for (auto map_row : objects_map) {
+		object_directions_map[y].resize(map_row.size());
+		x = 0;
 		for (auto map_square : map_row) {
 			for (auto map_obj : map_square) {
 				// 向きを推定
@@ -651,6 +654,8 @@ void GameMap::load(FilePath file_path) {
 						break;
 				}
 			}
+			x++;
 		}
+		y++;
 	}
 }

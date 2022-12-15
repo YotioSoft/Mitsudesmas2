@@ -1,4 +1,4 @@
-#include "GameMap.h"
+ï»¿#include "GameMap.h"
 
 GameMap::GameMap() {}
 GameMap::GameMap(Array<Array<Array<MapObject>>> init_objects_map,
@@ -19,7 +19,7 @@ GameMap::GameMap(FilePath map_file_path,
 	objects = init_objects;
 	center_square = init_center_square;
 
-	// ƒ}ƒbƒv‚Ì“Ç‚İ‚İ
+	// ãƒãƒƒãƒ—ã®èª­ã¿è¾¼ã¿
 	load(map_file_path);
 }
 
@@ -89,67 +89,67 @@ SquarePosition GameMap::moveCamera(Point direction) {
 		slow = 4;
 	}
 	
-	// (move_x, move_y)•ªˆÚ“®
+	// (move_x, move_y)åˆ†ç§»å‹•
 	square_position_offset += Point(direction.x / slow, direction.y / slow);
 
-	// ƒvƒŒƒCƒ„[‚ğ’†SÀ•W‚É“®‚©‚·
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚’ä¸­å¿ƒåº§æ¨™ã«å‹•ã‹ã™
 	player.walk(direction);
 	
 	bool can_move = true;
 
-	// ƒIƒtƒZƒbƒg‚ª32‚ğ’´‚¦‚½‚ç
+	// ã‚ªãƒ•ã‚»ãƒƒãƒˆãŒ32ã‚’è¶…ãˆãŸã‚‰
 	if (square_position_offset.x > CHIP_SIZE.x / 2) {
-		// ’†SÀ•W‚ğ1ƒ}ƒX‰E‚É‚¸‚ç‚µ‚Ä‚àƒ}ƒbƒvŠO‚Éo‚È‚¢ê‡‚Í1ƒ}ƒX‰E‚É‚¸‚ç‚·
+		// ä¸­å¿ƒåº§æ¨™ã‚’1ãƒã‚¹å³ã«ãšã‚‰ã—ã¦ã‚‚ãƒãƒƒãƒ—å¤–ã«å‡ºãªã„å ´åˆã¯1ãƒã‚¹å³ã«ãšã‚‰ã™
 		if (center_square.x + 1 < objects_map[center_square.y].size() && isPassable(SquarePosition(center_square.x + 1, center_square.y))) {
 			center_square.x++;
 			square_position_offset.x -= CHIP_SIZE.x;
 		}
-		// ƒ}ƒbƒvŠO‚Éo‚éê‡‚ÍƒJƒƒ‰‚ÌˆÚ“®‚ğ–³Œø‚Æ‚·‚é
+		// ãƒãƒƒãƒ—å¤–ã«å‡ºã‚‹å ´åˆã¯ã‚«ãƒ¡ãƒ©ã®ç§»å‹•ã‚’ç„¡åŠ¹ã¨ã™ã‚‹
 		else {
 			square_position_offset -= Point(direction.x / slow, direction.y / slow);
 			can_move = false;
 		}
 	}
 	if (square_position_offset.y > CHIP_SIZE.y / 2) {
-		// ’†SÀ•W‚ğ1ƒ}ƒX‰º‚É‚¸‚ç‚µ‚Ä‚àƒ}ƒbƒvŠO‚Éo‚È‚¢ê‡‚Í1ƒ}ƒX‰º‚É‚¸‚ç‚·
+		// ä¸­å¿ƒåº§æ¨™ã‚’1ãƒã‚¹ä¸‹ã«ãšã‚‰ã—ã¦ã‚‚ãƒãƒƒãƒ—å¤–ã«å‡ºãªã„å ´åˆã¯1ãƒã‚¹ä¸‹ã«ãšã‚‰ã™
 		if (center_square.y + 1 < objects_map.size() && isPassable(SquarePosition(center_square.x, center_square.y + 1))) {
 			center_square.y++;
 			square_position_offset.y -= CHIP_SIZE.y;
 		}
-		// ƒ}ƒbƒvŠO‚Éo‚éê‡‚ÍƒJƒƒ‰‚ÌˆÚ“®‚ğ–³Œø‚Æ‚·‚é
+		// ãƒãƒƒãƒ—å¤–ã«å‡ºã‚‹å ´åˆã¯ã‚«ãƒ¡ãƒ©ã®ç§»å‹•ã‚’ç„¡åŠ¹ã¨ã™ã‚‹
 		else {
 			square_position_offset -= Point(direction.x / slow, direction.y / slow);
 			can_move = false;
 		}
 	}
 
-	// ƒIƒtƒZƒbƒg‚ª-32‚ğ–¢–‚É‚È‚Á‚½‚ç
+	// ã‚ªãƒ•ã‚»ãƒƒãƒˆãŒ-32ã‚’æœªæº€ã«ãªã£ãŸã‚‰
 	if (square_position_offset.x < - CHIP_SIZE.x / 2) {
-		// ’†SÀ•W‚ğ1ƒ}ƒX¶‚É‚¸‚ç‚µ‚Ä‚àƒ}ƒbƒvŠO‚Éo‚È‚¢ê‡‚Í1ƒ}ƒX¶‚É‚¸‚ç‚·
+		// ä¸­å¿ƒåº§æ¨™ã‚’1ãƒã‚¹å·¦ã«ãšã‚‰ã—ã¦ã‚‚ãƒãƒƒãƒ—å¤–ã«å‡ºãªã„å ´åˆã¯1ãƒã‚¹å·¦ã«ãšã‚‰ã™
 		if (center_square.x - 1 >= 0 && isPassable(SquarePosition(center_square.x - 1, center_square.y))) {
 			center_square.x--;
 			square_position_offset.x += CHIP_SIZE.x;
 		}
-		// ƒ}ƒbƒvŠO‚Éo‚éê‡‚ÍƒJƒƒ‰‚ÌˆÚ“®‚ğ–³Œø‚Æ‚·‚é
+		// ãƒãƒƒãƒ—å¤–ã«å‡ºã‚‹å ´åˆã¯ã‚«ãƒ¡ãƒ©ã®ç§»å‹•ã‚’ç„¡åŠ¹ã¨ã™ã‚‹
 		else {
 			square_position_offset -= Point(direction.x / slow, direction.y / slow);
 			can_move = false;
 		}
 	}
 	if (square_position_offset.y < - CHIP_SIZE.y / 2) {
-		// ’†SÀ•W‚ğ1ƒ}ƒXã‚É‚¸‚ç‚µ‚Ä‚àƒ}ƒbƒvŠO‚Éo‚È‚¢ê‡‚Í1ƒ}ƒXã‚É‚¸‚ç‚·
+		// ä¸­å¿ƒåº§æ¨™ã‚’1ãƒã‚¹ä¸Šã«ãšã‚‰ã—ã¦ã‚‚ãƒãƒƒãƒ—å¤–ã«å‡ºãªã„å ´åˆã¯1ãƒã‚¹ä¸Šã«ãšã‚‰ã™
 		if (center_square.y - 1 >= 0 && isPassable(SquarePosition(center_square.x, center_square.y - 1))) {
 			center_square.y--;
 			square_position_offset.y += CHIP_SIZE.y;
 		}
-		// ƒ}ƒbƒvŠO‚Éo‚éê‡‚ÍƒJƒƒ‰‚ÌˆÚ“®‚ğ–³Œø‚Æ‚·‚é
+		// ãƒãƒƒãƒ—å¤–ã«å‡ºã‚‹å ´åˆã¯ã‚«ãƒ¡ãƒ©ã®ç§»å‹•ã‚’ç„¡åŠ¹ã¨ã™ã‚‹
 		else {
 			square_position_offset -= Point(direction.x / slow, direction.y / slow);
 			can_move = false;
 		}
 	}
 	
-	// ƒJƒƒ‰‚ªˆÚ“®‚µ‚½ê‡A‘¼‚ÌƒLƒƒƒ‰ƒNƒ^[‚ğ“®‚©‚·
+	// ã‚«ãƒ¡ãƒ©ãŒç§»å‹•ã—ãŸå ´åˆã€ä»–ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’å‹•ã‹ã™
 	if (can_move) {
 		for (int i=0; i<couples.size(); i++) {
 			if (direction == Direction::TOP) {
@@ -186,7 +186,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 		}
 	}
 	
-	// ƒvƒŒƒCƒ„[‚ÌüˆÍ‚ÉƒLƒƒƒ‰ƒNƒ^[‚ª‚¢‚½‚çƒƒbƒNƒIƒ“
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‘¨å›²ã«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒã„ãŸã‚‰ãƒ­ãƒƒã‚¯ã‚ªãƒ³
 	bool locked_on_already = false;
 	for (int i=0; i<couples.size(); i++) {
 		couples[i].locked_on = false;
@@ -298,7 +298,7 @@ Size GameMap::getMapSize() {
 }
 
 void GameMap::draw() {
-	// ˆÚ“®’†‚ÌƒLƒƒƒ‰ƒNƒ^[‚Ìˆ—
+	// ç§»å‹•ä¸­ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®å‡¦ç†
 	for (int i=0; i<couples.size(); i++) {
 		if (couples[i].character1.moving != Point(0, 0)) {
 			SquarePosition beforePosition = couples[i].character1.position;
@@ -317,7 +317,7 @@ void GameMap::draw() {
 		}
 	}
 	
-	// ƒ}ƒbƒv‚Ì•`‰æiŒ©‚¦‚é‚Æ‚±‚ë‚¾‚¯j
+	// ãƒãƒƒãƒ—ã®æç”»ï¼ˆè¦‹ãˆã‚‹ã¨ã“ã‚ã ã‘ï¼‰
 	for (int y = center_square.y - Scene::Height() / CHIP_SIZE.y / 2 - 2; y < center_square.y + Scene::Height() / CHIP_SIZE.y / 2 + 2; y++) {
 		if (y < 0 || y >= objects_map.size()) {
 			continue;
@@ -333,7 +333,7 @@ void GameMap::draw() {
 			}
 		}
 		
-		// ‘¼‚ÌƒLƒƒƒ‰ƒNƒ^[‚Ì•`‰æ
+		// ä»–ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®æç”»
 		for (int i=0; i<couples.size(); i++) {
 			if (couples[i].character1.position.y == y) {
 				if (couples[i].locked_on) {
@@ -363,7 +363,7 @@ void GameMap::draw() {
 			}
 		}
 		
-		// ƒvƒŒƒCƒ„[‚Ì•`‰æ
+		// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æç”»
 		if (center_square.y == y) {
 			player.draw();
 		}
@@ -546,7 +546,7 @@ MapChipProfiles::Directions GameMap::setUnconnectableObjectDirection(SquarePosit
 	int x = square_position.x;
 	int y = square_position.y;
 	
-	// “¯‚¶ƒIƒuƒWƒFƒNƒg‚ÌŒQ‚Ì’†‚ÅÅ‚àã‚Ì‚à‚Ì‚Æ‚Ì‹——£‚ğ‹‚ß‚é
+	// åŒã˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç¾¤ã®ä¸­ã§æœ€ã‚‚ä¸Šã®ã‚‚ã®ã¨ã®è·é›¢ã‚’æ±‚ã‚ã‚‹
 	int temp_y = y;
 	bool same_object_exists_y;
 	do {
@@ -568,7 +568,7 @@ MapChipProfiles::Directions GameMap::setUnconnectableObjectDirection(SquarePosit
 	} while (same_object_exists_y);
 	int distance_topmost_y = y - temp_y;
 	
-	// “¯‚¶ƒIƒuƒWƒFƒNƒg‚ÌŒQ‚Ì’†‚ÅÅ‚à¶‚Ì‚à‚Ì‚Æ‚Ì‹——£‚ğ‹‚ß‚é
+	// åŒã˜ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç¾¤ã®ä¸­ã§æœ€ã‚‚å·¦ã®ã‚‚ã®ã¨ã®è·é›¢ã‚’æ±‚ã‚ã‚‹
 	int temp_x = x;
 	bool same_object_exists_x;
 	do {
@@ -590,7 +590,7 @@ MapChipProfiles::Directions GameMap::setUnconnectableObjectDirection(SquarePosit
 	} while (same_object_exists_x);
 	int distance_leftmost_x = x - temp_x;
 	
-	// Šî€‚Æ‚È‚éÀ•W‚ğZo
+	// åŸºæº–ã¨ãªã‚‹åº§æ¨™ã‚’ç®—å‡º
 	int start_y = distance_topmost_y % object.getObjectSize().y;
 	int start_x = distance_leftmost_x % object.getObjectSize().x;
 	
@@ -611,81 +611,46 @@ MapChipProfiles::Directions GameMap::setUnconnectableObjectDirection(SquarePosit
 }
 
 void GameMap::load(FilePath file_path) {
-	JSONReader read_map(file_path);
-	int y = 0;
-	for (const auto& map_squares : read_map[U"objects"].arrayView()) {
-		objects_map.push_back(Array<Array<MapObject>>());
-		int x = 0;
+	const CSV csv(file_path);
 
-		for (const auto& map_square : map_squares.arrayView()) {
-			objects_map[y].push_back(Array<MapObject>());
-
-			for (const auto& map_chip_name : map_square.arrayView()) {
-				objects_map[y][x].push_back(objects[map_chip_name.getString()]);
-			}
-			x++;
-		}
-		y++;
+	if (not csv) {
+		throw Error{ U"ãƒãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸ" };
 	}
 
-	y = 0;
-	for (const auto& map_squares : read_map[U"objects"].arrayView()) {
-		object_directions_map.push_back(Array<Array<MapChipProfiles::Directions>>());
-		int x = 0;
+	objects_map.resize(csv.rows()/2);
+	object_directions_map.resize(csv.rows()/2);
 
-		for (const auto& map_square : map_squares.arrayView()) {
-			object_directions_map[y].push_back(Array<MapChipProfiles::Directions>());
+	int x, y;
+	for (size_t row = 0; row < csv.rows(); row++) {
+		y = row / 2;
+		objects_map[y].resize(csv[row].size());
 
-			int i = 0;
-			for (const auto& map_chip_name : map_square.arrayView()) {
-				// Œü‚«‚ğ„’è
-				switch (objects_map[y][x][i].getType()) {
+		for (size_t column = 0; column < csv[row].size(); column++) {
+			x = column;
+			
+			objects_map[y][x].push_back(objects[csv[row][column]]);
+		}
+	}
+
+	for (auto map_row : objects_map) {
+		for (auto map_square : map_row) {
+			for (auto map_obj : map_square) {
+				// å‘ãã‚’æ¨å®š
+				switch (map_obj.getType()) {
 					case MapChipProfiles::Types::Road:
-						object_directions_map[y][x].push_back(setConnectableObjectDirection(SquarePosition(x, y), objects_map[y][x][i].getType(), 11));
+						object_directions_map[y][x].push_back(setConnectableObjectDirection(SquarePosition(x, y), map_obj.getType(), 11));
 						break;
 					case MapChipProfiles::Types::Mountain:
-						object_directions_map[y][x].push_back(setConnectableObjectDirection(SquarePosition(x, y), objects_map[y][x][i].getType(), 9));
+						object_directions_map[y][x].push_back(setConnectableObjectDirection(SquarePosition(x, y), map_obj.getType(), 9));
 						break;
 					case MapChipProfiles::Types::ExpandableTree:
-						object_directions_map[y][x].push_back(setUnconnectableObjectDirection(SquarePosition(x, y), objects_map[y][x][i]));
+						object_directions_map[y][x].push_back(setUnconnectableObjectDirection(SquarePosition(x, y), map_obj));
 						break;
 					default:
 						object_directions_map[y][x].push_back(MapChipProfiles::None);
 						break;
 				}
-				i++;
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-void GameMap::save(FilePath file_path) {
-	JSONWriter map_data;
-	map_data.startObject();
-	{
-		map_data.key(U"objects").startArray();
-		{
-			for (int y = 0; y < objects_map.size(); y++) {
-				map_data.startArray();
-				{
-					for (int x = 0; x < objects_map[y].size(); x++) {
-						map_data.startArray();
-						{
-							for (int i = 0; i < objects_map[y][x].size(); i++) {
-								map_data.write(objects_map[y][x][i].getName());
-							}
-						}
-						map_data.endArray();
-					}
-				}
-				map_data.endArray();
 			}
 		}
-		map_data.endArray();
 	}
-	map_data.endObject();
-	map_data.save(file_path);
 }
-

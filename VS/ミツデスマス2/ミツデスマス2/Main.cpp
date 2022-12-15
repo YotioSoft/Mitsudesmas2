@@ -464,13 +464,13 @@ void Main() {
 	std::map<String, std::map<String, Array<Character>>> characters = LoadFiles::InitCharacters();
 	
 	// MapStructを作成
-	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage1(map1, Duration(90), 20, Color(Palette::White));
 	
-	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage2(map2, Duration(240), 20, Color(Palette::White));
 	
-	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.rpgmap", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
+	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
 	MapStruct stage3(map3, Duration(600), 40, Color(Palette::Black));
 	
 	// タイトル画面

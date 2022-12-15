@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "header.h"
 #include "MapObject.h"
 #include "Character.h"
@@ -20,33 +20,33 @@ typedef struct Couple {
 class GameMap
 {
 private:
-	// ƒIƒuƒWƒFƒNƒg
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 	std::map<String, MapObject> objects;
 
-	// ƒIƒuƒWƒFƒNƒg‚Ìƒ}ƒbƒv
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ãƒãƒƒãƒ—
 	Array<Array<Array<MapObject>>> objects_map;
 
-	// ƒ}ƒbƒvã‚ÌƒIƒuƒWƒFƒNƒg‚ÌŒü‚«
+	// ãƒãƒƒãƒ—ä¸Šã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‘ã
 	Array<Array<Array<MapChipProfiles::Directions>>> object_directions_map;
 
-	// ƒvƒŒƒCƒ„[
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	Character player;
 
-	// ƒ}ƒbƒvã‚ÌƒLƒƒƒ‰ƒNƒ^
+	// ãƒãƒƒãƒ—ä¸Šã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿
 	Array<Citizen> soli;
 	Array<Couple> couples;
 
-	// ’†SÀ•W
+	// ä¸­å¿ƒåº§æ¨™
 	SquarePosition center_square;
 
-	// À•W‚ÌƒIƒtƒZƒbƒgi-32?32j
+	// åº§æ¨™ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆï¼ˆ-32?32ï¼‰
 	Point square_position_offset = Point(0, 0);
 	
-	// ˆÚ“®‚ª’x‚¢ƒ‚[ƒh
+	// ç§»å‹•ãŒé…ã„ãƒ¢ãƒ¼ãƒ‰
 	bool slow_mode = false;
 
 public:
-	// ƒ}ƒbƒv“o˜^
+	// ãƒãƒƒãƒ—ç™»éŒ²
 	GameMap();
 	GameMap(Array<Array<Array<MapObject>>> init_objects_map,
 		Array<Array<Array<MapChipProfiles::Directions>>> init_object_directions_map,
@@ -57,45 +57,42 @@ public:
 		Character init_player,
 		SquarePosition init_center_square);
 	
-	// ƒLƒƒƒ‰ƒNƒ^[‚Ìİ’u
+	// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®è¨­ç½®
 	void putCharacter(Citizen character);
 	void putCouple(Couple couple);
 	
-	// ’Ês‰Â”\‚©”Û‚©
+	// é€šè¡Œå¯èƒ½ã‹å¦ã‹
 	bool isPassable(SquarePosition position);
 	
-	// À•Wã‚É‚¢‚éƒLƒƒƒ‰ƒNƒ^[‚ğæ“¾
+	// åº§æ¨™ä¸Šã«ã„ã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚’å–å¾—
 	Character* getCharacter(SquarePosition position);
 	Couple* getCouple(SquarePosition position);
 
-	// ‹“_‚ğˆÚ“®
+	// è¦–ç‚¹ã‚’ç§»å‹•
 	SquarePosition moveCamera(Point direction);
 	
-	// ˆÚ“®‚Ì‘¬‚³‚Ìİ’è
+	// ç§»å‹•ã®é€Ÿã•ã®è¨­å®š
 	void setSlowMode(bool enable);
 	
-	// ƒLƒƒƒ‰ƒNƒ^[‚ÌŠÔ‚ğ‹ó‚¯‚é
+	// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®é–“ã‚’ç©ºã‘ã‚‹
 	int space();
 	
-	// ƒ}ƒbƒvƒTƒCƒY‚ğæ“¾
+	// ãƒãƒƒãƒ—ã‚µã‚¤ã‚ºã‚’å–å¾—
 	Size getMapSize();
 
-	// ƒ}ƒbƒv•`‰æ
+	// ãƒãƒƒãƒ—æç”»
 	void draw();
 
-	// ƒ`ƒbƒv‚ÌÀ•W‚©‚ç‰æ–Êã‚ÌÀ•W‚É•ÏŠ·
+	// ãƒãƒƒãƒ—ã®åº§æ¨™ã‹ã‚‰ç”»é¢ä¸Šã®åº§æ¨™ã«å¤‰æ›
 	Point squarePositionToPoint(SquarePosition square_position);
 
-	// ‰æ–Êã‚ÌÀ•W‚©‚çƒ`ƒbƒv‚ÌÀ•W‚É•ÏŠ·
+	// ç”»é¢ä¸Šã®åº§æ¨™ã‹ã‚‰ãƒãƒƒãƒ—ã®åº§æ¨™ã«å¤‰æ›
 	SquarePosition pointToSquarePosition(Point point);
 
-	// üˆÍ‚Ì“¹‚ğŒŸo‚µw’è‚³‚ê‚½ƒ}ƒX‚Ì“¹‚ÌŒü‚«‚ğŒˆ’è
+	// å‘¨å›²ã®é“ã‚’æ¤œå‡ºã—æŒ‡å®šã•ã‚ŒãŸãƒã‚¹ã®é“ã®å‘ãã‚’æ±ºå®š
 	MapChipProfiles::Directions setConnectableObjectDirection(SquarePosition square_position, MapChipProfiles::Types type, int max_size);
 	MapChipProfiles::Directions setUnconnectableObjectDirection(SquarePosition square_position, MapObject object);
 
-	// ƒ}ƒbƒv“Ç‚İ‚İ
+	// ãƒãƒƒãƒ—èª­ã¿è¾¼ã¿
 	void load(FilePath file_path);
-
-	// ƒ}ƒbƒv•Û‘¶
-	void save(FilePath file_path);
 };

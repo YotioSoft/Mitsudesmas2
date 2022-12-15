@@ -614,7 +614,7 @@ void GameMap::load(FilePath file_path) {
 	const CSV csv(file_path);
 
 	if (not csv) {
-		throw Error{ U"マップデータの読み込みに失敗しました" };
+		throw Error{ U"Failed to load map data" };
 	}
 
 	objects_map.resize(csv.rows()/2);
@@ -629,6 +629,8 @@ void GameMap::load(FilePath file_path) {
 			x = column;
 			
 			objects_map[y][x].push_back(objects[csv[row][column]]);
+
+			Console << U"{}, {}"_fmt(x, y);
 		}
 	}
 

@@ -4,7 +4,11 @@
 
 #define CHIP_SIZE		Size(64, 64)
 #define CHIPS_IN_A_ROW	8
-#define CURRENT_DIR		"./"
+#if defined(_WIN32) || defined(_WIN64)
+	#define CURRENT_DIR     "./"
+#elif defined(_MACOS)
+	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/Resources"
+#endif
 
 typedef struct SquarePosition {
 	int x;

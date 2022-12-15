@@ -1,4 +1,4 @@
-﻿#include "GameMap.h"
+#include "GameMap.h"
 
 GameMap::GameMap() {}
 GameMap::GameMap(Array<Array<Array<MapObject>>> init_objects_map,
@@ -628,7 +628,8 @@ void GameMap::load(FilePath file_path) {
 		for (size_t column = 0; column < csv[row].size(); column++) {
 			x = column;
 			
-			objects_map[y][x].push_back(objects[csv[row][column]]);
+            if (csv[row][column].length() > 0)
+                objects_map[y][x].push_back(objects[csv[row][column]]);
 
 			Console << U"{}, {}"_fmt(x, y);
 		}

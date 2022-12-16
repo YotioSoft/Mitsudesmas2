@@ -1,46 +1,46 @@
-------------------------------------------
+﻿------------------------------------------
 	
-		�~�c�f�X�}�X
+		ミツデスマス
 
 		 ver.1.0
 
 ------------------------------------------
 
-1. �͂��߂�
-���̓x�́A�~�c�f�X�}�X���_�E�����[�h���Ă����������肪�Ƃ��������܂��B
-�{���́A�Q�[���̃��[���⑀����@���L�ڂ��Ă���܂��B
+1. はじめに
+この度は、ミツデスマスをダウンロードしていただきありがとうございます。
+本書は、ゲームのルールや操作方法を記載しております。
 
-2. ���[��
-���ɂȂ��Ă���J�b�v���Ɂu���ł��v�Ƃ����������J���Ă��炢�܂��B
-���ԓ��Ƀ}�b�v��̂��ׂẴJ�b�v�����������J������Q�[���N���A�ł��B
-���łɋ������J���Ă���J�b�v����A�J�b�v������Ȃ��l�Ɂu���ł��v�Ƃ����Ɠ{���AMP������܂��B
-4��{��ꂽ��Q�[���I�[�o�[�ł��B
-HP��0�ɂȂ�ƕ��������x���Ȃ�܂��B
+2. ルール
+密になっているカップルに「密です」といい距離を開けてもらいます。
+時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。
+すでに距離を開けているカップルや、カップルじゃない人に「密です」というと怒られ、MPが減ります。
+4回怒られたらゲームオーバーです。
+HPが0になると歩き方が遅くなります。
 
-3. ������@
-��������	�F�}�b�v����ړ�����
-SPACE�L�[�F�u���ł��v�Ƃ���
+3. 操作方法
+←↑↓→	：マップ上を移動する
+SPACEキー：「密です」という
 
-4. �ӎ�
-����ɂ�����A���Ɏ����t���[�f�ނ��g�p�����Ă��������܂����B
+4. 謝辞
+制作にあたり、次に示すフリー素材を使用させていただきました。
 
-[�摜�f��]
-�E�t�B�[���h�}�b�v�Z�b�g�P�A�E�f�B�^�Q�p�}�b�v�Z�b�g�A�}�b�v�Z�b�g1 - �҂ۂ� �l(https://pipoya.net/blog/)
-�E�p���N�����o���f��216 - �t�L�_�V�f�U�C�� �l(https://fukidesign.com/)
+[画像素材]
+・フィールドマップセット１、ウディタ２用マップセット、マップセット1 - ぴぽや 様(https://pipoya.net/blog/)
+・パンク吹き出し素材216 - フキダシデザイン 様(https://fukidesign.com/)
 
 [BGM]
-�EHawk Eye - MAKOOTO �l(https://dova-s.jp/_contents/author/profile263.html)
+・Hawk Eye - MAKOOTO 様(https://dova-s.jp/_contents/author/profile263.html)
 
-[���ʉ�]
-�E����1�A���e�����A�{�������[�� - ���ʉ����{ �l(https://soundeffect-lab.info/)
+[効果音]
+・爆発1、拳銃を撃つ、ボヨヨヨーン - 効果音ラボ 様(https://soundeffect-lab.info/)
 
-�t���[�f�ލ쐬�җl���ɂ͂����\���グ�܂��B
+フリー素材作成者様方にはお礼を申し上げます。
 
 
-4. �s����ɂ���
-�s��Ȃǂ������܂�����AYotioSoft�܂ł��C�y�ɂ��m�点���������B
-YotioSoft �R���^�N�g�t�H�[��
+4. 不具合等について
+不具合などございましたら、YotioSoftまでお気軽にお知らせください。
+YotioSoft コンタクトフォーム
 http://yotiosoft.com/contact-form/
 
 
-2020�N12��24�� YotioSoft
+2020年12月24日 YotioSoft

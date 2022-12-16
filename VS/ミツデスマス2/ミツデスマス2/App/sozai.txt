@@ -1,19 +1,19 @@
-[ƒ‰ƒCƒuƒ‰ƒŠ]
-EOpenSiv3D
-    - Ryo Suzuki —lAOpenSiv3D Project —lihttps://siv3d.github.io/ja-jp/j
+ï»¿[ãƒ©ã‚¤ãƒ–ãƒ©ãƒª]
+ãƒ»OpenSiv3D
+    - Ryo Suzuki æ§˜ã€OpenSiv3D Project æ§˜ï¼ˆhttps://siv3d.github.io/ja-jp/ï¼‰
 
-[‰æ‘œ‘fŞ]
-EƒtƒB[ƒ‹ƒhƒ}ƒbƒvƒZƒbƒg‚PAƒEƒfƒBƒ^‚Q—pƒ}ƒbƒvƒZƒbƒgAƒ}ƒbƒvƒZƒbƒg1
-    - ‚Ò‚Û‚â —l(https://pipoya.net/blog/)
-Eƒpƒ“ƒN‚«o‚µ‘fŞ216
-    - ƒtƒLƒ_ƒVƒfƒUƒCƒ“ —l(https://fukidesign.com/)
+[ç”»åƒç´ æ]
+ãƒ»ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ãƒãƒƒãƒ—ã‚»ãƒƒãƒˆï¼‘ã€ã‚¦ãƒ‡ã‚£ã‚¿ï¼’ç”¨ãƒãƒƒãƒ—ã‚»ãƒƒãƒˆã€ãƒãƒƒãƒ—ã‚»ãƒƒãƒˆ1
+    - ã´ã½ã‚„ æ§˜(https://pipoya.net/blog/)
+ãƒ»ãƒ‘ãƒ³ã‚¯å¹ãå‡ºã—ç´ æ216
+    - ãƒ•ã‚­ãƒ€ã‚·ãƒ‡ã‚¶ã‚¤ãƒ³ æ§˜(https://fukidesign.com/)
 
 [BGM]
-EHawk Eye
-    - MAKOOTO —l(https://dova-s.jp/_contents/author/profile263.html)
+ãƒ»Hawk Eye
+    - MAKOOTO æ§˜(https://dova-s.jp/_contents/author/profile263.html)
 
-[Œø‰Ê‰¹]
-E”š”­1AŒe‚ğŒ‚‚ÂAƒ{ƒˆƒˆƒˆ[ƒ“
-    - Œø‰Ê‰¹ƒ‰ƒ{ —l(https://soundeffect-lab.info/)
+[åŠ¹æœéŸ³]
+ãƒ»çˆ†ç™º1ã€æ‹³éŠƒã‚’æ’ƒã¤ã€ãƒœãƒ¨ãƒ¨ãƒ¨ãƒ¼ãƒ³
+    - åŠ¹æœéŸ³ãƒ©ãƒœ æ§˜(https://soundeffect-lab.info/)
 
-ŠJ”­ÒEì¬Ò—l•û‚É‚Í‚¨—ç‚ğ\‚µã‚°‚Ü‚·B
+é–‹ç™ºè€…ãƒ»ä½œæˆè€…æ§˜æ–¹ã«ã¯ãŠç¤¼ã‚’ç”³ã—ä¸Šã’ã¾ã™ã€‚

@@ -39,3 +39,5 @@ DerivedData/
 ## OpenSiv3D
 Xcode/lib
 Xcode/include
+
+*.DS_Store

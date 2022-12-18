@@ -27,7 +27,7 @@ private:
 	Grid<Array<MapObject>> objects_map;
 
 	// マップ上のオブジェクトの向き
-	Array<Array<Array<MapChipProfiles::Directions>>> object_directions_map;
+	Grid<Array<MapChipProfiles::Directions>> object_directions_map;
 
 	// プレイヤー
 	Character player;
@@ -49,7 +49,7 @@ public:
 	// マップ登録
 	GameMap();
 	GameMap(Grid<Array<MapObject>> init_objects_map,
-		Array<Array<Array<MapChipProfiles::Directions>>> init_object_directions_map,
+        Grid<Array<MapChipProfiles::Directions>> init_object_directions_map,
 		Character init_player,
 		SquarePosition init_center_square);
 	GameMap(FilePath map_file_path,

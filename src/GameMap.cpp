@@ -2,7 +2,7 @@
 
 GameMap::GameMap() {}
 GameMap::GameMap(Grid<Array<MapObject>> init_objects_map,
-	Array<Array<Array<MapChipProfiles::Directions>>> init_object_directions_map,
+	Grid<Array<MapChipProfiles::Directions>> init_object_directions_map,
 	Character init_player,
 	SquarePosition init_center_square) {
 	objects_map = init_objects_map;
@@ -618,7 +618,7 @@ void GameMap::load(FilePath file_path) {
 	}
 
 	objects_map.resize(csv.columns(0), csv.rows()/2);
-	object_directions_map.resize(csv.rows()/2);
+	object_directions_map.resize(csv.columns(0), csv.rows()/2);
 
 	int x, y;
 	for (size_t row = 0; row < csv.rows(); row++) {
@@ -627,13 +627,12 @@ void GameMap::load(FilePath file_path) {
 		for (size_t column = 0; column < csv[row].size(); column++) {
 			x = column;
 			
-            if (csv[row][column].length() > 0)
+            if (csv[row][cobject_directions_mapolumn].length() > 0)
                 objects_map[y][x].push_back(objects[csv[row][column]]);
 		}
 	}
 
 	for (auto y : step(objects_map.height())) {
-		object_directions_map[y].resize(objects_map.width());
 		for (auto x : step(objects_map.width())) {
 			for (auto map_obj : objects_map[y][x]) {
 				// 向きを推定

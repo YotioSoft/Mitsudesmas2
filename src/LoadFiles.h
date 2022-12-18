@@ -1,7 +1,7 @@
 #pragma once
-#include "header.h"
-#include "Character.h"
-#include "MapObject.h"
+#include <header.h>
+#include <Character.h>
+#include <MapObject.h>
 
 namespace LoadFiles
 {

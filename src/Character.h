@@ -1,7 +1,7 @@
 #pragma once
-#include "header.h"
-#include "ImageTools.h"
-#include "CharacterProfiles.h"
+#include <header.h>
+#include <ImageTools.h>
+#include <CharacterProfiles.h>
 
 class Character
 {

@@ -1,12 +1,12 @@
 #pragma once
 
-#include <Siv3D.hpp> // OpenSiv3D v0.4.3
+#include <Siv3D.hpp> // OpenSiv3D v0.6.6
 
 #define CHIP_SIZE		Size(64, 64)
 #define CHIPS_IN_A_ROW	8
 #if defined(_WIN32) || defined(_WIN64)
 	#define CURRENT_DIR     "./"
-#elif defined(_MACOS)
+#else
 	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/Resources"
 #endif
 

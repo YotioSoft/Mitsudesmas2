@@ -1,4 +1,4 @@
-#include "MapChipProfiles.h"
+#include <MapChipProfiles.h>
 
 MapChipProfiles::Directions MapChipProfiles::convertIntToDirections(int number) {
 	switch (number) {

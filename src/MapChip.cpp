@@ -1,4 +1,4 @@
-#include "MapChip.h"
+#include <MapChip.h>
 
 MapChip::MapChip(Image &chip_image, int init_position_number, MapChipProfiles::Types init_type, MapChipProfiles::Directions init_direction, bool init_passable) {
 	Image temp_image = Image(CHIP_SIZE);

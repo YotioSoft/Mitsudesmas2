@@ -1,4 +1,4 @@
-#include "LoadFiles.h"
+#include <LoadFiles.h>
 
 std::map<String, std::map<String, Array<Character>>> LoadFiles::InitCharacters() {
 	std::map<String, std::map<String, Array<Character>>>  characters;

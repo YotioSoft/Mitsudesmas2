@@ -24,7 +24,7 @@ private:
 	std::map<String, MapObject> objects;
 
 	// オブジェクトのマップ
-	Array<Array<Array<MapObject>>> objects_map;
+	Grid<Array<MapObject>> objects_map;
 
 	// マップ上のオブジェクトの向き
 	Array<Array<Array<MapChipProfiles::Directions>>> object_directions_map;
@@ -48,7 +48,7 @@ private:
 public:
 	// マップ登録
 	GameMap();
-	GameMap(Array<Array<Array<MapObject>>> init_objects_map,
+	GameMap(Grid<Array<MapObject>> init_objects_map,
 		Array<Array<Array<MapChipProfiles::Directions>>> init_object_directions_map,
 		Character init_player,
 		SquarePosition init_center_square);

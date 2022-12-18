@@ -1,7 +1,7 @@
 #include <GameMap.h>
 
 GameMap::GameMap() {}
-GameMap::GameMap(Array<Array<Array<MapObject>>> init_objects_map,
+GameMap::GameMap(Grid<Array<MapObject>> init_objects_map,
 	Array<Array<Array<MapChipProfiles::Directions>>> init_object_directions_map,
 	Character init_player,
 	SquarePosition init_center_square) {
@@ -100,7 +100,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	// オフセットが32を超えたら
 	if (square_position_offset.x > CHIP_SIZE.x / 2) {
 		// 中心座標を1マス右にずらしてもマップ外に出ない場合は1マス右にずらす
-		if (center_square.x + 1 < objects_map[center_square.y].size() && isPassable(SquarePosition(center_square.x + 1, center_square.y))) {
+		if (center_square.x + 1 < objects_map.width() && isPassable(SquarePosition(center_square.x + 1, center_square.y))) {
 			center_square.x++;
 			square_position_offset.x -= CHIP_SIZE.x;
 		}
@@ -112,7 +112,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	}
 	if (square_position_offset.y > CHIP_SIZE.y / 2) {
 		// 中心座標を1マス下にずらしてもマップ外に出ない場合は1マス下にずらす
-		if (center_square.y + 1 < objects_map.size() && isPassable(SquarePosition(center_square.x, center_square.y + 1))) {
+		if (center_square.y + 1 < objects_map.height() && isPassable(SquarePosition(center_square.x, center_square.y + 1))) {
 			center_square.y++;
 			square_position_offset.y -= CHIP_SIZE.y;
 		}
@@ -294,7 +294,7 @@ int GameMap::space() {
 }
 
 Size GameMap::getMapSize() {
-	return Size(objects_map[0].size(), objects_map.size());
+	return objects_map.size();
 }
 
 void GameMap::draw() {
@@ -319,12 +319,12 @@ void GameMap::draw() {
 	
 	// マップの描画（見えるところだけ）
 	for (int y = center_square.y - Scene::Height() / CHIP_SIZE.y / 2 - 2; y < center_square.y + Scene::Height() / CHIP_SIZE.y / 2 + 2; y++) {
-		if (y < 0 || y >= objects_map.size()) {
+		if (y < 0 || y >= objects_map.height()) {
 			continue;
 		}
 
 		for (int x = center_square.x - Scene::Width() / CHIP_SIZE.x / 2 - 2; x < center_square.x + Scene::Width() / CHIP_SIZE.x / 2 + 2; x++) {
-			if (x < 0 || x >= objects_map[y].size()) {
+			if (x < 0 || x >= objects_map.width()) {
 				continue;
 			}
 			
@@ -399,7 +399,7 @@ MapChipProfiles::Directions GameMap::setConnectableObjectDirection(SquarePositio
 			}
 		}
 		
-		if (x < objects_map[0].size() - 1) {
+		if (x < objects_map.width() - 1) {
 			for (int i = 0; i < objects_map[y - 1][x + 1].size(); i++) {
 				if (objects_map[y - 1][x + 1][i].getType() == type) {
 					top_right = true;
@@ -422,7 +422,7 @@ MapChipProfiles::Directions GameMap::setConnectableObjectDirection(SquarePositio
 			}
 		}
 	}
-	if (y < objects_map.size() - 1) {
+	if (y < objects_map.height() - 1) {
 		for (int i = 0; i < objects_map[y + 1][x].size(); i++) {
 			if (objects_map[y + 1][x][i].getType() == type) {
 				bottom = true;
@@ -437,14 +437,14 @@ MapChipProfiles::Directions GameMap::setConnectableObjectDirection(SquarePositio
 			}
 		}
 	}
-	if (x < objects_map[0].size() - 1) {
+	if (x < objects_map.width() - 1) {
 		for (int i = 0; i < objects_map[y][x + 1].size(); i++) {
 			if (objects_map[y][x + 1][i].getType() == type) {
 				right = true;
 			}
 		}
 		
-		if (y < objects_map.size() - 1) {
+		if (y < objects_map.height() - 1) {
 			for (int i = 0; i < objects_map[y + 1][x + 1].size(); i++) {
 				if (objects_map[y + 1][x + 1][i].getType() == type) {
 					right_bottom = true;
@@ -617,13 +617,12 @@ void GameMap::load(FilePath file_path) {
 		throw Error{ U"Failed to load map data" };
 	}
 
-	objects_map.resize(csv.rows()/2);
+	objects_map.resize(csv.columns(0), csv.rows()/2);
 	object_directions_map.resize(csv.rows()/2);
 
 	int x, y;
 	for (size_t row = 0; row < csv.rows(); row++) {
 		y = row / 2;
-		objects_map[y].resize(csv[row].size());
 
 		for (size_t column = 0; column < csv[row].size(); column++) {
 			x = column;
@@ -633,12 +632,10 @@ void GameMap::load(FilePath file_path) {
 		}
 	}
 
-	y = 0;
-	for (auto map_row : objects_map) {
-		object_directions_map[y].resize(map_row.size());
-		x = 0;
-		for (auto map_square : map_row) {
-			for (auto map_obj : map_square) {
+	for (auto y : step(objects_map.height())) {
+		object_directions_map[y].resize(objects_map.width());
+		for (auto x : step(objects_map.width())) {
+			for (auto map_obj : objects_map[y][x]) {
 				// 向きを推定
 				switch (map_obj.getType()) {
 					case MapChipProfiles::Types::Road:

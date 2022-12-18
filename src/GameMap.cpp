@@ -630,8 +630,6 @@ void GameMap::load(FilePath file_path) {
 			
             if (csv[row][column].length() > 0)
                 objects_map[y][x].push_back(objects[csv[row][column]]);
-
-			Console << U"{}, {}"_fmt(x, y);
 		}
 	}
 

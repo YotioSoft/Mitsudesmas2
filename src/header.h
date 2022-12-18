@@ -9,6 +9,7 @@
 #elif defined(_MACOS)
 	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/Resources"
 #endif
+#define TITLE_FONT_COLOR	Palette::Black
 
 typedef struct SquarePosition {
 	int x;

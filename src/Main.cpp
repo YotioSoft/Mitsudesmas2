@@ -23,7 +23,7 @@ typedef struct MapStruct {
 // タイトル画面
 int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) {
 	// 画像の読み込み
-	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.svg");
+	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.png");
 	
 	const Font font15(15);
 	
@@ -75,12 +75,67 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 			}
 		}
 		
-		copyright.draw(Scene::Width()/2 - copyright.region(0, 0).size.x/2, Scene::Height()-40);
+		copyright.draw(Scene::Width()/2 - copyright.region(0, 0).size.x/2, Scene::Height()-40, TITLE_FONT_COLOR);
 
 		count++;
 	}
 	
 	return 0;
+}
+
+int HowToPlay() {
+	// フォントを用意
+	const Font font20(20);
+	const Font font40(40);
+	const Font font60(60);
+
+	while (System::Update())
+	{
+		font60(U"あそびかた").draw(30, 10, TITLE_FONT_COLOR);
+
+		font40(U"ルール").draw(30, 100, TITLE_FONT_COLOR);
+		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 150, TITLE_FONT_COLOR);
+
+		font40(U"操作方法").draw(30, 300, TITLE_FONT_COLOR);
+		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー：「密です」という").draw(30, 350, TITLE_FONT_COLOR);
+
+		font20(U"フリー素材・ライブラリ情報は              　をご覧ください。").draw(30, 450, TITLE_FONT_COLOR);
+
+		if (SimpleGUI::Button(U"こちら", Vec2(30 + font20(U"フリー素材・ライブラリ情報は").region(Point(30, 400)).size.x, 440))) {
+			return 1;
+		}
+
+		if (SimpleGUI::Button(U"タイトルへ", Vec2(Scene::Width() / 2 - 70, Scene::Height() - 100))) {
+			break;
+		}
+	}
+	return 2;
+}
+
+void ReadMe() {
+	// フォントを用意
+	const Font font15(15);
+	const Font font40(40);
+
+	TextEditState tes;
+
+	TextReader reader(Unicode::Widen(CURRENT_DIR) + U"/sozai.txt");
+	String str, line;
+
+	while (reader.readLine(line)) {
+		str += line + U"\n";
+	}
+
+	while (System::Update())
+	{
+		font40(U"フリー素材・ライブラリ情報").draw(30, 10, TITLE_FONT_COLOR);
+
+		font15(str).draw(30, 60, TITLE_FONT_COLOR);
+
+		if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width() / 2 - 60, Scene::Height() - 100))) {
+			return;
+		}
+	}
 }
 
 // リア充の配置
@@ -396,67 +451,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 	}
 }
 
-int HowToPlay() {
-	// フォントを用意
-	const Font font20(20);
-	const Font font40(40);
-	const Font font60(60);
-	
-	while (System::Update())
-	{
-		font60(U"あそびかた").draw(30, 10);
-		
-		font40(U"ルール").draw(30, 100);
-		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 150);
-		
-		font40(U"操作方法").draw(30, 300);
-		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー：「密です」という").draw(30, 350);
-		
-		font20(U"フリー素材・ライブラリ情報は               　　をご覧ください。").draw(30, 450);
-		
-		if (SimpleGUI::Button(U"こちら", Vec2(30 + font20(U"フリー素材・ライブラリ情報は").region(Point(30, 400)).size.x, 440))) {
-			return 1;
-		}
-		
-		if (SimpleGUI::Button(U"タイトルへ", Vec2(Scene::Width()/2-70, Scene::Height()-100))) {
-			break;
-		}
-	}
-	return 2;
-}
-
-void ReadMe() {
-	// フォントを用意
-	const Font font15(15);
-	const Font font40(40);
-	
-	TextEditState tes;
-	
-	TextReader reader(Unicode::Widen(CURRENT_DIR) + U"/sozai.txt");
-	String str, line;
-	
-	while (reader.readLine(line)) {
-		str += line + U"\n";
-	}
-	
-	while (System::Update())
-	{
-		font40(U"フリー素材・ライブラリ情報").draw(30, 10);
-		
-		font15(str).draw(30, 60);
-		
-		if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
-			return;
-		}
-	}
-}
-
 void Main() {
 	std::cout << Unicode::Widen(CURRENT_DIR) << std::endl;
 	Window::SetTitle(U"ミツデスマス2");
 	
-	// 背景を水色にする
-	Scene::SetBackground(ColorF(0.5, 0.7, 0.9));
+	// 背景色
+	Scene::SetBackground(Palette::Lightgreen);
 	Scene::SetTextureFilter(TextureFilter::Nearest);
 	
 	// マップオブジェクトの読み込み

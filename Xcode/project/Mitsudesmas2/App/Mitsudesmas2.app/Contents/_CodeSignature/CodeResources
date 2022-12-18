@@ -624,6 +624,10 @@
 		<data>
 		ExbC6QzNDkMFO3IODI+4HlXMbPo=
 		</data>
+		<key>Resources/img/logo.png</key>
+		<data>
+		KLRufGmwBOOJS6iB0Xmdmmfmn8E=
+		</data>
 		<key>Resources/img/logo.svg</key>
 		<data>
 		NdCKr5xrZPN5OoPhkzWoy0JfLL0=
@@ -1754,6 +1758,13 @@
 			<key>hash2</key>
 			<data>
 			jHBMYIBkOFrICNfZYvAmS1iDwlzIm64NeIaWaxzOM7w=
+			</data>
+		</dict>
+		<key>Resources/img/logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LYETFbGYp4JRiiim1USFvHd4uBXS4bMzPkSpFGZkZpU=
 			</data>
 		</dict>
 		<key>Resources/img/logo.svg</key>

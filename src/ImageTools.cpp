@@ -1,4 +1,4 @@
-#include "ImageTools.h"
+#include <ImageTools.h>
 
 Image ImageTools::zoomImage2x(Image& original) {
 	Image resized_image(original.width() * 2, original.height() * 2);

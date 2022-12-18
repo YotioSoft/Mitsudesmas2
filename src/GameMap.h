@@ -1,7 +1,7 @@
-﻿#pragma once
-#include "header.h"
-#include "MapObject.h"
-#include "Character.h"
+#pragma once
+#include <header.h>
+#include <MapObject.h>
+#include <Character.h>
 
 typedef struct Citizen {
 	Character character;

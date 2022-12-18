@@ -1,7 +1,7 @@
 #pragma once
-#include "header.h"
-#include "ImageTools.h"
-#include "MapChipProfiles.h"
+#include <header.h>
+#include <ImageTools.h>
+#include <MapChipProfiles.h>
 
 class MapChip
 {

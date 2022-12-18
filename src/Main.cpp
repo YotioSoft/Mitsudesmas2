@@ -1,7 +1,7 @@
-#include "header.h"
-#include "Character.h"
-#include "LoadFiles.h"
-#include "GameMap.h"
+#include <header.h>
+#include <Character.h>
+#include <LoadFiles.h>
+#include <GameMap.h>
 
 void Main();
 

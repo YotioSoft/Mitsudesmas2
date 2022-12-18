@@ -1,5 +1,5 @@
 #pragma once
-#include "header.h"
+#include <header.h>
 
 namespace ImageTools {
 	// Image‚ð2”{‚É‚·‚é

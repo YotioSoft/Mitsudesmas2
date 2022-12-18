@@ -1,4 +1,4 @@
-﻿#include "MapObject.h"
+#include <MapObject.h>
 
 MapObject::MapObject(){}
 MapObject::MapObject(String init_name, MapChipProfiles::Types init_type) {

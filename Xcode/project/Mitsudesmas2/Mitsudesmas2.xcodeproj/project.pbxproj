@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C17789A1CE0AA7C00BB8AD0 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C1778991CE0AA7C00BB8AD0 /* Main.cpp */; };
 		2C1778A31CE0B65500BB8AD0 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C1778A21CE0B65500BB8AD0 /* icon.icns */; };
 		2C5C46DD26B4F00D005E8C85 /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C46DC26B4F00D005E8C85 /* libcurl.tbd */; };
 		2C5C46DF26B4F014005E8C85 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C46DE26B4F014005E8C85 /* AudioToolbox.framework */; };
@@ -37,19 +36,19 @@
 		2C5C471126B4F08E005E8C85 /* libzlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5C471026B4F08E005E8C85 /* libzlib.a */; };
 		2C6906D82298140F00A427D0 /* engine in Resources */ = {isa = PBXBuildFile; fileRef = 2C6906D72298140F00A427D0 /* engine */; };
 		2CD8412C283263B2005013A6 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD8412B283263B2005013A6 /* libboost_filesystem.a */; };
-		7CA86EA1294B217300F9F131 /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E94294B217300F9F131 /* MapObject.cpp */; };
-		7CA86EA2294B217300F9F131 /* MapChip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E95294B217300F9F131 /* MapChip.cpp */; };
-		7CA86EA3294B217300F9F131 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E9A294B217300F9F131 /* Character.cpp */; };
-		7CA86EA4294B217300F9F131 /* LoadFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E9D294B217300F9F131 /* LoadFiles.cpp */; };
-		7CA86EA5294B217300F9F131 /* ImageTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E9E294B217300F9F131 /* ImageTools.cpp */; };
-		7CA86EA6294B217300F9F131 /* GameMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86E9F294B217300F9F131 /* GameMap.cpp */; };
-		7CA86EA7294B217300F9F131 /* MapChipProfiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EA0294B217300F9F131 /* MapChipProfiles.cpp */; };
+		7CA86EB9294EE70100F9F131 /* MapChip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EAA294EE70100F9F131 /* MapChip.cpp */; };
+		7CA86EBA294EE70100F9F131 /* ImageTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EAC294EE70100F9F131 /* ImageTools.cpp */; };
+		7CA86EBB294EE70100F9F131 /* MapObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EAD294EE70100F9F131 /* MapObject.cpp */; };
+		7CA86EBC294EE70100F9F131 /* Character.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EAE294EE70100F9F131 /* Character.cpp */; };
+		7CA86EBD294EE70100F9F131 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB1294EE70100F9F131 /* Main.cpp */; };
+		7CA86EBE294EE70100F9F131 /* MapChipProfiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB3294EE70100F9F131 /* MapChipProfiles.cpp */; };
+		7CA86EBF294EE70100F9F131 /* LoadFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB6294EE70100F9F131 /* LoadFiles.cpp */; };
+		7CA86EC0294EE70100F9F131 /* GameMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB8294EE70100F9F131 /* GameMap.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C1778841CE0A9EA00BB8AD0 /* Mitsudesmas2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mitsudesmas2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1778921CE0A9EA00BB8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C1778991CE0AA7C00BB8AD0 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
 		2C1778A21CE0B65500BB8AD0 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		2C5C46DC26B4F00D005E8C85 /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		2C5C46DE26B4F014005E8C85 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -79,22 +78,23 @@
 		2C5C471026B4F08E005E8C85 /* libzlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libzlib.a; path = ../../lib/macOS/zlib/libzlib.a; sourceTree = "<group>"; };
 		2C6906D72298140F00A427D0 /* engine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = engine; path = App/engine; sourceTree = "<group>"; };
 		2CD8412B283263B2005013A6 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../../lib/macOS/boost/libboost_filesystem.a; sourceTree = "<group>"; };
-		7CA86E91294B217300F9F131 /* MapChip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapChip.h; sourceTree = "<group>"; };
-		7CA86E92294B217300F9F131 /* MapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapObject.h; sourceTree = "<group>"; };
-		7CA86E93294B217300F9F131 /* GameMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMap.h; sourceTree = "<group>"; };
-		7CA86E94294B217300F9F131 /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapObject.cpp; sourceTree = "<group>"; };
-		7CA86E95294B217300F9F131 /* MapChip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapChip.cpp; sourceTree = "<group>"; };
-		7CA86E96294B217300F9F131 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
-		7CA86E97294B217300F9F131 /* ImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTools.h; sourceTree = "<group>"; };
-		7CA86E98294B217300F9F131 /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = header.h; sourceTree = "<group>"; };
-		7CA86E99294B217300F9F131 /* LoadFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadFiles.h; sourceTree = "<group>"; };
-		7CA86E9A294B217300F9F131 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Character.cpp; sourceTree = "<group>"; };
-		7CA86E9B294B217300F9F131 /* MapChipProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapChipProfiles.h; sourceTree = "<group>"; };
-		7CA86E9C294B217300F9F131 /* CharacterProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterProfiles.h; sourceTree = "<group>"; };
-		7CA86E9D294B217300F9F131 /* LoadFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadFiles.cpp; sourceTree = "<group>"; };
-		7CA86E9E294B217300F9F131 /* ImageTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageTools.cpp; sourceTree = "<group>"; };
-		7CA86E9F294B217300F9F131 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMap.cpp; sourceTree = "<group>"; };
-		7CA86EA0294B217300F9F131 /* MapChipProfiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapChipProfiles.cpp; sourceTree = "<group>"; };
+		7CA86EA8294EE70100F9F131 /* LoadFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadFiles.h; path = ../../../../src/LoadFiles.h; sourceTree = "<group>"; };
+		7CA86EA9294EE70100F9F131 /* MapChipProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapChipProfiles.h; path = ../../../../src/MapChipProfiles.h; sourceTree = "<group>"; };
+		7CA86EAA294EE70100F9F131 /* MapChip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapChip.cpp; path = ../../../../src/MapChip.cpp; sourceTree = "<group>"; };
+		7CA86EAB294EE70100F9F131 /* CharacterProfiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CharacterProfiles.h; path = ../../../../src/CharacterProfiles.h; sourceTree = "<group>"; };
+		7CA86EAC294EE70100F9F131 /* ImageTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImageTools.cpp; path = ../../../../src/ImageTools.cpp; sourceTree = "<group>"; };
+		7CA86EAD294EE70100F9F131 /* MapObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapObject.cpp; path = ../../../../src/MapObject.cpp; sourceTree = "<group>"; };
+		7CA86EAE294EE70100F9F131 /* Character.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Character.cpp; path = ../../../../src/Character.cpp; sourceTree = "<group>"; };
+		7CA86EAF294EE70100F9F131 /* ImageTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageTools.h; path = ../../../../src/ImageTools.h; sourceTree = "<group>"; };
+		7CA86EB0294EE70100F9F131 /* GameMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameMap.h; path = ../../../../src/GameMap.h; sourceTree = "<group>"; };
+		7CA86EB1294EE70100F9F131 /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Main.cpp; path = ../../../../src/Main.cpp; sourceTree = "<group>"; };
+		7CA86EB2294EE70100F9F131 /* MapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapObject.h; path = ../../../../src/MapObject.h; sourceTree = "<group>"; };
+		7CA86EB3294EE70100F9F131 /* MapChipProfiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MapChipProfiles.cpp; path = ../../../../src/MapChipProfiles.cpp; sourceTree = "<group>"; };
+		7CA86EB4294EE70100F9F131 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Character.h; path = ../../../../src/Character.h; sourceTree = "<group>"; };
+		7CA86EB5294EE70100F9F131 /* header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = header.h; path = ../../../../src/header.h; sourceTree = "<group>"; };
+		7CA86EB6294EE70100F9F131 /* LoadFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadFiles.cpp; path = ../../../../src/LoadFiles.cpp; sourceTree = "<group>"; };
+		7CA86EB7294EE70100F9F131 /* MapChip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapChip.h; path = ../../../../src/MapChip.h; sourceTree = "<group>"; };
+		7CA86EB8294EE70100F9F131 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameMap.cpp; path = ../../../../src/GameMap.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,23 +158,23 @@
 		2C1778981CE0AA7C00BB8AD0 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				7CA86E9A294B217300F9F131 /* Character.cpp */,
-				7CA86E96294B217300F9F131 /* Character.h */,
-				7CA86E9C294B217300F9F131 /* CharacterProfiles.h */,
-				7CA86E9F294B217300F9F131 /* GameMap.cpp */,
-				7CA86E93294B217300F9F131 /* GameMap.h */,
-				7CA86E98294B217300F9F131 /* header.h */,
-				7CA86E9E294B217300F9F131 /* ImageTools.cpp */,
-				7CA86E97294B217300F9F131 /* ImageTools.h */,
-				7CA86E9D294B217300F9F131 /* LoadFiles.cpp */,
-				7CA86E99294B217300F9F131 /* LoadFiles.h */,
-				7CA86E95294B217300F9F131 /* MapChip.cpp */,
-				7CA86E91294B217300F9F131 /* MapChip.h */,
-				7CA86EA0294B217300F9F131 /* MapChipProfiles.cpp */,
-				7CA86E9B294B217300F9F131 /* MapChipProfiles.h */,
-				7CA86E94294B217300F9F131 /* MapObject.cpp */,
-				7CA86E92294B217300F9F131 /* MapObject.h */,
-				2C1778991CE0AA7C00BB8AD0 /* Main.cpp */,
+				7CA86EAE294EE70100F9F131 /* Character.cpp */,
+				7CA86EB4294EE70100F9F131 /* Character.h */,
+				7CA86EAB294EE70100F9F131 /* CharacterProfiles.h */,
+				7CA86EB8294EE70100F9F131 /* GameMap.cpp */,
+				7CA86EB0294EE70100F9F131 /* GameMap.h */,
+				7CA86EB5294EE70100F9F131 /* header.h */,
+				7CA86EAC294EE70100F9F131 /* ImageTools.cpp */,
+				7CA86EAF294EE70100F9F131 /* ImageTools.h */,
+				7CA86EB6294EE70100F9F131 /* LoadFiles.cpp */,
+				7CA86EA8294EE70100F9F131 /* LoadFiles.h */,
+				7CA86EB1294EE70100F9F131 /* Main.cpp */,
+				7CA86EAA294EE70100F9F131 /* MapChip.cpp */,
+				7CA86EB7294EE70100F9F131 /* MapChip.h */,
+				7CA86EB3294EE70100F9F131 /* MapChipProfiles.cpp */,
+				7CA86EA9294EE70100F9F131 /* MapChipProfiles.h */,
+				7CA86EAD294EE70100F9F131 /* MapObject.cpp */,
+				7CA86EB2294EE70100F9F131 /* MapObject.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -281,14 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C17789A1CE0AA7C00BB8AD0 /* Main.cpp in Sources */,
-				7CA86EA5294B217300F9F131 /* ImageTools.cpp in Sources */,
-				7CA86EA7294B217300F9F131 /* MapChipProfiles.cpp in Sources */,
-				7CA86EA4294B217300F9F131 /* LoadFiles.cpp in Sources */,
-				7CA86EA6294B217300F9F131 /* GameMap.cpp in Sources */,
-				7CA86EA1294B217300F9F131 /* MapObject.cpp in Sources */,
-				7CA86EA2294B217300F9F131 /* MapChip.cpp in Sources */,
-				7CA86EA3294B217300F9F131 /* Character.cpp in Sources */,
+				7CA86EB9294EE70100F9F131 /* MapChip.cpp in Sources */,
+				7CA86EBB294EE70100F9F131 /* MapObject.cpp in Sources */,
+				7CA86EBA294EE70100F9F131 /* ImageTools.cpp in Sources */,
+				7CA86EBC294EE70100F9F131 /* Character.cpp in Sources */,
+				7CA86EC0294EE70100F9F131 /* GameMap.cpp in Sources */,
+				7CA86EBE294EE70100F9F131 /* MapChipProfiles.cpp in Sources */,
+				7CA86EBF294EE70100F9F131 /* LoadFiles.cpp in Sources */,
+				7CA86EBD294EE70100F9F131 /* Main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +417,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../include,
 					../../include/ThirdParty,
+					../../../src,
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -492,6 +493,7 @@
 				HEADER_SEARCH_PATHS = (
 					../../include,
 					../../include/ThirdParty,
+					../../../src,
 				);
 				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

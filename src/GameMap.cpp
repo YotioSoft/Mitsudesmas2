@@ -1,4 +1,4 @@
-#include "GameMap.h"
+#include <GameMap.h>
 
 GameMap::GameMap() {}
 GameMap::GameMap(Array<Array<Array<MapObject>>> init_objects_map,

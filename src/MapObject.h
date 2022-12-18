@@ -1,6 +1,6 @@
 #pragma once
-#include "header.h"
-#include "MapChip.h"
+#include <header.h>
+#include <MapChip.h>
 
 class MapObject
 {

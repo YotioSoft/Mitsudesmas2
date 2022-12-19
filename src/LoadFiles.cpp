@@ -33,6 +33,8 @@ std::map<String, std::map<String, Array<Character>>> LoadFiles::InitCharacters()
 		characters[U"woman"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 
+	characters[U"item"][U"speaker"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png"), Direction::LEFT, false);
+
 	return characters;
 }
 
@@ -47,14 +49,14 @@ std::map<String, MapObject> LoadFiles::InitMapObjects() {
 	Image base_snow_map_original = Image(Unicode::Widen(CURRENT_DIR) + U"/img/map/chips/base_snow.png");
 	Image base_snow_map = ImageTools::zoomImage4x(base_snow_map_original);
 
-	// ’n–Ê
+	// ï¿½nï¿½ï¿½
 	map_objects[U"grass"] = MapObject(U"grass", MapChipProfiles::Ground);
 	map_objects[U"grass"].addMapChip(MapChip(pipo_map, 0, MapChipProfiles::Types::Ground, MapChipProfiles::Directions::None, true));
 	
 	map_objects[U"snow"] = MapObject(U"snow", MapChipProfiles::Ground);
 	map_objects[U"snow"].addMapChip(MapChip(base_snow_map, 8, MapChipProfiles::Types::Ground, MapChipProfiles::Directions::None, true));
 
-	// “¹
+	// ï¿½ï¿½
 	map_objects[U"gravel_road"] = MapObject(U"gravel_road", MapChipProfiles::Road);
 	map_objects[U"gravel_road"].addMapChip(MapChip(st_map_e01, 16, MapChipProfiles::Types::Road, MapChipProfiles::Directions::RightBottom, true));
 	map_objects[U"gravel_road"].addMapChip(MapChip(st_map_e01, 17, MapChipProfiles::Types::Road, MapChipProfiles::Directions::RightBottomLeft, true));
@@ -81,7 +83,7 @@ std::map<String, MapObject> LoadFiles::InitMapObjects() {
 	map_objects[U"concrete_road"].addMapChip(MapChip(st_map_e01, 43, MapChipProfiles::Types::Road, MapChipProfiles::Directions::Vertical, true));
 	map_objects[U"concrete_road"].addMapChip(MapChip(st_map_e01, 51, MapChipProfiles::Types::Road, MapChipProfiles::Directions::Horizontal, true));
 	
-	// –Ø
+	// ï¿½ï¿½
 	map_objects[U"green_tree"] = MapObject(U"green_tree", MapChipProfiles::Tree);
 	map_objects[U"green_tree"].addMapChip(MapChip(st_map_e01, 46, MapChipProfiles::Tree, MapChipProfiles::Directions::None, false));
 	
@@ -101,7 +103,7 @@ std::map<String, MapObject> LoadFiles::InitMapObjects() {
 	map_objects[U"big_tree"].addMapChip(MapChip(base_map, 56, MapChipProfiles::ExpandableTree, MapChipProfiles::Directions::TopRight, false));
 	map_objects[U"big_tree"].addMapChip(MapChip(base_map, 57, MapChipProfiles::ExpandableTree, MapChipProfiles::Directions::TopLeft, false));
 	
-	// ŽR
+	// ï¿½R
 	map_objects[U"green_mountains"] = MapObject(U"green_mountains", MapChipProfiles::Mountain);
 	map_objects[U"green_mountains"].addMapChip(MapChip(st_map_e01, 128, MapChipProfiles::Mountain, MapChipProfiles::Directions::RightBottom, false));
 	map_objects[U"green_mountains"].addMapChip(MapChip(st_map_e01, 129, MapChipProfiles::Mountain, MapChipProfiles::Directions::RightBottomLeft, false));
@@ -143,7 +145,7 @@ std::map<String, MapObject> LoadFiles::InitMapObjects() {
 	map_objects[U"rock_mountains"].addMapChip(MapChip(st_map_e01, 214, MapChipProfiles::Mountain, MapChipProfiles::Directions::CircleTopRight, false));
 	map_objects[U"rock_mountains"].addMapChip(MapChip(st_map_e01, 215, MapChipProfiles::Mountain, MapChipProfiles::Directions::CircleTopLeft, false));
 	
-	// Œš•¨
+	// ï¿½ï¿½ï¿½ï¿½
 	map_objects[U"school"] = MapObject(U"school", MapChipProfiles::Building);
 	map_objects[U"school"].addMapChip(MapChip(st_map_e01, 200, MapChipProfiles::Building, MapChipProfiles::Directions::None, false));
 	

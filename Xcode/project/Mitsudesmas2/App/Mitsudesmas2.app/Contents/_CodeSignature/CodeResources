@@ -264,6 +264,10 @@
 		<data>
 		eGCUJgxcm3Z/EjItLKk+QppMg/A=
 		</data>
+		<key>Resources/img/charactors/items/speaker.png</key>
+		<data>
+		uuFRk3t8qnVGXSq7vMRc6pnPr88=
+		</data>
 		<key>Resources/img/charactors/man/middle_aged/1.png</key>
 		<data>
 		qeFOdACpUhZ8xQiN6qSs91Y4ah8=
@@ -623,10 +627,6 @@
 		<key>Resources/img/icon.png</key>
 		<data>
 		ExbC6QzNDkMFO3IODI+4HlXMbPo=
-		</data>
-		<key>Resources/img/kakuseiki.png</key>
-		<data>
-		uuFRk3t8qnVGXSq7vMRc6pnPr88=
 		</data>
 		<key>Resources/img/logo.png</key>
 		<data>
@@ -1132,6 +1132,13 @@
 			<key>hash2</key>
 			<data>
 			C62A5kqbQj9/SBrjpva0f+UNRsethGYZXwYJFF6OP7U=
+			</data>
+		</dict>
+		<key>Resources/img/charactors/items/speaker.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9qgczHISVrG4PopNWqdKXjXb6qb4xenCtVnr7pZzA7c=
 			</data>
 		</dict>
 		<key>Resources/img/charactors/man/middle_aged/1.png</key>
@@ -1762,13 +1769,6 @@
 			<key>hash2</key>
 			<data>
 			jHBMYIBkOFrICNfZYvAmS1iDwlzIm64NeIaWaxzOM7w=
-			</data>
-		</dict>
-		<key>Resources/img/kakuseiki.png</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			9qgczHISVrG4PopNWqdKXjXb6qb4xenCtVnr7pZzA7c=
 			</data>
 		</dict>
 		<key>Resources/img/logo.png</key>

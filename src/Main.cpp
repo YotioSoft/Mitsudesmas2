@@ -279,6 +279,34 @@ void putSoli(GameMap& game_map, std::map<String, std::map<String, Array<Characte
 	}
 }
 
+// 拡声器の配置
+void putSpeakers(GameMap& game_map, std::map<String, std::map<String, Array<Character>>>& characters, int total_speakers) {
+	int count = 0;
+	while (count < total_speakers) {
+		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x-1), Random(0, game_map.getMapSize().y-1));
+		bool can_put = true;
+		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+			continue;
+		}
+			
+		if (!game_map.isPassable(man_pos)) {
+			can_put = false;
+		}
+		
+		Citizen man;
+		man.character = characters[U"item"][U"speaker"].choice(1)[0];
+		man.position = man_pos;
+		
+		if (!game_map.isPassable(man.position)) {
+			continue;
+		}
+		
+		game_map.putCharacter(man);
+		
+		count ++;
+	}
+}
+
 void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::map<String, std::map<String, Array<Character>>>& characters) {
 	// フォントを用意
 	const Font font(20);
@@ -299,6 +327,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 	putNormies(game_map, characters, rest);
 	putSpacedNormies(game_map, characters, 10);
 	putSoli(game_map, characters, 10);
+	putSpeakers(game_map, characters, 10);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");

@@ -627,7 +627,7 @@ void GameMap::load(FilePath file_path) {
 		for (size_t column = 0; column < csv[row].size(); column++) {
 			x = column;
 			
-            if (csv[row][cobject_directions_mapolumn].length() > 0)
+            if (csv[row][column].length() > 0)
                 objects_map[y][x].push_back(objects[csv[row][column]]);
 		}
 	}

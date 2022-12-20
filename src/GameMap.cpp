@@ -188,6 +188,21 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				soli[i].character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
+
+		for (int i = 0; i < items.size(); i++) {
+			if (direction == Direction::TOP) {
+				items[i].item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+			}
+			else if (direction == Direction::RIGHT) {
+				items[i].item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+			}
+			else if (direction == Direction::BOTTOM) {
+				items[i].item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+			}
+			else if (direction == Direction::LEFT) {
+				items[i].item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+			}
+		}
 	}
 	
 	// プレイヤーの周囲にキャラクターがいたらロックオン
@@ -364,6 +379,13 @@ void GameMap::draw() {
 				else {
 					soli[i].character.draw();
 				}
+			}
+		}
+
+		// アイテムの描画
+		for (int i = 0; i < items.size(); i++) {
+			if (items[i].position.y == y) {
+				items[i].item.draw();
 			}
 		}
 		

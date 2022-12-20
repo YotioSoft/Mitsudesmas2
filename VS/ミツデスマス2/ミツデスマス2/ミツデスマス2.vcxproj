@@ -116,6 +116,7 @@
     <ClCompile Include="..\..\..\src\Character.cpp" />
     <ClCompile Include="..\..\..\src\GameMap.cpp" />
     <ClCompile Include="..\..\..\src\ImageTools.cpp" />
+    <ClCompile Include="..\..\..\src\Item.cpp" />
     <ClCompile Include="..\..\..\src\LoadFiles.cpp" />
     <ClCompile Include="..\..\..\src\Main.cpp" />
     <ClCompile Include="..\..\..\src\MapChip.cpp" />
@@ -322,6 +323,7 @@
     <ClInclude Include="..\..\..\src\GameMap.h" />
     <ClInclude Include="..\..\..\src\header.h" />
     <ClInclude Include="..\..\..\src\ImageTools.h" />
+    <ClInclude Include="..\..\..\src\Item.h" />
     <ClInclude Include="..\..\..\src\LoadFiles.h" />
     <ClInclude Include="..\..\..\src\MapChip.h" />
     <ClInclude Include="..\..\..\src\MapChipProfiles.h" />

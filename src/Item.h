@@ -5,24 +5,27 @@
 class Item
 {
 private:
-	// �摜
+	// 画像
 	Texture texture;
 
-	// �L�����N�^�[�̍��W
+	// アイテムの座標
 	Point position = Point(10, 10);
 
 public:
-	// �R���X�g���N�^
+	// コンストラクタ
 	Item();
 	Item(Image new_image);
 
-	// �`��
+	// 描画
 	void draw();
 	void drawLight();
 
-	// �L�����N�^�[�̈ʒu��ݒ�
+	// アイテムの位置を設定
 	void setPosition(Point set_position);
 	
-	// �L�����N�^�[�̈ʒu���擾
+	// アイテムの位置を取得
 	Point getPosition();
+
+	// アイテムの移動
+	void move(Point move_direction);
 };

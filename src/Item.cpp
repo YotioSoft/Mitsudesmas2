@@ -22,3 +22,7 @@ void Item::setPosition(Point set_position) {
 Point Item::getPosition() {
 	return position;
 }
+
+void Item::move(Point move_direction) {
+	position += move_direction;
+}

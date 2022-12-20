@@ -63,6 +63,24 @@ bool GameMap::isPassable(SquarePosition position) {
 	return pos_passable;
 }
 
+bool GameMap::isThereSpeaker() {
+	for (int i = 0; i < items.size(); i++) {
+		if (items[i].position.x == center_square.x && items[i].position.y == center_square.y) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GameMap::removeCenterSpeaker() {
+	for (int i = 0; i < items.size(); i++) {
+		if (items[i].position.x == center_square.x && items[i].position.y == center_square.y) {
+			items.remove_at(i);
+			break;
+		}
+	}
+}
+
 Character* GameMap::getCharacter(SquarePosition position) {
 	for (int i=0; i<couples.size(); i++) {
 		if (couples[i].character1.position.x == position.x && couples[i].character1.position.y == position.y) {

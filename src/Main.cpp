@@ -320,6 +320,9 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	// 残りのカップル数
 	int rest = map_struct.rest;
 	int init_rest = rest;
+
+	// 残りの拡声器
+	int rest_speakers = 10;
 	
 	// マップの読み込み
 	GameMap game_map = map_struct.game_map;
@@ -381,6 +384,11 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			
 			if (!move && HP <= 99.8) {
 				HP += 0.2;
+			}
+
+			if (game_map.isThereSpeaker()) {
+				game_map.removeCenterSpeaker();
+				rest_speakers++;
 			}
 		}
 		
@@ -456,6 +464,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			game_over = false;
 		}
 		
+		// 結果発表
 		if (!game_enable) {
 			Rect(0, 0, Scene::Width(), Scene::Height()).draw(Color(50, 50, 50, 200));
 			

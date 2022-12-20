@@ -71,6 +71,10 @@ public:
 	
 	// 通行可能か否か
 	bool isPassable(SquarePosition position);
+
+	// 拡声器の操作
+	bool isThereSpeaker();
+	void removeCenterSpeaker();
 	
 	// 座標上にいるキャラクターを取得
 	Character* getCharacter(SquarePosition position);

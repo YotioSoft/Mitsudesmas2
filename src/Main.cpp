@@ -336,6 +336,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
 	Texture img_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/img/ちーがーうーだーろー.png");
+	Texture img_speaker(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png");
 	
 	// 音声の読み込み
 	Audio audio_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/audio/handgun-firing1.mp3");
@@ -445,6 +446,10 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 		font(U"MP").draw(10, 50, Color(map_struct.font_color));
 		Rect(50, 50, MP * 1.5, 20).draw(Color(Palette::Lightblue));
 		Rect(MP * 1.5 + 50, 50, 100 * 1.5 - MP * 1.5, 20).draw(Color(Palette::Gray));
+
+		// 残り拡声器数
+		img_speaker.resized(32, 32).draw(10, 90);
+		font(U"{}"_fmt(rest_speakers)).draw(50, 90, Color(map_struct.font_color));
 		
 		// 情報の表示
 		font(U"残り " + Format(rest) + U"組").draw(Scene::Width()-150, 10, Color(map_struct.font_color));

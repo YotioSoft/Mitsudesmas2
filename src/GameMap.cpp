@@ -32,9 +32,13 @@ void GameMap::putCouple(Couple couple) {
 	couple.character2.character.setPosition(squarePositionToPoint(couple.character2.position));
 	couples << couple;
 }
-void GameMap::putItem(PlacedItem item) {
+void GameMap::putSpeaker(PlacedItem item) {
 	item.item.setPosition(squarePositionToPoint(item.position));
 	speakers << item;
+}
+void GameMap::putFood(PlacedItem item) {
+	item.item.setPosition(squarePositionToPoint(item.position));
+	foods << item;
 }
 
 bool GameMap::isPassable(SquarePosition position) {
@@ -239,6 +243,21 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				speakers[i].item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
+
+		for (int i = 0; i < foods.size(); i++) {
+			if (direction == Direction::TOP) {
+				foods[i].item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+			}
+			else if (direction == Direction::RIGHT) {
+				foods[i].item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+			}
+			else if (direction == Direction::BOTTOM) {
+				foods[i].item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+			}
+			else if (direction == Direction::LEFT) {
+				foods[i].item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+			}
+		}
 	}
 	
 	// プレイヤーの周囲にキャラクターがいたらロックオン
@@ -422,6 +441,11 @@ void GameMap::draw() {
 		for (int i = 0; i < speakers.size(); i++) {
 			if (speakers[i].position.y == y) {
 				speakers[i].item.draw();
+			}
+		}
+		for (int i = 0; i < foods.size(); i++) {
+			if (foods[i].position.y == y) {
+				foods[i].item.draw();
 			}
 		}
 		

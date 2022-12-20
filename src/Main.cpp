@@ -301,7 +301,7 @@ void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int to
 			continue;
 		}
 		
-		game_map.putItem(item);
+		game_map.putSpeaker(item);
 		
 		count ++;
 	}
@@ -329,7 +329,7 @@ void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total
 			continue;
 		}
 
-		game_map.putItem(item);
+		game_map.putFood(item);
 
 		count++;
 	}
@@ -360,6 +360,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	putSpacedNormies(game_map, characters, 10);
 	putSoli(game_map, characters, 10);
 	putSpeakers(game_map, items, 10);
+	putFoods(game_map, items, 10);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");

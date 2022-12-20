@@ -68,7 +68,8 @@ public:
 	// キャラクターの設置
 	void putCharacter(Citizen character);
 	void putCouple(Couple couple);
-	void putItem(PlacedItem item);
+	void putSpeaker(PlacedItem item);
+	void putFood(PlacedItem item);
 	
 	// 通行可能か否か
 	bool isPassable(SquarePosition position);

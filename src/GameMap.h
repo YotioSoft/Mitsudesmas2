@@ -2,6 +2,7 @@
 #include <header.h>
 #include <MapObject.h>
 #include <Character.h>
+#include <Item.h>
 
 typedef struct Citizen {
 	Character character;
@@ -16,6 +17,11 @@ typedef struct Couple {
 	bool crowded = true;
 	bool locked_on = false;
 } Couple;
+
+typedef struct PlacedItem {
+	Item item;
+	SquarePosition position;
+} PlacedItem;
 
 class GameMap
 {
@@ -35,6 +41,7 @@ private:
 	// マップ上のキャラクタ
 	Array<Citizen> soli;
 	Array<Couple> couples;
+	Array<PlacedItem> items;
 
 	// 中心座標
 	SquarePosition center_square;
@@ -60,6 +67,7 @@ public:
 	// キャラクターの設置
 	void putCharacter(Citizen character);
 	void putCouple(Couple couple);
+	void putItem(PlacedItem item);
 	
 	// 通行可能か否か
 	bool isPassable(SquarePosition position);

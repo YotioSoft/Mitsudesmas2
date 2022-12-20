@@ -32,6 +32,10 @@ void GameMap::putCouple(Couple couple) {
 	couple.character2.character.setPosition(squarePositionToPoint(couple.character2.position));
 	couples << couple;
 }
+void GameMap::putItem(PlacedItem item) {
+	item.item.setPosition(squarePositionToPoint(item.position));
+	items << item;
+}
 
 bool GameMap::isPassable(SquarePosition position) {
 	bool pos_passable = true;

@@ -33,9 +33,15 @@ std::map<String, std::map<String, Array<Character>>> LoadFiles::InitCharacters()
 		characters[U"woman"][U"solo"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/woman/normal/" + Format(i) + U".png"), Direction::BOTTOM, false);
 	}
 
-	characters[U"item"][U"speaker"] << Character(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png"), Direction::LEFT, false);
-
 	return characters;
+}
+
+std::map<String, Array<Item>> LoadFiles::InitItems() {
+	std::map<String, Array<Item>>  items;
+
+	items[U"speaker"] << Item(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png"));
+
+	return items;
 }
 
 std::map<String, MapObject> LoadFiles::InitMapObjects() {

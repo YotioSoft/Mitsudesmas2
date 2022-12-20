@@ -1,14 +1,17 @@
 #pragma once
 #include <header.h>
 #include <Character.h>
+#include <Item.h>
 #include <MapObject.h>
 
 namespace LoadFiles
 {
-	// ƒLƒƒƒ‰ƒNƒ^[‚Ì“Ç‚İ‚İ
+	// ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 	std::map<String, std::map<String, Array<Character>>>  InitCharacters();
 
-	// ƒ}ƒbƒvƒIƒuƒWƒFƒNƒg‚Ì“Ç‚İ‚İ
+	std::map<String, Array<Item>>  InitItems();
+
+	// ï¿½}ï¿½bï¿½vï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 	std::map<String, MapObject> InitMapObjects();
 };
 

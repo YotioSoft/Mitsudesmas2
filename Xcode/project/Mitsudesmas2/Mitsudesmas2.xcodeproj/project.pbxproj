@@ -44,6 +44,7 @@
 		7CA86EBE294EE70100F9F131 /* MapChipProfiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB3294EE70100F9F131 /* MapChipProfiles.cpp */; };
 		7CA86EBF294EE70100F9F131 /* LoadFiles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB6294EE70100F9F131 /* LoadFiles.cpp */; };
 		7CA86EC0294EE70100F9F131 /* GameMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EB8294EE70100F9F131 /* GameMap.cpp */; };
+		7CA86EC329515D5700F9F131 /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CA86EC129515D5600F9F131 /* Item.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,8 @@
 		7CA86EB6294EE70100F9F131 /* LoadFiles.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadFiles.cpp; path = ../../../../src/LoadFiles.cpp; sourceTree = "<group>"; };
 		7CA86EB7294EE70100F9F131 /* MapChip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapChip.h; path = ../../../../src/MapChip.h; sourceTree = "<group>"; };
 		7CA86EB8294EE70100F9F131 /* GameMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameMap.cpp; path = ../../../../src/GameMap.cpp; sourceTree = "<group>"; };
+		7CA86EC129515D5600F9F131 /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Item.cpp; path = ../../../../src/Item.cpp; sourceTree = "<group>"; };
+		7CA86EC229515D5700F9F131 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = ../../../../src/Item.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 		2C1778981CE0AA7C00BB8AD0 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				7CA86EC129515D5600F9F131 /* Item.cpp */,
+				7CA86EC229515D5700F9F131 /* Item.h */,
 				7CA86EAE294EE70100F9F131 /* Character.cpp */,
 				7CA86EB4294EE70100F9F131 /* Character.h */,
 				7CA86EAB294EE70100F9F131 /* CharacterProfiles.h */,
@@ -281,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA86EC329515D5700F9F131 /* Item.cpp in Sources */,
 				7CA86EB9294EE70100F9F131 /* MapChip.cpp in Sources */,
 				7CA86EBB294EE70100F9F131 /* MapObject.cpp in Sources */,
 				7CA86EBA294EE70100F9F131 /* ImageTools.cpp in Sources */,

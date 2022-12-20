@@ -280,7 +280,7 @@ void putSoli(GameMap& game_map, std::map<String, std::map<String, Array<Characte
 }
 
 // 拡声器の配置
-void putSpeakers(GameMap& game_map, std::map<String, std::map<String, Array<Character>>>& characters, int total_speakers) {
+void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
 	int count = 0;
 	while (count < total_speakers) {
 		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x-1), Random(0, game_map.getMapSize().y-1));
@@ -293,21 +293,22 @@ void putSpeakers(GameMap& game_map, std::map<String, std::map<String, Array<Char
 			can_put = false;
 		}
 		
-		Citizen man;
-		man.character = characters[U"item"][U"speaker"].choice(1)[0];
-		man.position = man_pos;
+		PlacedItem item;
+		item.item = items[U"speaker"].choice(1)[0];
+		item.position = man_pos;
 		
-		if (!game_map.isPassable(man.position)) {
+		if (!game_map.isPassable(item.position)) {
 			continue;
 		}
 		
-		game_map.putCharacter(man);
+		game_map.putItem(item);
 		
 		count ++;
 	}
 }
 
-void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::map<String, std::map<String, Array<Character>>>& characters) {
+void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, 
+	std::map<String, std::map<String, Array<Character>>>& characters, std::map<String, Array<Item>>& items) {
 	// フォントを用意
 	const Font font(20);
 	const Font font60(60);
@@ -327,7 +328,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 	putNormies(game_map, characters, rest);
 	putSpacedNormies(game_map, characters, 10);
 	putSoli(game_map, characters, 10);
-	putSpeakers(game_map, characters, 10);
+	putSpeakers(game_map, items, 10);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
@@ -468,7 +469,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, std::
 			
 			if (SimpleGUI::Button(U"もう一度", Vec2(Scene::Width()/2-70, Scene::Height()-150))) {
 				audio_bgm.stop();
-				Game(map_struct, map_objects, characters);
+				Game(map_struct, map_objects, characters, items);
 			}
 			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
 				audio_bgm.stop();
@@ -493,6 +494,7 @@ void Main() {
 
 	// キャラクターの読み込み
 	std::map<String, std::map<String, Array<Character>>> characters = LoadFiles::InitCharacters();
+	std::map<String, Array<Item>> items = LoadFiles::InitItems();
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
@@ -513,13 +515,13 @@ void Main() {
 				}
 				break;
 			case 1:
-				Game(stage1, map_objects, characters);
+				Game(stage1, map_objects, characters, items);
 				break;
 			case 2:
-				Game(stage2, map_objects, characters);
+				Game(stage2, map_objects, characters, items);
 				break;
 			case 3:
-				Game(stage3, map_objects, characters);
+				Game(stage3, map_objects, characters, items);
 				break;
 		}
 	}

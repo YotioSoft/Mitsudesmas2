@@ -343,7 +343,6 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	
 	// ゲージ
 	double HP = 100;
-	double MP = 100;
 	
 	// 残りのカップル数
 	int rest = map_struct.rest;
@@ -451,7 +450,6 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			}
 			// 密じゃなかった
 			else if (mitsu == Result::FAILURE) {
-				MP -= 25;
 				img_chigaudaro_show_count = 1;
 				
 				audio_chigaudaro.playOneShot();
@@ -480,21 +478,17 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 		font(U"HP").draw(10, 10, Color(map_struct.font_color));
 		Rect(50, 10, HP * 1.5, 20).draw(Color(Palette::Skyblue));
 		Rect(HP * 1.5 + 50, 10, 100 * 1.5 - HP * 1.5, 20).draw(Color(Palette::Gray));
-		
-		font(U"MP").draw(10, 50, Color(map_struct.font_color));
-		Rect(50, 50, MP * 1.5, 20).draw(Color(Palette::Lightblue));
-		Rect(MP * 1.5 + 50, 50, 100 * 1.5 - MP * 1.5, 20).draw(Color(Palette::Gray));
 
 		// 残り拡声器数
-		img_speaker.resized(32, 32).draw(10, 90);
-		font(U"{}"_fmt(rest_speakers)).draw(50, 90, Color(map_struct.font_color));
+		img_speaker.resized(32, 32).draw(10, 50);
+		font(U"{}"_fmt(rest_speakers)).draw(50, 50, Color(map_struct.font_color));
 		
 		// 情報の表示
 		font(U"残り " + Format(rest) + U"組").draw(Scene::Width()-150, 10, Color(map_struct.font_color));
 		font(U"TIME " + Format(timer.s()) + U"s").draw(Scene::Width()-150, 50, Color(map_struct.font_color));
 		
 		// ゲームオーバー判定
-		if (timer.ms() == 0.0 || MP <= 0.0) {
+		if (timer.ms() == 0.0) {
 			timer.pause();
 			game_enable = false;
 			game_over = true;

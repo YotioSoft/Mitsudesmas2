@@ -342,7 +342,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	Audio audio_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/audio/handgun-firing1.mp3");
 	Audio audio_move(Unicode::Widen(CURRENT_DIR) + U"/audio/bomb1.mp3");
 	Audio audio_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
-	Audio audio_bgm(Unicode::Widen(CURRENT_DIR) + U"/audio/hawk_eye.mp3");
+	Audio audio_bgm(Unicode::Widen(CURRENT_DIR) + U"/audio/hawk_eye.mp3", Loop::Yes);
 	
 	// タイマー
 	Timer timer(map_struct.remining_time);

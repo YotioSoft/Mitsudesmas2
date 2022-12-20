@@ -416,9 +416,16 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 				HP += 0.2;
 			}
 
+			// 拡声器GET
 			if (game_map.isThereSpeaker()) {
 				game_map.removeCenterSpeaker();
 				rest_speakers++;
+			}
+
+			// 食べ物でHP回復
+			if (game_map.isThereFood()) {
+				game_map.removeCenterFood();
+				HP += 20;
 			}
 		}
 		

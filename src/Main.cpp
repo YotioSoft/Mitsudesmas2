@@ -400,7 +400,9 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			game_map.setSlowMode(false);
 		}
 		
-		if (KeySpace.down()) {
+		// 「密です」
+		if (KeySpace.down() && rest_speakers > 0) {
+			rest_speakers--;
 			audio_mitsudesu.playOneShot();
 			int mitsu = game_map.space();
 			

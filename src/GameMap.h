@@ -41,7 +41,8 @@ private:
 	// マップ上のキャラクタ
 	Array<Citizen> soli;
 	Array<Couple> couples;
-	Array<PlacedItem> items;
+	Array<PlacedItem> speakers;
+	Array<PlacedItem> foods;
 
 	// 中心座標
 	SquarePosition center_square;
@@ -75,6 +76,10 @@ public:
 	// 拡声器の操作
 	bool isThereSpeaker();
 	void removeCenterSpeaker();
+
+	// 食べ物の操作
+	bool isThereFood();
+	void removeCenterFood();
 	
 	// 座標上にいるキャラクターを取得
 	Character* getCharacter(SquarePosition position);

@@ -40,6 +40,7 @@ std::map<String, Array<Item>> LoadFiles::InitItems() {
 	std::map<String, Array<Item>>  items;
 
 	items[U"speaker"] << Item(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png"));
+	items[U"chicken"] << Item(Image(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/chicken.png"));
 
 	return items;
 }

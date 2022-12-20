@@ -307,6 +307,34 @@ void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int to
 	}
 }
 
+// HP回復用の食べ物の配置
+void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
+	int count = 0;
+	while (count < total_speakers) {
+		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
+		bool can_put = true;
+		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+			continue;
+		}
+
+		if (!game_map.isPassable(man_pos)) {
+			can_put = false;
+		}
+
+		PlacedItem item;
+		item.item = items[U"chicken"].choice(1)[0];
+		item.position = man_pos;
+
+		if (!game_map.isPassable(item.position)) {
+			continue;
+		}
+
+		game_map.putItem(item);
+
+		count++;
+	}
+}
+
 void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, 
 	std::map<String, std::map<String, Array<Character>>>& characters, std::map<String, Array<Item>>& items) {
 	// フォントを用意

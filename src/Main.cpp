@@ -457,7 +457,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 		}
 		
 		if (img_mitsudesu_show_count >= 1) {
-			img_mitsudesu.draw(Scene::Width()/2-128, Scene::Height()/2-150);
+			img_mitsudesu.draw(Scene::Center().x-img_mitsudesu.width()/2, Scene::Center().y-img_mitsudesu.height()/2);
 			img_mitsudesu_show_count ++;
 			
 			if (img_mitsudesu_show_count > 50) {
@@ -465,8 +465,8 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			}
 		}
 		if (img_chigaudaro_show_count >= 1) {
-			img_mitsudesu.draw(Scene::Width()/2-128, Scene::Height()/2-150);
-			img_chigaudaro.draw(Scene::Width()/2-110, Scene::Height()/2-120);
+			img_mitsudesu.draw(Scene::Center().x-img_mitsudesu.width()/2, Scene::Center().y-img_mitsudesu.height()/2);
+			img_chigaudaro.draw(Scene::Center().x-img_chigaudaro.width()/2, Scene::Center().y-img_chigaudaro.height()/2);
 			img_chigaudaro_show_count ++;
 			
 			if (img_chigaudaro_show_count > 50) {

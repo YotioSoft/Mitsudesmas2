@@ -264,6 +264,10 @@
 		<data>
 		eGCUJgxcm3Z/EjItLKk+QppMg/A=
 		</data>
+		<key>Resources/img/charactors/items/chicken.png</key>
+		<data>
+		GYo3d6/Xn+FufF+uHY7sERG6Ks0=
+		</data>
 		<key>Resources/img/charactors/items/speaker.png</key>
 		<data>
 		uuFRk3t8qnVGXSq7vMRc6pnPr88=
@@ -1132,6 +1136,13 @@
 			<key>hash2</key>
 			<data>
 			C62A5kqbQj9/SBrjpva0f+UNRsethGYZXwYJFF6OP7U=
+			</data>
+		</dict>
+		<key>Resources/img/charactors/items/chicken.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			eq/chD+W6XsqqjS0hCorXbVE0UYgTvXzcWJDMZU/Oxw=
 			</data>
 		</dict>
 		<key>Resources/img/charactors/items/speaker.png</key>

@@ -335,6 +335,34 @@ void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total
 	}
 }
 
+// 残り時間追加用の時計の配置
+void putWatches(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
+	int count = 0;
+	while (count < total_speakers) {
+		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
+		bool can_put = true;
+		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+			continue;
+		}
+
+		if (!game_map.isPassable(man_pos)) {
+			can_put = false;
+		}
+
+		PlacedItem item;
+		item.item = items[U"watch"].choice(1)[0];
+		item.position = man_pos;
+
+		if (!game_map.isPassable(item.position)) {
+			continue;
+		}
+
+		game_map.putWatch(item);
+
+		count++;
+	}
+}
+
 void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, 
 	std::map<String, std::map<String, Array<Character>>>& characters, std::map<String, Array<Item>>& items) {
 	// フォントを用意
@@ -360,6 +388,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	putSoli(game_map, characters, 10);
 	putSpeakers(game_map, items, rest * 2);
 	putFoods(game_map, items, 10);
+	putWatches(game_map, items, 5);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
@@ -425,6 +454,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			if (game_map.isThereFood()) {
 				game_map.removeCenterFood();
 				HP += 20;
+			}
+
+			// 腕時計で時間追加（+10秒）
+			if (game_map.isThereWatch()) {
+				game_map.removeCenterWatch();
+				timer.setRemaining(Duration(timer.s() + 10));
 			}
 		}
 		

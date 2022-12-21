@@ -40,6 +40,10 @@ void GameMap::putFood(PlacedItem item) {
 	item.item.setPosition(squarePositionToPoint(item.position));
 	foods << item;
 }
+void GameMap::putWatch(PlacedItem item) {
+	item.item.setPosition(squarePositionToPoint(item.position));
+	watches << item;
+}
 
 bool GameMap::isPassable(SquarePosition position) {
 	bool pos_passable = true;
@@ -98,6 +102,24 @@ void GameMap::removeCenterFood() {
 	for (int i = 0; i < foods.size(); i++) {
 		if (foods[i].position.x == center_square.x && foods[i].position.y == center_square.y) {
 			foods.remove_at(i);
+			break;
+		}
+	}
+}
+
+bool GameMap::isThereWatch() {
+	for (int i = 0; i < watches.size(); i++) {
+		if (watches[i].position.x == center_square.x && watches[i].position.y == center_square.y) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GameMap::removeCenterWatch() {
+	for (int i = 0; i < watches.size(); i++) {
+		if (watches[i].position.x == center_square.x && watches[i].position.y == center_square.y) {
+			watches.remove_at(i);
 			break;
 		}
 	}
@@ -195,67 +217,82 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	
 	// カメラが移動した場合、他のキャラクターを動かす
 	if (can_move) {
-		for (int i=0; i<couples.size(); i++) {
+		for (auto& couple : couples) {
 			if (direction == Direction::TOP) {
-				couples[i].character1.character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
-				couples[i].character2.character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+				couple.character1.character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+				couple.character2.character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
 			}
 			else if (direction == Direction::RIGHT) {
-				couples[i].character1.character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
-				couples[i].character2.character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+				couple.character1.character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+				couple.character2.character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
 			}
 			else if (direction == Direction::BOTTOM) {
-				couples[i].character1.character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
-				couples[i].character2.character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+				couple.character1.character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+				couple.character2.character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
 			}
 			else if (direction == Direction::LEFT) {
-				couples[i].character1.character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
-				couples[i].character2.character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+				couple.character1.character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+				couple.character2.character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
 		
-		for (int i=0; i<soli.size(); i++) {
+		for (auto& one_soli : soli) {
 			if (direction == Direction::TOP) {
-				soli[i].character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+				one_soli.character.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
 			}
 			else if (direction == Direction::RIGHT) {
-				soli[i].character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+				one_soli.character.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
 			}
 			else if (direction == Direction::BOTTOM) {
-				soli[i].character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+				one_soli.character.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
 			}
 			else if (direction == Direction::LEFT) {
-				soli[i].character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+				one_soli.character.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
 
-		for (int i = 0; i < speakers.size(); i++) {
+		for (auto& speaker : speakers) {
 			if (direction == Direction::TOP) {
-				speakers[i].item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+				speaker.item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
 			}
 			else if (direction == Direction::RIGHT) {
-				speakers[i].item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+				speaker.item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
 			}
 			else if (direction == Direction::BOTTOM) {
-				speakers[i].item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+				speaker.item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
 			}
 			else if (direction == Direction::LEFT) {
-				speakers[i].item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+				speaker.item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
 
-		for (int i = 0; i < foods.size(); i++) {
+		for (auto& food : foods) {
 			if (direction == Direction::TOP) {
-				foods[i].item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+				food.item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
 			}
 			else if (direction == Direction::RIGHT) {
-				foods[i].item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+				food.item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
 			}
 			else if (direction == Direction::BOTTOM) {
-				foods[i].item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+				food.item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
 			}
 			else if (direction == Direction::LEFT) {
-				foods[i].item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+				food.item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+			}
+		}
+
+		for (auto& watch : watches) {
+			if (direction == Direction::TOP) {
+				watch.item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+			}
+			else if (direction == Direction::RIGHT) {
+				watch.item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+			}
+			else if (direction == Direction::BOTTOM) {
+				watch.item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+			}
+			else if (direction == Direction::LEFT) {
+				watch.item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
 	}
@@ -408,44 +445,49 @@ void GameMap::draw() {
 		}
 		
 		// 他のキャラクターの描画
-		for (int i=0; i<couples.size(); i++) {
-			if (couples[i].character1.position.y == y) {
-				if (couples[i].locked_on) {
-					couples[i].character1.character.drawLight();
+		for (auto &couple : couples) {
+			if (couple.character1.position.y == y) {
+				if (couple.locked_on) {
+					couple.character1.character.drawLight();
 				}
 				else {
-					couples[i].character1.character.draw();
+					couple.character1.character.draw();
 				}
 			}
-			if (couples[i].character2.position.y == y) {
-				if (couples[i].locked_on) {
-					couples[i].character2.character.drawLight();
+			if (couple.character2.position.y == y) {
+				if (couple.locked_on) {
+					couple.character2.character.drawLight();
 				}
 				else {
-					couples[i].character2.character.draw();
+					couple.character2.character.draw();
 				}
 			}
 		}
-		for (int i=0; i<soli.size(); i++) {
-			if (soli[i].position.y == y) {
-				if (soli[i].locked_on) {
-					soli[i].character.drawLight();
+		for (auto &one_soli : soli) {
+			if (one_soli.position.y == y) {
+				if (one_soli.locked_on) {
+					one_soli.character.drawLight();
 				}
 				else {
-					soli[i].character.draw();
+					one_soli.character.draw();
 				}
 			}
 		}
 
 		// アイテムの描画
-		for (int i = 0; i < speakers.size(); i++) {
-			if (speakers[i].position.y == y) {
-				speakers[i].item.draw();
+		for (auto &speaker : speakers) {
+			if (speaker.position.y == y) {
+				speaker.item.draw();
 			}
 		}
-		for (int i = 0; i < foods.size(); i++) {
-			if (foods[i].position.y == y) {
-				foods[i].item.draw();
+		for (auto &food : foods) {
+			if (food.position.y == y) {
+				food.item.draw();
+			}
+		}
+		for (auto &watch : watches) {
+			if (watch.position.y == y) {
+				watch.item.draw();
 			}
 		}
 		

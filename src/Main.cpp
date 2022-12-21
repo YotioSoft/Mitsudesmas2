@@ -363,13 +363,13 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
-	Texture img_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/img/ちーがーうーだーろー.png");
+	Texture img_mistake(Unicode::Widen(CURRENT_DIR) + U"/img/mistake.png");
 	Texture img_speaker(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png");
 	
 	// 音声の読み込み
 	Audio audio_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/audio/handgun-firing1.mp3");
 	Audio audio_move(Unicode::Widen(CURRENT_DIR) + U"/audio/bomb1.mp3");
-	Audio audio_chigaudaro(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
+	Audio audio_mistake(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
 	Audio audio_bgm(Unicode::Widen(CURRENT_DIR) + U"/audio/hawk_eye.mp3", Loop::Yes);
 	
 	// タイマー
@@ -377,7 +377,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 
 	int count = 0;
 	int img_mitsudesu_show_count = 0;
-	int img_chigaudaro_show_count = 0;
+	int img_mistake_show_count = 0;
 	bool game_enable = true;
 	bool game_over = false;
 	timer.start();
@@ -450,9 +450,9 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			}
 			// 密じゃなかった
 			else if (mitsu == Result::FAILURE) {
-				img_chigaudaro_show_count = 1;
+				img_mistake_show_count = 1;
 				
-				audio_chigaudaro.playOneShot();
+				audio_mistake.playOneShot();
 			}
 		}
 		
@@ -464,13 +464,13 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 				img_mitsudesu_show_count = 0;
 			}
 		}
-		if (img_chigaudaro_show_count >= 1) {
+		if (img_mistake_show_count >= 1) {
 			img_mitsudesu.draw(Scene::Center().x-img_mitsudesu.width()/2, Scene::Center().y-img_mitsudesu.height()/2);
-			img_chigaudaro.draw(Scene::Center().x-img_chigaudaro.width()/2-18, Scene::Center().y-img_chigaudaro.height()/2-30);
-			img_chigaudaro_show_count ++;
+			img_mistake.draw(Scene::Center().x-img_mistake.width()/2-18, Scene::Center().y-img_mistake.height()/2-30);
+			img_mistake_show_count ++;
 			
-			if (img_chigaudaro_show_count > 50) {
-				img_chigaudaro_show_count = 0;
+			if (img_mistake_show_count > 50) {
+				img_mistake_show_count = 0;
 			}
 		}
 		

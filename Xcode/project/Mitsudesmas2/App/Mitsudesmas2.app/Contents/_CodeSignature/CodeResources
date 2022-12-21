@@ -26,6 +26,10 @@
 		</data>
 		<key>Resources/data/maps/map1.csv</key>
 		<data>
+		I5MkHMHGcB+R5i9XiPObcnBrQ2Y=
+		</data>
+		<key>Resources/data/maps/map1のコピー.csv</key>
+		<data>
 		wrzlYYUwG+cxyYhbB2ZM7Jxl8Sg=
 		</data>
 		<key>Resources/data/maps/map2.csv</key>
@@ -35,6 +39,14 @@
 		<key>Resources/data/maps/map3.csv</key>
 		<data>
 		sECliKhjcWYlnNmllZZ3+6i5fcE=
+		</data>
+		<key>Resources/data/maps/map3.xlsx</key>
+		<data>
+		7IHwD1SmPueTi/X95IW+y79HkJY=
+		</data>
+		<key>Resources/data/maps/map3のコピー.xlsx</key>
+		<data>
+		bh2iZC/zMWHtgGK+JsDL8KotMlQ=
 		</data>
 		<key>Resources/engine/font/fontawesome/LICENSE.txt</key>
 		<data>
@@ -722,6 +734,13 @@
 		<dict>
 			<key>hash2</key>
 			<data>
+			zYbVXEZGrnfLz9zItMcXeWaDaRclEf/cEm2RykN4eEg=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map1のコピー.csv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
 			3EFtpjP7CZuREDPNexYNxfuMk7zK9YQllq//zyM8MwE=
 			</data>
 		</dict>
@@ -737,6 +756,20 @@
 			<key>hash2</key>
 			<data>
 			VH4fHwXp8tNAYOdDQYgNyl5rWEX1zbPzqaZg1Zx1FLU=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map3.xlsx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aTPMt+6l+N4TV0LJxU8/HqZ8KQVQJKk5ha6uDWHs5fo=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map3のコピー.xlsx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			M3WHk1Pkg4+7sCkgj1pE00W9ONAg+aFW6w9VYEIhjVU=
 			</data>
 		</dict>
 		<key>Resources/engine/font/fontawesome/LICENSE.txt</key>

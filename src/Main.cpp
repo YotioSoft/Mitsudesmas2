@@ -349,7 +349,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	int init_rest = rest;
 
 	// 残りの拡声器
-	int rest_speakers = 10;
+	int rest_speakers = rest;
 	
 	// マップの読み込み
 	GameMap game_map = map_struct.game_map;
@@ -358,7 +358,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	putNormies(game_map, characters, rest);
 	putSpacedNormies(game_map, characters, 10);
 	putSoli(game_map, characters, 10);
-	putSpeakers(game_map, items, 10);
+	putSpeakers(game_map, items, rest * 2);
 	putFoods(game_map, items, 10);
 	
 	// 画像の読み込み

@@ -365,6 +365,9 @@ void putWatches(GameMap& game_map, std::map<String, Array<Item>>& items, int tot
 
 void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, 
 	std::map<String, std::map<String, Array<Character>>>& characters, std::map<String, Array<Item>>& items) {
+	// 背景色
+	Scene::SetBackground(Palette::Lightskyblue);
+
 	// フォントを用意
 	const Font font(20);
 	const Font font60(60);

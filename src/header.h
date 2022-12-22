@@ -10,6 +10,7 @@
 	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/Resources"
 #endif
 #define TITLE_FONT_COLOR	Palette::Black
+#define TOTAL_STAGES		5
 
 typedef struct SquarePosition {
 	int x;

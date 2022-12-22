@@ -8,6 +8,7 @@
 *.pch
 VS/ミツデスマス2/.vs
 VS/ミツデスマス2/Intermediate
+*/score.json
 
 # Xcode
 #

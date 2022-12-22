@@ -6,6 +6,7 @@
 void Main();
 
 typedef struct MapStruct {
+	int stage_number;
 	GameMap game_map;
 	Duration remining_time;
 	int rest_speakers;
@@ -19,10 +20,11 @@ typedef struct MapStruct {
 	FilePath bgm_path;
 	
 	MapStruct() {}
-	MapStruct(GameMap& init_map, Duration init_remining, 
+	MapStruct(int init_stage_number, GameMap& init_map, Duration init_remining, 
 		int init_rest_normies, int init_rest_speakers, int init_rest_bulldozers,
 		int init_speakers, int init_foods, int init_watches, int init_bulldozers,
 		Color init_font_color, FilePath init_bgm_path) {
+		stage_number = init_stage_number;
 		game_map = init_map;
 		remining_time = init_remining;
 		rest_speakers = init_rest_speakers;
@@ -37,8 +39,54 @@ typedef struct MapStruct {
 	}
 } MapStruct;
 
+typedef struct ScoreConf {
+	int stage_score[TOTAL_STAGES];
+} ClearConf;
+
+// スコア情報の読み込み
+ScoreConf loadScoreConf() {
+	ScoreConf conf;
+	if (FileSystem::Exists(Unicode::Widen(CURRENT_DIR) + U"/data/score.json")) {
+		const JSON conf_json = JSON::Load(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
+		if (not conf_json) {
+			throw Error{ U"Failed to load `score.json`" };
+		}
+
+		conf.stage_score[0] = conf_json[U"stage1_score"].get<int32>();
+		conf.stage_score[1] = conf_json[U"stage2_score"].get<int32>();
+		conf.stage_score[2] = conf_json[U"stage3_score"].get<int32>();
+		conf.stage_score[3] = conf_json[U"stage4_score"].get<int32>();
+		conf.stage_score[4] = conf_json[U"stage5_score"].get<int32>();
+	}
+	else {
+		conf.stage_score[0] = 0;
+		conf.stage_score[1] = 0;
+		conf.stage_score[2] = 0;
+		conf.stage_score[3] = 0;
+		conf.stage_score[4] = 0;
+	}
+
+	return conf;
+}
+
+// スコア情報の保存
+void saveScoreConf(ScoreConf conf) {
+	JSON conf_json;
+
+	conf_json[U"stage1_score"] = conf.stage_score[0];
+	conf_json[U"stage2_score"] = conf.stage_score[1];
+	conf_json[U"stage3_score"] = conf.stage_score[2];
+	conf_json[U"stage4_score"] = conf.stage_score[3];
+	conf_json[U"stage5_score"] = conf.stage_score[4];
+
+	conf_json.save(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
+}
+
 // タイトル画面
 int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) {
+	// クリア情報の読み込み
+	ScoreConf score_conf = loadScoreConf();
+
 	// 背景色
 	Scene::SetBackground(Palette::Lightgreen);
 
@@ -492,6 +540,11 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	Audio audio_move(Unicode::Widen(CURRENT_DIR) + U"/audio/bomb1.mp3");
 	Audio audio_mistake(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
 	Audio audio_bgm(map_struct.bgm_path, Loop::Yes);
+
+	// スコア情報の読み込み
+	ScoreConf score_conf = loadScoreConf();
+	int score_record = score_conf.stage_score[map_struct.stage_number - 1];
+	bool score_saved = false;
 	
 	// タイマー
 	Timer timer(map_struct.remining_time);
@@ -658,14 +711,30 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			} else {
 				font60(U"ゲームクリア").draw(Scene::Width()/2-font60(U"ゲームクリア").region(Point(0, 0)).size.x/2, Scene::Height()/2-150, Color(Palette::White));
 			}
-			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").draw(Scene::Width()/2-font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").region(Point(0, 0)).size.x/2, Scene::Height()/2, Color(Palette::White));
-			font(U"残り時間：" + Format(timer.s()) + U"秒").draw(Scene::Width()/2-font(U"残り時間：" + Format(timer.s()) + U"秒").region(Point(0, 0)).size.x/2, Scene::Height()/2+50, Color(Palette::White));
+
+			font(U"距離を開けたカップルの数：" + Format(init_rest - rest) + U"組").drawAt(Scene::Center().x, Scene::Center().y, Color(Palette::White));
+			font(U"残り時間：" + Format(timer.s()) + U"秒").drawAt(Scene::Center().x, Scene::Center().y + 50, Color(Palette::White));
+
+			if (timer.s() > score_record) {
+				font(U"スコア記録更新！").drawAt(Scene::Center().x, Scene::Center().y + 100, Color(Palette::White));
+
+				// 次のステージ解禁
+				if (score_record == 0 && map_struct.stage_number <= TOTAL_STAGES - 1) {
+					font(U"次のステージが解禁されました！").drawAt(Scene::Center().x, Scene::Center().y + 140, Color(Palette::White));
+				}
+
+				if (!score_saved) {
+					score_conf.stage_score[map_struct.stage_number - 1] = timer.s();
+					saveScoreConf(score_conf);
+					score_saved = true;
+				}
+			}
 			
-			if (SimpleGUI::Button(U"もう一度", Vec2(Scene::Width()/2-70, Scene::Height()-150))) {
+			if (SimpleGUI::Button(U"もう一度", Vec2(Scene::Width()/2-70, Scene::Height()-130))) {
 				audio_bgm.stop();
 				Game(map_struct, map_objects, characters, items);
 			}
-			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-100))) {
+			if (SimpleGUI::Button(U"もどる", Vec2(Scene::Width()/2-60, Scene::Height()-80))) {
 				audio_bgm.stop();
 				return;
 			}
@@ -690,13 +759,13 @@ void Main() {
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage1(map1, Duration(90), 20, 15, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage1(1, map1, Duration(90), 20, 15, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(map2, Duration(240), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
+	MapStruct stage2(2, map2, Duration(240), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(map3, Duration(600), 40, 30, 3, 20, 30, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
+	MapStruct stage3(3, map3, Duration(600), 40, 30, 3, 20, 30, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

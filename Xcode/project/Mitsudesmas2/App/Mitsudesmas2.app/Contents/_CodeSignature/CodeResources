@@ -8,9 +8,17 @@
 		<data>
 		L4/athdodjP+RVTjUIW1fqiGou0=
 		</data>
-		<key>Resources/audio/Hawk_Eye.mp3</key>
+		<key>Resources/audio/bgm_stage1.mp3</key>
 		<data>
 		bUJ2SgCgQt04DWNtMHIU1JxawDY=
+		</data>
+		<key>Resources/audio/bgm_stage2.mp3</key>
+		<data>
+		l43m9pnzDIKd8BZUoKxlAeRXAxc=
+		</data>
+		<key>Resources/audio/bgm_stage3.mp3</key>
+		<data>
+		pYVXIcBtLRtDWJ9BYrbqURxLwIo=
 		</data>
 		<key>Resources/audio/bomb1.mp3</key>
 		<data>
@@ -26,25 +34,41 @@
 		</data>
 		<key>Resources/data/maps/map1.csv</key>
 		<data>
-		I5MkHMHGcB+R5i9XiPObcnBrQ2Y=
+		bHMEwCjDMrYXBnxJHKh6WuCY65E=
 		</data>
-		<key>Resources/data/maps/map1のコピー.csv</key>
+		<key>Resources/data/maps/map1.rpgmap</key>
+		<data>
+		ZROAX6c2pe64UqIDRpR2pX75wnQ=
+		</data>
+		<key>Resources/data/maps/map1のコピー.csv</key>
 		<data>
 		wrzlYYUwG+cxyYhbB2ZM7Jxl8Sg=
 		</data>
 		<key>Resources/data/maps/map2.csv</key>
 		<data>
-		LLBU1okfoIqGn2/xysxw2b1hpgw=
+		IP/sd/mGg6qd6yBiEjjSwGdgWFU=
+		</data>
+		<key>Resources/data/maps/map2.rpgmap</key>
+		<data>
+		ZjikkFhEopGIVJeIBzVsrIYVun8=
+		</data>
+		<key>Resources/data/maps/map2.xlsx</key>
+		<data>
+		OOOUXfkveuHBW1DUWM15cDF7QUs=
 		</data>
 		<key>Resources/data/maps/map3.csv</key>
 		<data>
 		sECliKhjcWYlnNmllZZ3+6i5fcE=
 		</data>
+		<key>Resources/data/maps/map3.rpgmap</key>
+		<data>
+		dnzwm4ECCbHnpfnOZhRM8o4nzxM=
+		</data>
 		<key>Resources/data/maps/map3.xlsx</key>
 		<data>
 		7IHwD1SmPueTi/X95IW+y79HkJY=
 		</data>
-		<key>Resources/data/maps/map3のコピー.xlsx</key>
+		<key>Resources/data/maps/map3のコピー.xlsx</key>
 		<data>
 		bh2iZC/zMWHtgGK+JsDL8KotMlQ=
 		</data>
@@ -276,6 +300,14 @@
 		<data>
 		eGCUJgxcm3Z/EjItLKk+QppMg/A=
 		</data>
+		<key>Resources/img/.DS_Store</key>
+		<data>
+		QDkemSRku2ksOkLx+knvypq3U48=
+		</data>
+		<key>Resources/img/charactors/.DS_Store</key>
+		<data>
+		PPleVt5MRdXmsU9qlX6L99JMrWU=
+		</data>
 		<key>Resources/img/charactors/items/chicken.png</key>
 		<data>
 		GYo3d6/Xn+FufF+uHY7sERG6Ks0=
@@ -283,6 +315,10 @@
 		<key>Resources/img/charactors/items/speaker.png</key>
 		<data>
 		uuFRk3t8qnVGXSq7vMRc6pnPr88=
+		</data>
+		<key>Resources/img/charactors/items/watch.png</key>
+		<data>
+		k7oHryosZt31yIY+lsiR5NNKVLs=
 		</data>
 		<key>Resources/img/charactors/man/middle_aged/1.png</key>
 		<data>
@@ -690,7 +726,7 @@
 		</data>
 		<key>Resources/sozai.txt</key>
 		<data>
-		YTxDUcivpfwRnxWBS4y7Yds6V54=
+		2EAuujKbNWe2mdnZKKGN7Xvrk/I=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -702,11 +738,25 @@
 			tj3X9JEHRT8iXHXAk4YHZvHLUflgZRKlUZLoKr89ya4=
 			</data>
 		</dict>
-		<key>Resources/audio/Hawk_Eye.mp3</key>
+		<key>Resources/audio/bgm_stage1.mp3</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			qA1ZhpuezPySxqYpaIsNtU3ENp8rkg9iEVF381/ACVk=
+			</data>
+		</dict>
+		<key>Resources/audio/bgm_stage2.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/Dd6sI0K1+NN9wwzFFIHiOpS5o5b69icECPWbkNsWzU=
+			</data>
+		</dict>
+		<key>Resources/audio/bgm_stage3.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DUMtbxBd35P7V6ko6R6jRwpaDHhpaCjClksT4yvGR7U=
 			</data>
 		</dict>
 		<key>Resources/audio/bomb1.mp3</key>
@@ -734,10 +784,17 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zYbVXEZGrnfLz9zItMcXeWaDaRclEf/cEm2RykN4eEg=
+			HpjWz5D2j2ZFA84NCkcohzHsqv/hEDWDI74QawwlBno=
 			</data>
 		</dict>
-		<key>Resources/data/maps/map1のコピー.csv</key>
+		<key>Resources/data/maps/map1.rpgmap</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pbZg+Ue+GJBZsERcF1qY4So/BrMoh5l3NpyagGLOvHo=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map1のコピー.csv</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -748,7 +805,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h3oDJTRT8GbAW17mD0QaPCjXG7emaG9GdzChQnaEIfA=
+			WbPal09HbksWqRK2vI9FuxWrndfizHfxSJ5GZCv0HPQ=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map2.rpgmap</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ChGQKjy5QPdOG//Q0Y9ZSIf0yGL5tDdvJo9FWvOLO7Q=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map2.xlsx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Am131jwpXpQgfL0sluwaIy3PnMOCqMrvrINYTBM7H7I=
 			</data>
 		</dict>
 		<key>Resources/data/maps/map3.csv</key>
@@ -758,6 +829,13 @@
 			VH4fHwXp8tNAYOdDQYgNyl5rWEX1zbPzqaZg1Zx1FLU=
 			</data>
 		</dict>
+		<key>Resources/data/maps/map3.rpgmap</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xwicroQ3ZnlFDNxWqFV6Bzr92WH2gwPOqdE8WDMt/tk=
+			</data>
+		</dict>
 		<key>Resources/data/maps/map3.xlsx</key>
 		<dict>
 			<key>hash2</key>
@@ -765,7 +843,7 @@
 			aTPMt+6l+N4TV0LJxU8/HqZ8KQVQJKk5ha6uDWHs5fo=
 			</data>
 		</dict>
-		<key>Resources/data/maps/map3のコピー.xlsx</key>
+		<key>Resources/data/maps/map3のコピー.xlsx</key>
 		<dict>
 			<key>hash2</key>
 			<data>
@@ -1183,6 +1261,13 @@
 			<key>hash2</key>
 			<data>
 			9qgczHISVrG4PopNWqdKXjXb6qb4xenCtVnr7pZzA7c=
+			</data>
+		</dict>
+		<key>Resources/img/charactors/items/watch.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			N7EYEI9DQZiD7qbqLfRFbLjaei2lhP04CvK1Aie0j5A=
 			</data>
 		</dict>
 		<key>Resources/img/charactors/man/middle_aged/1.png</key>
@@ -1896,7 +1981,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WK0V8Ud48v4KnpHx8PPy6ikLRIGshd18ArzLblinB7E=
+			u+Sq+XwSLHCFhdyPGfIpJuQRan0Rg5sQu/n11tA1tC4=
 			</data>
 		</dict>
 	</dict>

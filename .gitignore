@@ -8,7 +8,7 @@
 *.pch
 VS/ミツデスマス2/.vs
 VS/ミツデスマス2/Intermediate
-*/score.json
+VS/ミツデスマス2/ミツデスマス2/App/data/score.json
 
 # Xcode
 #
@@ -40,5 +40,7 @@ DerivedData/
 ## OpenSiv3D
 Xcode/lib
 Xcode/include
+
+Xcode/project/Mitsudesmas2/App/Mitsudesmas2.app/Contents/Resources/data/score.json
 
 *.DS_Store

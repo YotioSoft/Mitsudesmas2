@@ -525,7 +525,6 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				}
 			}
 		}
-		Print << U"{},{}"_fmt(locked_on_map_chip.x, locked_on_map_chip.y);
 	}
 
 	return center_square;
@@ -561,9 +560,7 @@ int GameMap::space() {
 void GameMap::bulldoze() {
 	// マップオブジェクトを除去
 	if (isThereObstacle()) {
-		Print << U"Bulldoze at {},{}"_fmt(locked_on_map_chip.x, locked_on_map_chip.y);
-		objects_map[locked_on_map_chip.y][locked_on_map_chip.x].removed_at(1);
-		Print << objects_map[locked_on_map_chip.y][locked_on_map_chip.x].size();
+		objects_map[locked_on_map_chip.y][locked_on_map_chip.x].remove_at(1);
 		locked_on_map_chip = { -1, -1 };
 	}
 }

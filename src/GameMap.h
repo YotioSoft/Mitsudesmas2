@@ -44,6 +44,7 @@ private:
 	Array<PlacedItem> speakers;
 	Array<PlacedItem> foods;
 	Array<PlacedItem> watches;
+	Array<PlacedItem> bulldozers;
 
 	// 中心座標
 	SquarePosition center_square;
@@ -72,6 +73,7 @@ public:
 	void putSpeaker(PlacedItem item);
 	void putFood(PlacedItem item);
 	void putWatch(PlacedItem item);
+	void putBulldozer(PlacedItem item);
 	
 	// 通行可能か否か
 	bool isThereAnything(SquarePosition position);
@@ -89,6 +91,10 @@ public:
 	// 時計の操作
 	bool isThereWatch();
 	void removeCenterWatch();
+
+	// ブルドーザーの操作
+	bool isThereBulldozer();
+	void removeCenterBulldozer();
 	
 	// 座標上にいるキャラクターを取得
 	Character* getCharacter(SquarePosition position);

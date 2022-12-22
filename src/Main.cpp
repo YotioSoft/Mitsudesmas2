@@ -9,22 +9,29 @@ typedef struct MapStruct {
 	GameMap game_map;
 	Duration remining_time;
 	int rest_speakers;
+	int rest_bulldozers;
 	int rest_normies;
 	int speakers;
 	int foods;
 	int watches;
+	int bulldozers;
 	Color font_color;
 	FilePath bgm_path;
 	
 	MapStruct() {}
-	MapStruct(GameMap& init_map, Duration init_remining, int init_rest_normies, int init_rest_speakers, int init_speakers, int init_foods, int init_watches, Color init_font_color, FilePath init_bgm_path) {
+	MapStruct(GameMap& init_map, Duration init_remining, 
+		int init_rest_normies, int init_rest_speakers, int init_rest_bulldozers,
+		int init_speakers, int init_foods, int init_watches, int init_bulldozers,
+		Color init_font_color, FilePath init_bgm_path) {
 		game_map = init_map;
 		remining_time = init_remining;
 		rest_speakers = init_rest_speakers;
+		rest_bulldozers = init_rest_bulldozers;
 		rest_normies = init_rest_normies;
 		speakers = init_speakers;
 		foods = init_foods;
 		watches = init_watches;
+		bulldozers = init_bulldozers;
 		font_color = init_font_color;
 		bgm_path = init_bgm_path;
 	}
@@ -410,6 +417,36 @@ void putWatches(GameMap& game_map, std::map<String, Array<Item>>& items, int tot
 	}
 }
 
+// ブルドーザーの配置
+void putBulldozers(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
+	int count = 0;
+	while (count < total_speakers) {
+		SquarePosition item_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
+		if (item_pos.x < 0 || item_pos.x > game_map.getMapSize().x - 1) {
+			continue;
+		}
+
+		if (game_map.isThereAnything(item_pos)) {
+			continue;
+		}
+		if (game_map.isThereAnything({ item_pos.x + 1, item_pos.y })) {
+			continue;
+		}
+		if (game_map.isThereAnything({ item_pos.x - 1, item_pos.y })) {
+			continue;
+		}
+
+		PlacedItem item;
+		item.item = items[U"bulldozer"].choice(1)[0];
+		item.position = item_pos;
+
+		game_map.putBulldozer(item);
+
+		count++;
+	}
+}
+
+// ゲームメイン
 void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects, 
 	std::map<String, std::map<String, Array<Character>>>& characters, std::map<String, Array<Item>>& items) {
 	// 背景色
@@ -427,7 +464,10 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	int init_rest = rest;
 
 	// 残りの拡声器
-	int rest_speakers = rest;
+	int rest_speakers = map_struct.rest_speakers;
+
+	// 残りのブルドーザー
+	int rest_bulldozers = map_struct.rest_bulldozers;
 	
 	// マップの読み込み
 	GameMap game_map = map_struct.game_map;
@@ -439,11 +479,13 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	putSpeakers(game_map, items, map_struct.rest_normies * 2);
 	putFoods(game_map, items, map_struct.foods);
 	putWatches(game_map, items, map_struct.watches);
+	putBulldozers(game_map, items, map_struct.bulldozers);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
 	Texture img_mistake(Unicode::Widen(CURRENT_DIR) + U"/img/mistake.png");
 	Texture img_speaker(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png");
+	Texture img_bulldozer(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/bulldozer.png");
 	
 	// 音声の読み込み
 	Audio audio_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/audio/handgun-firing1.mp3");
@@ -511,6 +553,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 				game_map.removeCenterWatch();
 				timer.setRemaining(Duration(timer.s() + 10));
 			}
+
+			// ブルドーザーで障害物除去
+			if (game_map.isThereBulldozer()) {
+				game_map.removeCenterBulldozer();
+				rest_bulldozers++;
+			}
 		}
 		
 		if (HP <= 1.0) {
@@ -560,13 +608,17 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 		}
 		
 		// ゲージの表示
-		font(U"HP").draw(10, 10, Color(map_struct.font_color));
+		font(U"HP").draw(10, 15, Color(map_struct.font_color));
 		Rect(50, 10, HP * 1.5, 20).draw(Color(Palette::Skyblue));
 		Rect(HP * 1.5 + 50, 10, 100 * 1.5 - HP * 1.5, 20).draw(Color(Palette::Gray));
 
 		// 残り拡声器数
 		img_speaker.resized(32, 32).draw(10, 50);
 		font(U"{}"_fmt(rest_speakers)).draw(50, 50, Color(map_struct.font_color));
+
+		// 残りブルドーザー数
+		img_bulldozer.resized(32, 32).draw(10, 90);
+		font(U"{}"_fmt(rest_bulldozers)).draw(50, 90, Color(map_struct.font_color));
 		
 		// 情報の表示
 		font(U"残り " + Format(rest) + U"組").draw(Scene::Width()-150, 10, Color(map_struct.font_color));
@@ -627,13 +679,13 @@ void Main() {
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage1(map1, Duration(90), 20, 15, 10, 10, 10, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage1(map1, Duration(90), 20, 15, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(map2, Duration(240), 20, 15, 10, 15, 10, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
+	MapStruct stage2(map2, Duration(240), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(map3, Duration(600), 40, 30, 20, 30, 30, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
+	MapStruct stage3(map3, Duration(600), 40, 30, 3, 20, 30, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

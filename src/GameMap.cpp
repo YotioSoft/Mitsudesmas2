@@ -44,6 +44,10 @@ void GameMap::putWatch(PlacedItem item) {
 	item.item.setPosition(squarePositionToPoint(item.position));
 	watches << item;
 }
+void GameMap::putBulldozer(PlacedItem item) {
+	item.item.setPosition(squarePositionToPoint(item.position));
+	bulldozers << item;
+}
 
 bool GameMap::isThereAnything(SquarePosition position) {
 	if (!isPassable(position)) {
@@ -60,6 +64,10 @@ bool GameMap::isThereAnything(SquarePosition position) {
 		return true;
 	}
 	if (isThereWatch()) {
+		center_square = player_position;
+		return true;
+	}
+	if (isThereBulldozer()) {
 		center_square = player_position;
 		return true;
 	}
@@ -152,6 +160,24 @@ void GameMap::removeCenterWatch() {
 	for (int i = 0; i < watches.size(); i++) {
 		if (watches[i].position.x == center_square.x && watches[i].position.y == center_square.y) {
 			watches.remove_at(i);
+			break;
+		}
+	}
+}
+
+bool GameMap::isThereBulldozer() {
+	for (int i = 0; i < bulldozers.size(); i++) {
+		if (bulldozers[i].position.x == center_square.x && bulldozers[i].position.y == center_square.y) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GameMap::removeCenterBulldozer() {
+	for (int i = 0; i < bulldozers.size(); i++) {
+		if (bulldozers[i].position.x == center_square.x && bulldozers[i].position.y == center_square.y) {
+			bulldozers.remove_at(i);
 			break;
 		}
 	}
@@ -325,6 +351,21 @@ SquarePosition GameMap::moveCamera(Point direction) {
 			}
 			else if (direction == Direction::LEFT) {
 				watch.item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
+			}
+		}
+
+		for (auto& bulldozer : bulldozers) {
+			if (direction == Direction::TOP) {
+				bulldozer.item.move(Point(Direction::BOTTOM.x / slow, Direction::BOTTOM.y / slow));
+			}
+			else if (direction == Direction::RIGHT) {
+				bulldozer.item.move(Point(Direction::LEFT.x / slow, Direction::LEFT.y / slow));
+			}
+			else if (direction == Direction::BOTTOM) {
+				bulldozer.item.move(Point(Direction::TOP.x / slow, Direction::TOP.y / slow));
+			}
+			else if (direction == Direction::LEFT) {
+				bulldozer.item.move(Point(Direction::RIGHT.x / slow, Direction::RIGHT.y / slow));
 			}
 		}
 	}
@@ -520,6 +561,11 @@ void GameMap::draw() {
 		for (auto &watch : watches) {
 			if (watch.position.y == y) {
 				watch.item.draw();
+			}
+		}
+		for (auto& bulldozer : bulldozers) {
+			if (bulldozer.position.y == y) {
+				bulldozer.item.draw();
 			}
 		}
 		

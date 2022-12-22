@@ -96,6 +96,7 @@ public:
 	void removeCenterWatch();
 
 	// ブルドーザーの操作
+	bool isThereObstacle();
 	bool isThereBulldozer();
 	void removeCenterBulldozer();
 	
@@ -111,6 +112,9 @@ public:
 	
 	// キャラクターの間を空ける
 	int space();
+
+	// ブルドーザーでマップ上のオブジェクトを除去する
+	void bulldoze();
 	
 	// マップサイズを取得
 	Size getMapSize();

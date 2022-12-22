@@ -187,6 +187,14 @@ void GameMap::removeCenterWatch() {
 	}
 }
 
+bool GameMap::isThereObstacle() {
+	if (locked_on_map_chip.x >= 0 && locked_on_map_chip.y >= 0) {
+		if (objects_map[locked_on_map_chip.y][locked_on_map_chip.x].size() > 1)
+			return true;
+	}
+	return false;
+}
+
 bool GameMap::isThereBulldozer() {
 	if (center_square.x < 0 || center_square.y < 0 || center_square.x >= objects_map.width() || center_square.y >= objects_map.height()) {
 		return false;
@@ -550,6 +558,16 @@ int GameMap::space() {
 	return Result::NONE;
 }
 
+void GameMap::bulldoze() {
+	// マップオブジェクトを除去
+	if (isThereObstacle()) {
+		Print << U"Bulldoze at {},{}"_fmt(locked_on_map_chip.x, locked_on_map_chip.y);
+		objects_map[locked_on_map_chip.y][locked_on_map_chip.x].removed_at(1);
+		Print << objects_map[locked_on_map_chip.y][locked_on_map_chip.x].size();
+		locked_on_map_chip = { -1, -1 };
+	}
+}
+
 Size GameMap::getMapSize() {
 	return objects_map.size();
 }
@@ -586,7 +604,7 @@ void GameMap::draw() {
 			}
 			
 			for (int i = 0; i < objects_map[y][x].size(); i++) {
-				if (x == locked_on_map_chip.x && y == locked_on_map_chip.y) {
+				if (x == locked_on_map_chip.x && y == locked_on_map_chip.y && i > 0) {
 					objects_map[y][x][i].draw(object_directions_map[y][x][i], squarePositionToPoint(SquarePosition(x, y)), true);
 				}
 				else {

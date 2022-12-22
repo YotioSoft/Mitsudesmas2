@@ -568,26 +568,37 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 			game_map.setSlowMode(false);
 		}
 		
-		// 「密です」
-		if (KeySpace.down() && rest_speakers > 0) {
-			rest_speakers--;
-			audio_mitsudesu.playOneShot();
-			int mitsu = game_map.space();
-			
-			// 密だった
-			if (mitsu == Result::SUCCESS) {
-				rest -= 1;
-				img_mitsudesu_show_count = 1;
-				
-				audio_move.playOneShot();
+		// スペースキーが押されたとき
+		if (KeySpace.down()) {
+			// ブルドーザーで取り壊し
+			if (rest_bulldozers > 0 && game_map.isThereObstacle()) {
+				game_map.bulldoze();
+				rest_bulldozers--;
 			}
-			// 密じゃなかった
-			else if (mitsu == Result::FAILURE) {
-				img_mistake_show_count = 1;
-				
-				audio_mistake.playOneShot();
+			// 「密です」
+			else if (rest_speakers > 0) {
+				int mitsu = game_map.space();
+
+				// 密だった
+				if (mitsu == Result::SUCCESS) {
+					audio_mitsudesu.playOneShot();
+					rest -= 1;
+					rest_speakers--;
+					img_mitsudesu_show_count = 1;
+
+					audio_move.playOneShot();
+				}
+				// 密じゃなかった
+				else if (mitsu == Result::FAILURE) {
+					audio_mitsudesu.playOneShot();
+					rest_speakers--;
+					img_mistake_show_count = 1;
+
+					audio_mistake.playOneShot();
+				}
 			}
 		}
+
 		
 		if (img_mitsudesu_show_count >= 1) {
 			img_mitsudesu.draw(Scene::Center().x-img_mitsudesu.width()/2, Scene::Center().y-img_mitsudesu.height()/2);

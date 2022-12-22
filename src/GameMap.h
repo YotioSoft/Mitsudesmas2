@@ -74,6 +74,7 @@ public:
 	void putWatch(PlacedItem item);
 	
 	// 通行可能か否か
+	bool isThereAnything(SquarePosition position);
 	bool isPassable(SquarePosition position);
 	bool isThereCouple(SquarePosition position);
 

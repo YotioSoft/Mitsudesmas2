@@ -169,7 +169,7 @@ void putNormies(GameMap& game_map, std::map<String, std::map<String, Array<Chara
 				continue;
 			}
 			
-			if (!game_map.isPassable(SquarePosition(x, man_pos.y))) {
+			if (game_map.isThereAnything(SquarePosition(x, man_pos.y))) {
 				can_put = false;
 			}
 		}
@@ -181,13 +181,13 @@ void putNormies(GameMap& game_map, std::map<String, std::map<String, Array<Chara
 		man.character = characters[U"man"][type].choice(1)[0];
 		man.position = man_pos;
 		
-		if (!game_map.isPassable(man.position)) {
+		if (game_map.isThereAnything(man.position)) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ man.position.x + 1, man.position.y })) {
+		if (game_map.isThereAnything({ man.position.x + 1, man.position.y })) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ man.position.x - 1, man.position.y })) {
+		if (game_map.isThereAnything({ man.position.x - 1, man.position.y })) {
 			continue;
 		}
 		
@@ -195,13 +195,13 @@ void putNormies(GameMap& game_map, std::map<String, std::map<String, Array<Chara
 		woman.character = characters[U"woman"][type].choice(1)[0];
 		woman.position = SquarePosition(man.position.x + 1, man.position.y);
 		
-		if (!game_map.isPassable(woman.position)) {
+		if (game_map.isThereAnything(woman.position)) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ woman.position.x + 1, woman.position.y })) {
+		if (game_map.isThereAnything({ woman.position.x + 1, woman.position.y })) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ woman.position.x - 1, woman.position.y })) {
+		if (game_map.isThereAnything({ woman.position.x - 1, woman.position.y })) {
 			continue;
 		}
 		
@@ -234,13 +234,13 @@ void putSpacedNormies(GameMap& game_map, std::map<String, std::map<String, Array
 				continue;
 			}
 			
-			if (!game_map.isPassable(SquarePosition(x, man_pos.y))) {
+			if (game_map.isThereAnything(SquarePosition(x, man_pos.y))) {
 				can_put = false;
 			}
-			if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+			if (game_map.isThereAnything({ man_pos.x + 1, man_pos.y })) {
 				can_put = false;
 			}
-			if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
+			if (game_map.isThereAnything({ man_pos.x - 1, man_pos.y })) {
 				can_put = false;
 			}
 		}
@@ -252,13 +252,13 @@ void putSpacedNormies(GameMap& game_map, std::map<String, std::map<String, Array
 		man.character = characters[U"man"][type].choice(1)[0];
 		man.position = man_pos;
 		
-		if (!game_map.isPassable(man.position)) {
+		if (game_map.isThereAnything(man.position)) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ man.position.x + 1, man.position.y })) {
+		if (game_map.isThereAnything({ man.position.x + 1, man.position.y })) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ man.position.x - 1, man.position.y })) {
+		if (game_map.isThereAnything({ man.position.x - 1, man.position.y })) {
 			continue;
 		}
 		
@@ -266,13 +266,13 @@ void putSpacedNormies(GameMap& game_map, std::map<String, std::map<String, Array
 		woman.character = characters[U"woman"][type].choice(1)[0];
 		woman.position = SquarePosition(man.position.x + 3, man.position.y);
 		
-		if (!game_map.isPassable(woman.position)) {
+		if (game_map.isThereAnything(woman.position)) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ woman.position.x + 1, woman.position.y })) {
+		if (game_map.isThereAnything({ woman.position.x + 1, woman.position.y })) {
 			continue;
 		}
-		if (!game_map.isThereCouple({ woman.position.x - 1, woman.position.y })) {
+		if (game_map.isThereAnything({ woman.position.x - 1, woman.position.y })) {
 			continue;
 		}
 		
@@ -299,28 +299,23 @@ void putSoli(GameMap& game_map, std::map<String, std::map<String, Array<Characte
 		}
 		
 		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x-1), Random(0, game_map.getMapSize().y-1));
-		bool can_put = true;
 		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
 			continue;
 		}
 			
-		if (!game_map.isPassable(man_pos)) {
-			can_put = false;
+		if (game_map.isThereAnything(man_pos)) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ man_pos.x + 1, man_pos.y })) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ man_pos.x - 1, man_pos.y })) {
+			continue;
 		}
 		
 		Citizen man;
 		man.character = characters[type][U"solo"].choice(1)[0];
 		man.position = man_pos;
-		
-		if (!game_map.isPassable(man.position)) {
-			continue;
-		}
 		
 		game_map.putCharacter(man);
 		
@@ -332,29 +327,24 @@ void putSoli(GameMap& game_map, std::map<String, std::map<String, Array<Characte
 void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
 	int count = 0;
 	while (count < total_speakers) {
-		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x-1), Random(0, game_map.getMapSize().y-1));
-		bool can_put = true;
-		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+		SquarePosition item_pos = SquarePosition(Random(0, game_map.getMapSize().x-1), Random(0, game_map.getMapSize().y-1));
+		if (item_pos.x < 0 || item_pos.x > game_map.getMapSize().x - 1) {
 			continue;
 		}
 			
-		if (!game_map.isPassable(man_pos)) {
-			can_put = false;
+		if (game_map.isThereAnything(item_pos)) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x + 1, item_pos.y })) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x - 1, item_pos.y })) {
+			continue;
 		}
 		
 		PlacedItem item;
 		item.item = items[U"speaker"].choice(1)[0];
-		item.position = man_pos;
-		
-		if (!game_map.isPassable(item.position)) {
-			continue;
-		}
+		item.position = item_pos;
 		
 		game_map.putSpeaker(item);
 		
@@ -366,29 +356,24 @@ void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int to
 void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
 	int count = 0;
 	while (count < total_speakers) {
-		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
-		bool can_put = true;
-		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+		SquarePosition item_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
+		if (item_pos.x < 0 || item_pos.x > game_map.getMapSize().x - 1) {
 			continue;
 		}
 
-		if (!game_map.isPassable(man_pos)) {
-			can_put = false;
+		if (game_map.isThereAnything(item_pos)) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x + 1, item_pos.y })) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x - 1, item_pos.y })) {
+			continue;
 		}
 
 		PlacedItem item;
 		item.item = items[U"chicken"].choice(1)[0];
-		item.position = man_pos;
-
-		if (!game_map.isPassable(item.position)) {
-			continue;
-		}
+		item.position = item_pos;
 
 		game_map.putFood(item);
 
@@ -400,29 +385,24 @@ void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total
 void putWatches(GameMap& game_map, std::map<String, Array<Item>>& items, int total_speakers) {
 	int count = 0;
 	while (count < total_speakers) {
-		SquarePosition man_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
-		bool can_put = true;
-		if (man_pos.x < 0 || man_pos.x > game_map.getMapSize().x - 1) {
+		SquarePosition item_pos = SquarePosition(Random(0, game_map.getMapSize().x - 1), Random(0, game_map.getMapSize().y - 1));
+		if (item_pos.x < 0 || item_pos.x > game_map.getMapSize().x - 1) {
 			continue;
 		}
 
-		if (!game_map.isPassable(man_pos)) {
-			can_put = false;
+		if (game_map.isThereAnything(item_pos)) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x + 1, item_pos.y })) {
+			continue;
 		}
-		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
-			can_put = false;
+		if (game_map.isThereAnything({ item_pos.x - 1, item_pos.y })) {
+			continue;
 		}
 
 		PlacedItem item;
 		item.item = items[U"watch"].choice(1)[0];
-		item.position = man_pos;
-
-		if (!game_map.isPassable(item.position)) {
-			continue;
-		}
+		item.position = item_pos;
 
 		game_map.putWatch(item);
 

@@ -45,6 +45,28 @@ void GameMap::putWatch(PlacedItem item) {
 	watches << item;
 }
 
+bool GameMap::isThereAnything(SquarePosition position) {
+	if (!isPassable(position)) {
+		return true;
+	}
+	SquarePosition player_position = center_square;
+	center_square = position;
+	if (isThereSpeaker()) {
+		center_square = player_position;
+		return true;
+	}
+	if (isThereFood()) {
+		center_square = player_position;
+		return true;
+	}
+	if (isThereWatch()) {
+		center_square = player_position;
+		return true;
+	}
+	center_square = player_position;
+	return false;
+}
+
 bool GameMap::isPassable(SquarePosition position) {
 	if (!isThereCouple(position)) {
 		return false;

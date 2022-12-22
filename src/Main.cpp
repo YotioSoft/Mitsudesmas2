@@ -171,12 +171,24 @@ void putNormies(GameMap& game_map, std::map<String, std::map<String, Array<Chara
 		if (!game_map.isPassable(man.position)) {
 			continue;
 		}
+		if (!game_map.isThereCouple({ man.position.x + 1, man.position.y })) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ man.position.x - 1, man.position.y })) {
+			continue;
+		}
 		
 		Citizen woman;
 		woman.character = characters[U"woman"][type].choice(1)[0];
 		woman.position = SquarePosition(man.position.x + 1, man.position.y);
 		
 		if (!game_map.isPassable(woman.position)) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ woman.position.x + 1, woman.position.y })) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ woman.position.x - 1, woman.position.y })) {
 			continue;
 		}
 		
@@ -212,6 +224,12 @@ void putSpacedNormies(GameMap& game_map, std::map<String, std::map<String, Array
 			if (!game_map.isPassable(SquarePosition(x, man_pos.y))) {
 				can_put = false;
 			}
+			if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+				can_put = false;
+			}
+			if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
+				can_put = false;
+			}
 		}
 		if (!can_put) {
 			continue;
@@ -224,12 +242,24 @@ void putSpacedNormies(GameMap& game_map, std::map<String, std::map<String, Array
 		if (!game_map.isPassable(man.position)) {
 			continue;
 		}
+		if (!game_map.isThereCouple({ man.position.x + 1, man.position.y })) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ man.position.x - 1, man.position.y })) {
+			continue;
+		}
 		
 		Citizen woman;
 		woman.character = characters[U"woman"][type].choice(1)[0];
 		woman.position = SquarePosition(man.position.x + 3, man.position.y);
 		
 		if (!game_map.isPassable(woman.position)) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ woman.position.x + 1, woman.position.y })) {
+			continue;
+		}
+		if (!game_map.isThereCouple({ woman.position.x - 1, woman.position.y })) {
 			continue;
 		}
 		
@@ -264,6 +294,12 @@ void putSoli(GameMap& game_map, std::map<String, std::map<String, Array<Characte
 		if (!game_map.isPassable(man_pos)) {
 			can_put = false;
 		}
+		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
+			can_put = false;
+		}
 		
 		Citizen man;
 		man.character = characters[type][U"solo"].choice(1)[0];
@@ -290,6 +326,12 @@ void putSpeakers(GameMap& game_map, std::map<String, Array<Item>>& items, int to
 		}
 			
 		if (!game_map.isPassable(man_pos)) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
 			can_put = false;
 		}
 		
@@ -320,6 +362,12 @@ void putFoods(GameMap& game_map, std::map<String, Array<Item>>& items, int total
 		if (!game_map.isPassable(man_pos)) {
 			can_put = false;
 		}
+		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
+			can_put = false;
+		}
 
 		PlacedItem item;
 		item.item = items[U"chicken"].choice(1)[0];
@@ -346,6 +394,12 @@ void putWatches(GameMap& game_map, std::map<String, Array<Item>>& items, int tot
 		}
 
 		if (!game_map.isPassable(man_pos)) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x + 1, man_pos.y })) {
+			can_put = false;
+		}
+		if (!game_map.isThereCouple({ man_pos.x - 1, man_pos.y })) {
 			can_put = false;
 		}
 

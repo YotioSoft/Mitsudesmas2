@@ -75,6 +75,7 @@ public:
 	
 	// 通行可能か否か
 	bool isPassable(SquarePosition position);
+	bool isThereCouple(SquarePosition position);
 
 	// 拡声器の操作
 	bool isThereSpeaker();

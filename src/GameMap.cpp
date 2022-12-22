@@ -46,14 +46,30 @@ void GameMap::putWatch(PlacedItem item) {
 }
 
 bool GameMap::isPassable(SquarePosition position) {
+	if (!isThereCouple(position)) {
+		return false;
+	}
+
 	bool pos_passable = true;
 	for (int i=0; i<objects_map[position.y][position.x].size(); i++) {
 		if (!objects_map[position.y][position.x][i].getChipP(object_directions_map[position.y][position.x][i])->isPassable()) {
 			pos_passable = false;
 		}
 	}
+
+	for (int i = 0; i < soli.size(); i++) {
+		if (soli[i].position.x == position.x && soli[i].position.y == position.y) {
+			pos_passable = false;
+		}
+	}
 	
-	for (int i=0; i<couples.size(); i++) {
+	return pos_passable;
+}
+
+bool GameMap::isThereCouple(SquarePosition position) {
+	bool pos_passable = true;
+
+	for (int i = 0; i < couples.size(); i++) {
 		if (couples[i].character1.position.x == position.x && couples[i].character1.position.y == position.y) {
 			pos_passable = false;
 		}
@@ -61,13 +77,7 @@ bool GameMap::isPassable(SquarePosition position) {
 			pos_passable = false;
 		}
 	}
-	
-	for (int i=0; i<soli.size(); i++) {
-		if (soli[i].position.x == position.x && soli[i].position.y == position.y) {
-			pos_passable = false;
-		}
-	}
-	
+
 	return pos_passable;
 }
 

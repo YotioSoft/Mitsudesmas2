@@ -8,6 +8,8 @@ void Main();
 typedef struct MapStruct {
 	GameMap game_map;
 	Duration remining_time;
+	int rest_speakers;
+	int rest_normies;
 	int speakers;
 	int foods;
 	int watches;
@@ -15,9 +17,11 @@ typedef struct MapStruct {
 	FilePath bgm_path;
 	
 	MapStruct() {}
-	MapStruct(GameMap& init_map, Duration init_remining, int init_speakers, int init_foods, int init_watches, Color init_font_color, FilePath init_bgm_path) {
+	MapStruct(GameMap& init_map, Duration init_remining, int init_rest_normies, int init_rest_speakers, int init_speakers, int init_foods, int init_watches, Color init_font_color, FilePath init_bgm_path) {
 		game_map = init_map;
 		remining_time = init_remining;
+		rest_speakers = init_rest_speakers;
+		rest_normies = init_rest_normies;
 		speakers = init_speakers;
 		foods = init_foods;
 		watches = init_watches;
@@ -28,6 +32,9 @@ typedef struct MapStruct {
 
 // タイトル画面
 int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) {
+	// 背景色
+	Scene::SetBackground(Palette::Lightgreen);
+
 	// 画像の読み込み
 	Texture logo_img(Unicode::Widen(CURRENT_DIR) + U"/img/logo.png");
 	
@@ -436,7 +443,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	double HP = 100;
 	
 	// 残りのカップル数
-	int rest = map_struct.speakers;
+	int rest = map_struct.rest_normies;
 	int init_rest = rest;
 
 	// 残りの拡声器
@@ -446,12 +453,12 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	GameMap game_map = map_struct.game_map;
 	
 	// キャラクターの配置
-	putNormies(game_map, characters, rest);
+	putNormies(game_map, characters, map_struct.rest_normies);
 	putSpacedNormies(game_map, characters, 10);
 	putSoli(game_map, characters, 10);
-	putSpeakers(game_map, items, rest * 2);
-	putFoods(game_map, items, 10);
-	putWatches(game_map, items, 5);
+	putSpeakers(game_map, items, map_struct.rest_normies * 2);
+	putFoods(game_map, items, map_struct.foods);
+	putWatches(game_map, items, map_struct.watches);
 	
 	// 画像の読み込み
 	Texture img_mitsudesu(Unicode::Widen(CURRENT_DIR) + U"/img/密です.png");
@@ -629,8 +636,6 @@ void Main() {
 	std::cout << Unicode::Widen(CURRENT_DIR) << std::endl;
 	Window::SetTitle(U"ミツデスマス2");
 	
-	// 背景色
-	Scene::SetBackground(Palette::Lightgreen);
 	Scene::SetTextureFilter(TextureFilter::Nearest);
 	
 	// マップオブジェクトの読み込み
@@ -642,13 +647,13 @@ void Main() {
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage1(map1, Duration(90), 20, 10, 40, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage1(map1, Duration(90), 20, 15, 10, 10, 10, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(map2, Duration(240), 20, 15, 40, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
+	MapStruct stage2(map2, Duration(240), 20, 15, 10, 15, 10, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(map3, Duration(600), 30, 30, 40, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
+	MapStruct stage3(map3, Duration(600), 40, 30, 20, 30, 30, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

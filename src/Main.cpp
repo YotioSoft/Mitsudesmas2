@@ -8,15 +8,19 @@ void Main();
 typedef struct MapStruct {
 	GameMap game_map;
 	Duration remining_time;
-	int rest;
+	int speakers;
+	int foods;
+	int watches;
 	Color font_color;
 	FilePath bgm_path;
 	
 	MapStruct() {}
-	MapStruct(GameMap& init_map, Duration init_remining, int init_rest, Color init_font_color, FilePath init_bgm_path) {
+	MapStruct(GameMap& init_map, Duration init_remining, int init_speakers, int init_foods, int init_watches, Color init_font_color, FilePath init_bgm_path) {
 		game_map = init_map;
 		remining_time = init_remining;
-		rest = init_rest;
+		speakers = init_speakers;
+		foods = init_foods;
+		watches = init_watches;
 		font_color = init_font_color;
 		bgm_path = init_bgm_path;
 	}
@@ -432,7 +436,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	double HP = 100;
 	
 	// 残りのカップル数
-	int rest = map_struct.rest;
+	int rest = map_struct.speakers;
 	int init_rest = rest;
 
 	// 残りの拡声器
@@ -638,13 +642,13 @@ void Main() {
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage1(map1, Duration(90), 20, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage1(map1, Duration(90), 20, 10, 40, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(map2, Duration(240), 20, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
+	MapStruct stage2(map2, Duration(240), 20, 15, 40, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage2.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(map3, Duration(600), 40, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
+	MapStruct stage3(map3, Duration(600), 30, 30, 40, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage3.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

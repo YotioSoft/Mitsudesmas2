@@ -46,6 +46,6 @@ public:
 	MapChip* getChipP(MapChipProfiles::Directions direction);
 
 	// •`‰æiÀÛ‚Ì•`‰æ‚Íchips.draw‚Ås‚¤j
-	bool draw(const MapChipProfiles::Directions direction, const Point position);
+	bool draw(const MapChipProfiles::Directions direction, const Point position, const bool high_light);
 };
 

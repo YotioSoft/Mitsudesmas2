@@ -54,10 +54,13 @@ MapChip* MapObject::getChipP(MapChipProfiles::Directions direction) {
 	return nullptr;
 }
 
-bool MapObject::draw(const MapChipProfiles::Directions direction, const Point position) {
+bool MapObject::draw(const MapChipProfiles::Directions direction, const Point position, const bool high_light) {
 	for (int i = 0; i < chips.size(); i++) {
 		if (chips[i].getDirection() == direction) {
-			chips[i].draw(position);
+			if (high_light)
+				chips[i].drawLight(position);
+			else
+				chips[i].draw(position);
 			return true;
 		}
 	}

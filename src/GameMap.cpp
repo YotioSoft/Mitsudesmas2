@@ -53,6 +53,9 @@ bool GameMap::isThereAnything(SquarePosition position) {
 	if (!isPassable(position)) {
 		return true;
 	}
+	if (position.x < 0 || position.y < 0 || position.x >= objects_map.width() || position.y >= objects_map.height()) {
+		return false;
+	}
 	SquarePosition player_position = center_square;
 	center_square = position;
 	if (isThereSpeaker()) {
@@ -79,6 +82,9 @@ bool GameMap::isPassable(SquarePosition position) {
 	if (!isThereCouple(position)) {
 		return false;
 	}
+	if (position.x < 0 || position.y < 0 || position.x >= objects_map.width() || position.y >= objects_map.height()) {
+		return false;
+	}
 
 	bool pos_passable = true;
 	for (int i=0; i<objects_map[position.y][position.x].size(); i++) {
@@ -97,6 +103,10 @@ bool GameMap::isPassable(SquarePosition position) {
 }
 
 bool GameMap::isThereCouple(SquarePosition position) {
+	if (position.x < 0 || position.y < 0 || position.x >= objects_map.width() || position.y >= objects_map.height()) {
+		return false;
+	}
+
 	bool pos_passable = true;
 
 	for (int i = 0; i < couples.size(); i++) {
@@ -112,6 +122,10 @@ bool GameMap::isThereCouple(SquarePosition position) {
 }
 
 bool GameMap::isThereSpeaker() {
+	if (center_square.x < 0 || center_square.y < 0 || center_square.x >= objects_map.width() || center_square.y >= objects_map.height()) {
+		return false;
+	}
+
 	for (int i = 0; i < speakers.size(); i++) {
 		if (speakers[i].position.x == center_square.x && speakers[i].position.y == center_square.y) {
 			return true;
@@ -130,6 +144,10 @@ void GameMap::removeCenterSpeaker() {
 }
 
 bool GameMap::isThereFood() {
+	if (center_square.x < 0 || center_square.y < 0 || center_square.x >= objects_map.width() || center_square.y >= objects_map.height()) {
+		return false;
+	}
+
 	for (int i = 0; i < foods.size(); i++) {
 		if (foods[i].position.x == center_square.x && foods[i].position.y == center_square.y) {
 			return true;
@@ -148,6 +166,10 @@ void GameMap::removeCenterFood() {
 }
 
 bool GameMap::isThereWatch() {
+	if (center_square.x < 0 || center_square.y < 0 || center_square.x >= objects_map.width() || center_square.y >= objects_map.height()) {
+		return false;
+	}
+
 	for (int i = 0; i < watches.size(); i++) {
 		if (watches[i].position.x == center_square.x && watches[i].position.y == center_square.y) {
 			return true;
@@ -166,6 +188,10 @@ void GameMap::removeCenterWatch() {
 }
 
 bool GameMap::isThereBulldozer() {
+	if (center_square.x < 0 || center_square.y < 0 || center_square.x >= objects_map.width() || center_square.y >= objects_map.height()) {
+		return false;
+	}
+
 	for (int i = 0; i < bulldozers.size(); i++) {
 		if (bulldozers[i].position.x == center_square.x && bulldozers[i].position.y == center_square.y) {
 			return true;
@@ -372,10 +398,11 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	
 	// プレイヤーの周囲にキャラクターがいたらロックオン
 	bool locked_on_already = false;
+	Point player_direction = player.getDirection();
 	for (int i=0; i<couples.size(); i++) {
 		couples[i].locked_on = false;
 		
-		if (player.getDirection() == Direction::TOP) {
+		if (player_direction == Direction::TOP) {
 			if (couples[i].character1.position.x <= center_square.x && couples[i].character2.position.x >= center_square.x &&
 				couples[i].character1.position.y - center_square.y >= -2 && couples[i].character1.position.y - center_square.y <= -1 &&
 				!locked_on_already) {
@@ -383,7 +410,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::LEFT) {
+		else if (player_direction == Direction::LEFT) {
 			if (couples[i].character1.position.y == center_square.y &&
 				((couples[i].character1.position.x - center_square.x >= -2 && couples[i].character1.position.x - center_square.x <= -1) ||
 				 (couples[i].character2.position.x - center_square.x >= -2 && couples[i].character2.position.x - center_square.x <= -1)) &&
@@ -392,7 +419,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::BOTTOM) {
+		else if (player_direction == Direction::BOTTOM) {
 			if (couples[i].character1.position.x <= center_square.x && couples[i].character2.position.x >= center_square.x &&
 				couples[i].character1.position.y - center_square.y <= 2 && couples[i].character1.position.y - center_square.y >= 1 &&
 				!locked_on_already) {
@@ -400,7 +427,7 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::RIGHT) {
+		else if (player_direction == Direction::RIGHT) {
 			if (couples[i].character1.position.y == center_square.y &&
 				((couples[i].character1.position.x - center_square.x <= 2 && couples[i].character1.position.x - center_square.x >= 1) ||
 				 (couples[i].character2.position.x - center_square.x <= 2 && couples[i].character2.position.x - center_square.x >= 1)) &&
@@ -413,15 +440,15 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	for (int i=0; i<soli.size(); i++) {
 		soli[i].locked_on = false;
 		
-		if (player.getDirection() == Direction::TOP) {
-			if (soli[i].position.x <= center_square.x &&
+		if (player_direction == Direction::TOP) {
+			if (soli[i].position.x == center_square.x &&
 				soli[i].position.y - center_square.y >= -2 && soli[i].position.y - center_square.y <= -1 &&
 				!locked_on_already) {
 				soli[i].locked_on = true;
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::LEFT) {
+		else if (player_direction == Direction::LEFT) {
 			if (soli[i].position.y == center_square.y &&
 				(soli[i].position.x - center_square.x >= -2 && soli[i].position.x - center_square.x <= -1) &&
 				!locked_on_already) {
@@ -429,15 +456,15 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::BOTTOM) {
-			if (soli[i].position.x <= center_square.x && soli[i].position.x >= center_square.x &&
+		else if (player_direction == Direction::BOTTOM) {
+			if (soli[i].position.x == center_square.x &&
 				soli[i].position.y - center_square.y <= 2 && soli[i].position.y - center_square.y >= 1 &&
 				!locked_on_already) {
 				soli[i].locked_on = true;
 				locked_on_already = true;
 			}
 		}
-		else if (player.getDirection() == Direction::RIGHT) {
+		else if (player_direction == Direction::RIGHT) {
 			if (soli[i].position.y == center_square.y &&
 				(soli[i].position.x - center_square.x <= 2 && soli[i].position.x - center_square.x >= 1) &&
 				!locked_on_already) {
@@ -445,6 +472,52 @@ SquarePosition GameMap::moveCamera(Point direction) {
 				locked_on_already = true;
 			}
 		}
+	}
+
+	// ブルドーザー用に地形・建物をロックオン
+	locked_on_map_chip = { -1, -1 };
+	if (!locked_on_already) {
+		if (player_direction == Direction::TOP && center_square.y - 1 >= 0) {
+			int y = center_square.y - 1, x = center_square.x;
+			if (objects_map[y][x].size() > 1) {
+				if (!objects_map[y][x][1].
+					getChipP(object_directions_map[y][x][1])->isPassable()) {
+					locked_on_map_chip.x = x;
+					locked_on_map_chip.y = y;
+				}
+			}
+		}
+		else if (player_direction == Direction::LEFT && center_square.x - 1 >= 0) {
+			int y = center_square.y, x = center_square.x - 1;
+			if (objects_map[y][x].size() > 1) {
+				if (!objects_map[y][x][1].
+					getChipP(object_directions_map[y][x][1])->isPassable()) {
+					locked_on_map_chip.x = x;
+					locked_on_map_chip.y = y;
+				}
+			}
+		}
+		else if (player_direction == Direction::BOTTOM && center_square.y + 1 < objects_map.height()) {
+			int y = center_square.y + 1, x = center_square.x;
+			if (objects_map[y][x].size() > 1) {
+				if (!objects_map[y][x][1].
+					getChipP(object_directions_map[y][x][1])->isPassable()) {
+					locked_on_map_chip.x = x;
+					locked_on_map_chip.y = y;
+				}
+			}
+		}
+		else if (player_direction == Direction::RIGHT && center_square.x + 1 < objects_map.width()) {
+			int y = center_square.y, x = center_square.x + 1;
+			if (objects_map[y][x].size() > 1) {
+				if (!objects_map[y][x][1].
+					getChipP(object_directions_map[y][x][1])->isPassable()) {
+					locked_on_map_chip.x = x;
+					locked_on_map_chip.y = y;
+				}
+			}
+		}
+		Print << U"{},{}"_fmt(locked_on_map_chip.x, locked_on_map_chip.y);
 	}
 
 	return center_square;
@@ -513,7 +586,12 @@ void GameMap::draw() {
 			}
 			
 			for (int i = 0; i < objects_map[y][x].size(); i++) {
-				objects_map[y][x][i].draw(object_directions_map[y][x][i], squarePositionToPoint(SquarePosition(x, y)));
+				if (x == locked_on_map_chip.x && y == locked_on_map_chip.y) {
+					objects_map[y][x][i].draw(object_directions_map[y][x][i], squarePositionToPoint(SquarePosition(x, y)), true);
+				}
+				else {
+					objects_map[y][x][i].draw(object_directions_map[y][x][i], squarePositionToPoint(SquarePosition(x, y)), false);
+				}
 			}
 		}
 		

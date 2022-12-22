@@ -30,3 +30,7 @@ MapChipProfiles::Types MapChip::getType() {
 void MapChip::draw(Point position) {
 	texture.draw(position);
 }
+void MapChip::drawLight(Point position) {
+	const ScopedColorAdd2D state(Color(80, 80, 80, 0));
+	texture.draw(position);
+}

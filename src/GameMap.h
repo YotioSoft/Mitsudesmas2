@@ -51,6 +51,9 @@ private:
 
 	// 座標のオフセット（-32?32）
 	Point square_position_offset = Point(0, 0);
+
+	// ロックオンされたマップチップの座標
+	SquarePosition locked_on_map_chip;
 	
 	// 移動が遅いモード
 	bool slow_mode = false;

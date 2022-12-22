@@ -21,6 +21,9 @@ private:
 	// キャラクターの通行の可否
 	bool passable;
 
+	// ロックオンされているか？
+	bool locked_on;
+
 public:
 	// コンストラクタ
 	MapChip(Image &chip_image, int init_position_number, MapChipProfiles::Types init_type, MapChipProfiles::Directions init_direction, bool init_passable);
@@ -36,5 +39,5 @@ public:
 
 	// 描画
 	void draw(Point position);
-	void draw(SquarePosition sposition);
+	void drawLight(Point position);
 };

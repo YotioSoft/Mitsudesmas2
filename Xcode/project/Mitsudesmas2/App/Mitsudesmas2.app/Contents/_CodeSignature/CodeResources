@@ -12,14 +12,6 @@
 		<data>
 		bUJ2SgCgQt04DWNtMHIU1JxawDY=
 		</data>
-		<key>Resources/audio/bgm_stage2.mp3</key>
-		<data>
-		l43m9pnzDIKd8BZUoKxlAeRXAxc=
-		</data>
-		<key>Resources/audio/bgm_stage3.mp3</key>
-		<data>
-		pYVXIcBtLRtDWJ9BYrbqURxLwIo=
-		</data>
 		<key>Resources/audio/bomb1.mp3</key>
 		<data>
 		Yak1ptYYVDo6AjrQgSaYqHYaMso=
@@ -28,13 +20,21 @@
 		<data>
 		GokZ59eDdZZ9LPyCsplugooutxY=
 		</data>
+		<key>Resources/audio/bulldozer.mp3</key>
+		<data>
+		Jwb5hn0gqpAmURd1tuukvB1Iptk=
+		</data>
+		<key>Resources/audio/gain.mp3</key>
+		<data>
+		HcJUP4j97j+MhufG1KTig4ZoyWM=
+		</data>
 		<key>Resources/audio/handgun-firing1.mp3</key>
 		<data>
 		w+L3fKN1aaefuJAq+zTKjLtyzzk=
 		</data>
 		<key>Resources/data/maps/map1.csv</key>
 		<data>
-		bHMEwCjDMrYXBnxJHKh6WuCY65E=
+		wrzlYYUwG+cxyYhbB2ZM7Jxl8Sg=
 		</data>
 		<key>Resources/data/maps/map1.rpgmap</key>
 		<data>
@@ -46,31 +46,39 @@
 		</data>
 		<key>Resources/data/maps/map2.csv</key>
 		<data>
-		IP/sd/mGg6qd6yBiEjjSwGdgWFU=
+		iMGolYrcekrXdOwZ263ExLoxg/8=
 		</data>
 		<key>Resources/data/maps/map2.rpgmap</key>
 		<data>
 		ZjikkFhEopGIVJeIBzVsrIYVun8=
 		</data>
-		<key>Resources/data/maps/map2.xlsx</key>
-		<data>
-		OOOUXfkveuHBW1DUWM15cDF7QUs=
-		</data>
 		<key>Resources/data/maps/map3.csv</key>
 		<data>
-		sECliKhjcWYlnNmllZZ3+6i5fcE=
+		LLBU1okfoIqGn2/xysxw2b1hpgw=
 		</data>
 		<key>Resources/data/maps/map3.rpgmap</key>
 		<data>
 		dnzwm4ECCbHnpfnOZhRM8o4nzxM=
 		</data>
-		<key>Resources/data/maps/map3.xlsx</key>
-		<data>
-		7IHwD1SmPueTi/X95IW+y79HkJY=
-		</data>
 		<key>Resources/data/maps/map3のコピー.xlsx</key>
 		<data>
 		bh2iZC/zMWHtgGK+JsDL8KotMlQ=
+		</data>
+		<key>Resources/data/maps/map4.csv</key>
+		<data>
+		MqKbz6KSiZO16+64HGVXSpLyVYo=
+		</data>
+		<key>Resources/data/maps/map4.xlsx</key>
+		<data>
+		vwYCfh5XrIbBrUmatDbkKiS/hQU=
+		</data>
+		<key>Resources/data/maps/map5.csv</key>
+		<data>
+		sECliKhjcWYlnNmllZZ3+6i5fcE=
+		</data>
+		<key>Resources/data/maps/map5.xlsx</key>
+		<data>
+		7IHwD1SmPueTi/X95IW+y79HkJY=
 		</data>
 		<key>Resources/engine/font/fontawesome/LICENSE.txt</key>
 		<data>
@@ -307,6 +315,10 @@
 		<key>Resources/img/charactors/.DS_Store</key>
 		<data>
 		PPleVt5MRdXmsU9qlX6L99JMrWU=
+		</data>
+		<key>Resources/img/charactors/items/bulldozer.png</key>
+		<data>
+		S9GxQXcIHz1TSrWEhHhFRVbHVgs=
 		</data>
 		<key>Resources/img/charactors/items/chicken.png</key>
 		<data>
@@ -726,7 +738,7 @@
 		</data>
 		<key>Resources/sozai.txt</key>
 		<data>
-		2EAuujKbNWe2mdnZKKGN7Xvrk/I=
+		drCV7QIsTkoROZCoU9sB2vzQ+PM=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -745,20 +757,6 @@
 			qA1ZhpuezPySxqYpaIsNtU3ENp8rkg9iEVF381/ACVk=
 			</data>
 		</dict>
-		<key>Resources/audio/bgm_stage2.mp3</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			/Dd6sI0K1+NN9wwzFFIHiOpS5o5b69icECPWbkNsWzU=
-			</data>
-		</dict>
-		<key>Resources/audio/bgm_stage3.mp3</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			DUMtbxBd35P7V6ko6R6jRwpaDHhpaCjClksT4yvGR7U=
-			</data>
-		</dict>
 		<key>Resources/audio/bomb1.mp3</key>
 		<dict>
 			<key>hash2</key>
@@ -773,6 +771,20 @@
 			nx5rJXrD14p2ENtqFQxEFwdJDmfakKC2ptbuA9CL8Fg=
 			</data>
 		</dict>
+		<key>Resources/audio/bulldozer.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Vvqs7pfweK97+9sn0tHvPzFzhsWQqVYnhD1EdR9DI2E=
+			</data>
+		</dict>
+		<key>Resources/audio/gain.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jPflygoiItSZfJQqi+TuIeMkB9bIBY/v1BsWKN/upUQ=
+			</data>
+		</dict>
 		<key>Resources/audio/handgun-firing1.mp3</key>
 		<dict>
 			<key>hash2</key>
@@ -784,7 +796,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HpjWz5D2j2ZFA84NCkcohzHsqv/hEDWDI74QawwlBno=
+			3EFtpjP7CZuREDPNexYNxfuMk7zK9YQllq//zyM8MwE=
 			</data>
 		</dict>
 		<key>Resources/data/maps/map1.rpgmap</key>
@@ -805,7 +817,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WbPal09HbksWqRK2vI9FuxWrndfizHfxSJ5GZCv0HPQ=
+			cPDvA2mJQXiX1MrV9lyXRcuPeBdVm28VCZN8WJ/DyTE=
 			</data>
 		</dict>
 		<key>Resources/data/maps/map2.rpgmap</key>
@@ -815,18 +827,11 @@
 			ChGQKjy5QPdOG//Q0Y9ZSIf0yGL5tDdvJo9FWvOLO7Q=
 			</data>
 		</dict>
-		<key>Resources/data/maps/map2.xlsx</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Am131jwpXpQgfL0sluwaIy3PnMOCqMrvrINYTBM7H7I=
-			</data>
-		</dict>
 		<key>Resources/data/maps/map3.csv</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VH4fHwXp8tNAYOdDQYgNyl5rWEX1zbPzqaZg1Zx1FLU=
+			h3oDJTRT8GbAW17mD0QaPCjXG7emaG9GdzChQnaEIfA=
 			</data>
 		</dict>
 		<key>Resources/data/maps/map3.rpgmap</key>
@@ -836,18 +841,39 @@
 			xwicroQ3ZnlFDNxWqFV6Bzr92WH2gwPOqdE8WDMt/tk=
 			</data>
 		</dict>
-		<key>Resources/data/maps/map3.xlsx</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			aTPMt+6l+N4TV0LJxU8/HqZ8KQVQJKk5ha6uDWHs5fo=
-			</data>
-		</dict>
 		<key>Resources/data/maps/map3のコピー.xlsx</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			M3WHk1Pkg4+7sCkgj1pE00W9ONAg+aFW6w9VYEIhjVU=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map4.csv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0s3Hp0IplraCWE3qtXt0uQsfhSmB9db7rWc6mb5bis8=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map4.xlsx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			frFcO8p6gTyXctnfiacdq1mySXW4time1UnkUVa+z2w=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map5.csv</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VH4fHwXp8tNAYOdDQYgNyl5rWEX1zbPzqaZg1Zx1FLU=
+			</data>
+		</dict>
+		<key>Resources/data/maps/map5.xlsx</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aTPMt+6l+N4TV0LJxU8/HqZ8KQVQJKk5ha6uDWHs5fo=
 			</data>
 		</dict>
 		<key>Resources/engine/font/fontawesome/LICENSE.txt</key>
@@ -1247,6 +1273,13 @@
 			<key>hash2</key>
 			<data>
 			C62A5kqbQj9/SBrjpva0f+UNRsethGYZXwYJFF6OP7U=
+			</data>
+		</dict>
+		<key>Resources/img/charactors/items/bulldozer.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cLa/aBac/B4jongNNxocI/sxBJV4x82Tpz/kmE8JA1A=
 			</data>
 		</dict>
 		<key>Resources/img/charactors/items/chicken.png</key>
@@ -1981,7 +2014,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			u+Sq+XwSLHCFhdyPGfIpJuQRan0Rg5sQu/n11tA1tC4=
+			H/BVhCPLWIIZfdArcCUwOdVRYxdeCS8H96dCHSbx3Dk=
 			</data>
 		</dict>
 	</dict>

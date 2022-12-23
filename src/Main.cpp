@@ -46,8 +46,8 @@ typedef struct ScoreConf {
 // スコア情報の読み込み
 ScoreConf loadScoreConf() {
 	ScoreConf conf;
-	if (FileSystem::Exists(Unicode::Widen(CURRENT_DIR) + U"/data/score.json")) {
-		const JSON conf_json = JSON::Load(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
+	if (FileSystem::Exists(Unicode::Widen(CURRENT_DIR) + U"/../score.json")) {
+		const JSON conf_json = JSON::Load(Unicode::Widen(CURRENT_DIR) + U"/../score.json");
 		if (not conf_json) {
 			throw Error{ U"Failed to load `score.json`" };
 		}
@@ -79,7 +79,7 @@ void saveScoreConf(ScoreConf conf) {
 	conf_json[U"stage4_score"] = conf.stage_score[3];
 	conf_json[U"stage5_score"] = conf.stage_score[4];
 
-	conf_json.save(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
+	conf_json.save(Unicode::Widen(CURRENT_DIR) + U"/../score.json");
 }
 
 // タイトル画面

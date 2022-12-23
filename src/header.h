@@ -7,7 +7,7 @@
 #if defined(_WIN32) || defined(_WIN64)
 	#define CURRENT_DIR     "./"
 #else
-	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/Resources"
+	#define CURRENT_DIR     "./Mitsudesmas2.app/Contents/m2"
 #endif
 #define TITLE_FONT_COLOR	Palette::Black
 #define TOTAL_STAGES		5

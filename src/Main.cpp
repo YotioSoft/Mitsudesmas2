@@ -46,8 +46,8 @@ typedef struct ScoreConf {
 // スコア情報の読み込み
 ScoreConf loadScoreConf() {
 	ScoreConf conf;
-	if (FileSystem::Exists(Unicode::Widen(CURRENT_DIR) + U"/../score.json")) {
-		const JSON conf_json = JSON::Load(Unicode::Widen(CURRENT_DIR) + U"/../score.json");
+	if (FileSystem::Exists(Unicode::Widen(CURRENT_DIR) + U"/data/score.json")) {
+		const JSON conf_json = JSON::Load(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
 		if (not conf_json) {
 			throw Error{ U"Failed to load `score.json`" };
 		}
@@ -79,7 +79,7 @@ void saveScoreConf(ScoreConf conf) {
 	conf_json[U"stage4_score"] = conf.stage_score[3];
 	conf_json[U"stage5_score"] = conf.stage_score[4];
 
-	conf_json.save(Unicode::Widen(CURRENT_DIR) + U"/../score.json");
+	conf_json.save(Unicode::Widen(CURRENT_DIR) + U"/data/score.json");
 }
 
 // タイトル画面
@@ -160,22 +160,35 @@ int TitleMenu(std::map<String, std::map<String, Array<Character>>>& characters) 
 int HowToPlay() {
 	// フォントを用意
 	const Font font20(20);
+	const Font font25(25);
 	const Font font40(40);
-	const Font font60(60);
+
+	// アイテム画像を読み込み
+	Texture food = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/chicken.png");
+	Texture watch = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/watch.png");
+	Texture bulldozer = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/bulldozer.png");
 
 	while (System::Update())
 	{
-		font60(U"あそびかた").draw(30, 10, TITLE_FONT_COLOR);
+		font40(U"あそびかた").draw(30, 10, TITLE_FONT_COLOR);
 
-		font40(U"ルール").draw(30, 100, TITLE_FONT_COLOR);
-		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 150, TITLE_FONT_COLOR);
+		font25(U"ルール").draw(30, 80, TITLE_FONT_COLOR);
+		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 110, TITLE_FONT_COLOR);
+		
+		font25(U"操作方法").draw(30, 260, TITLE_FONT_COLOR);
+		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー : 「密です」という").draw(30, 290, TITLE_FONT_COLOR);
 
-		font40(U"操作方法").draw(30, 300, TITLE_FONT_COLOR);
-		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー：「密です」という").draw(30, 350, TITLE_FONT_COLOR);
+		font25(U"アイテム").draw(30, 350, TITLE_FONT_COLOR);
+		food.resized(32, 32).draw(30, 390);
+		font20(U"チキン : HP が 10 回復します。").draw(135, 390, TITLE_FONT_COLOR);
+		watch.resized(32, 32).draw(30, 420);
+		font20(U"時計 : 残り時間を 10 秒追加します。").draw(135, 420, TITLE_FONT_COLOR);
+		bulldozer.resized(32, 32).draw(30, 450);
+		font20(U"ブルドーザー : 障害物（山や木、建物など）を取り除きます。").draw(135, 450, TITLE_FONT_COLOR);
 
-		font20(U"フリー素材・ライブラリ情報は              　をご覧ください。").draw(30, 450, TITLE_FONT_COLOR);
+		font20(U"フリー素材・ライブラリ情報は                  をご覧ください。").draw(30, 550, TITLE_FONT_COLOR);
 
-		if (SimpleGUI::Button(U"こちら", Vec2(30 + font20(U"フリー素材・ライブラリ情報は").region(Point(30, 400)).size.x, 440))) {
+		if (SimpleGUI::Button(U"こちら", Vec2(30 + font20(U"フリー素材・ライブラリ情報は").region(Point(30, 500)).size.x, 540))) {
 			return 1;
 		}
 

@@ -13,7 +13,7 @@
     - MAKOOTO 様(https://dova-s.jp/_contents/author/profile263.html)
 
 [効果音]
-・爆発1、拳銃を撃つ、ボヨヨヨーン
+・爆発1、拳銃を撃つ、ボヨヨヨーン、ドリル、ゲージ回復3
     - 効果音ラボ 様(https://soundeffect-lab.info/)
 
 開発者・作成者様方にはお礼を申し上げます。

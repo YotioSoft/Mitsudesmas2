@@ -407,41 +407,66 @@ SquarePosition GameMap::moveCamera(Point direction) {
 	// プレイヤーの周囲にキャラクターがいたらロックオン
 	bool locked_on_already = false;
 	Point player_direction = player.getDirection();
+	int locked_on_dist, locked_on_i = -1;
 	for (int i=0; i<couples.size(); i++) {
 		couples[i].locked_on = false;
 		
 		if (player_direction == Direction::TOP) {
 			if (couples[i].character1.position.x <= center_square.x && couples[i].character2.position.x >= center_square.x &&
-				couples[i].character1.position.y - center_square.y >= -2 && couples[i].character1.position.y - center_square.y <= -1 &&
-				!locked_on_already) {
-				couples[i].locked_on = true;
-				locked_on_already = true;
+				couples[i].character1.position.y - center_square.y >= -2 && couples[i].character1.position.y - center_square.y <= -1) {
+				if (!locked_on_already || locked_on_dist > abs(couples[i].character1.position.y - center_square.y)) {
+					if (locked_on_i >= 0) {
+						couples[locked_on_i].locked_on = false;
+					}
+					couples[i].locked_on = true;
+					locked_on_i = i;
+					locked_on_dist = abs(couples[i].character1.position.y - center_square.y);
+					locked_on_already = true;
+				}
 			}
 		}
 		else if (player_direction == Direction::LEFT) {
 			if (couples[i].character1.position.y == center_square.y &&
 				((couples[i].character1.position.x - center_square.x >= -2 && couples[i].character1.position.x - center_square.x <= -1) ||
-				 (couples[i].character2.position.x - center_square.x >= -2 && couples[i].character2.position.x - center_square.x <= -1)) &&
-				!locked_on_already) {
-				couples[i].locked_on = true;
-				locked_on_already = true;
+				 (couples[i].character2.position.x - center_square.x >= -2 && couples[i].character2.position.x - center_square.x <= -1))) {
+				if (!locked_on_already || locked_on_dist > abs(couples[i].character1.position.y - center_square.y)) {
+					if (locked_on_i >= 0) {
+						couples[locked_on_i].locked_on = false;
+					}
+					couples[i].locked_on = true;
+					locked_on_i = i;
+					locked_on_dist = abs(couples[i].character1.position.y - center_square.y);
+					locked_on_already = true;
+				}
 			}
 		}
 		else if (player_direction == Direction::BOTTOM) {
 			if (couples[i].character1.position.x <= center_square.x && couples[i].character2.position.x >= center_square.x &&
-				couples[i].character1.position.y - center_square.y <= 2 && couples[i].character1.position.y - center_square.y >= 1 &&
-				!locked_on_already) {
-				couples[i].locked_on = true;
-				locked_on_already = true;
+				couples[i].character1.position.y - center_square.y <= 2 && couples[i].character1.position.y - center_square.y >= 1) {
+				if (!locked_on_already || locked_on_dist > abs(couples[i].character1.position.y - center_square.y)) {
+					if (locked_on_i >= 0) {
+						couples[locked_on_i].locked_on = false;
+					}
+					couples[i].locked_on = true;
+					locked_on_i = i;
+					locked_on_dist = abs(couples[i].character1.position.y - center_square.y);
+					locked_on_already = true;
+				}
 			}
 		}
 		else if (player_direction == Direction::RIGHT) {
 			if (couples[i].character1.position.y == center_square.y &&
 				((couples[i].character1.position.x - center_square.x <= 2 && couples[i].character1.position.x - center_square.x >= 1) ||
-				 (couples[i].character2.position.x - center_square.x <= 2 && couples[i].character2.position.x - center_square.x >= 1)) &&
-				!locked_on_already) {
-				couples[i].locked_on = true;
-				locked_on_already = true;
+				 (couples[i].character2.position.x - center_square.x <= 2 && couples[i].character2.position.x - center_square.x >= 1))) {
+				if (!locked_on_already || locked_on_dist > abs(couples[i].character1.position.y - center_square.y)) {
+					if (locked_on_i >= 0) {
+						couples[locked_on_i].locked_on = false;
+					}
+					couples[i].locked_on = true;
+					locked_on_i = i;
+					locked_on_dist = abs(couples[i].character1.position.y - center_square.y);
+					locked_on_already = true;
+				}
 			}
 		}
 	}

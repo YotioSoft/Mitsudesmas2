@@ -1,12 +1,13 @@
 ﻿[ライブラリ]
 ・OpenSiv3D
-    - Ryo Suzuki 様、OpenSiv3D Project 様（https://siv3d.github.io/ja-jp/）
+    - Ryo Suzuki 様、OpenSiv3D Project の皆様（https://siv3d.github.io/ja-jp/）
 
 [画像素材]
 ・フィールドマップセット１、ウディタ２用マップセット、マップセット1
     - ぴぽや 様(https://pipoya.net/blog/)
 ・パンク吹き出し素材216
     - フキダシデザイン 様(https://fukidesign.com/)
+・いらすとや 様（https://www.irasutoya.com）
 
 [BGM]
 ・Hawk Eye

@@ -173,10 +173,10 @@ int HowToPlay() {
 		font40(U"あそびかた").draw(30, 10, TITLE_FONT_COLOR);
 
 		font25(U"ルール").draw(30, 80, TITLE_FONT_COLOR);
-		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\nすでに距離を開けているカップルや、カップルじゃない人に「密です」というと\n怒られ、MPが減ります。4回怒られたらゲームオーバーです。\nHPが0になると歩き方が遅くなります。").draw(30, 110, TITLE_FONT_COLOR);
+		font20(U"密になっているカップルに「密です」といい距離を開けてもらいます。\n時間内にマップ上のすべてのカップルが距離を開けたらゲームクリアです。\n「密です」の回数には上限があります。\nすでに距離を開けているカップルや、カップルじゃない人もいるのでご注意ください。").draw(30, 110, TITLE_FONT_COLOR);
 		
-		font25(U"操作方法").draw(30, 260, TITLE_FONT_COLOR);
-		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー : 「密です」という").draw(30, 290, TITLE_FONT_COLOR);
+		font25(U"操作方法").draw(30, 240, TITLE_FONT_COLOR);
+		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー : カップルに対して「密です」という or 障害物をブルドーザーで除去").draw(30, 270, TITLE_FONT_COLOR);
 
 		font25(U"アイテム").draw(30, 350, TITLE_FONT_COLOR);
 		food.resized(32, 32).draw(30, 390);

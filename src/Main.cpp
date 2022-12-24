@@ -788,19 +788,19 @@ void Main() {
 	
 	// MapStructを作成
 	GameMap map1(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map1.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage1(1, map1, Duration(90), 10, 5, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage1(1, map1, Duration(20), 10, 5, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(2, map2, Duration(100), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage2(2, map2, Duration(30), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(3, map3, Duration(150), 20, 15, 3, 20, 20, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage3(3, map3, Duration(70), 20, 15, 3, 20, 20, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 
 	GameMap map4(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map4.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(3, 45));
-	MapStruct stage4(4, map4, Duration(200), 30, 20, 8, 20, 30, 30, 10, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage4(4, map4, Duration(100), 30, 20, 8, 20, 30, 30, 10, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 
 	GameMap map5(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map5.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage5(5, map5, Duration(600), 40, 30, 10, 20, 30, 30, 20, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage5(5, map5, Duration(300), 40, 30, 10, 20, 30, 30, 20, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

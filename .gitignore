@@ -41,6 +41,6 @@ DerivedData/
 Xcode/lib
 Xcode/include
 
-Xcode/project/Mitsudesmas2/App/Mitsudesmas2.app/Contents/Resources/data/score.json
+Xcode/project/Mitsudesmas2/App/Mitsudesmas2.app/Contents/m2/data/score.json
 
 *.DS_Store

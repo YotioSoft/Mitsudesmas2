@@ -560,6 +560,7 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 	Audio audio_mistake(Unicode::Widen(CURRENT_DIR) + U"/audio/boyoyon1.mp3");
 	Audio audio_bulldozer(Unicode::Widen(CURRENT_DIR) + U"/audio/bulldozer.mp3");
 	Audio audio_gain(Unicode::Widen(CURRENT_DIR) + U"/audio/gain.mp3");
+	Audio audio_beep(Unicode::Widen(CURRENT_DIR) + U"/audio/beep.mp3");
 	Audio audio_bgm(map_struct.bgm_path, Loop::Yes);
 
 	// スコア情報の読み込み
@@ -651,11 +652,16 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 		// スペースキーが押されたとき
 		if (KeySpace.down()) {
 			// ブルドーザーで取り壊し
-			if (rest_bulldozers > 0 && game_map.isThereObstacle()) {
-				game_map.bulldoze();
-				rest_bulldozers--;
+			if (game_map.isThereObstacle()) {
+				if (rest_bulldozers > 0) {
+					game_map.bulldoze();
+					rest_bulldozers--;
 
-				audio_bulldozer.playOneShot();
+					audio_bulldozer.playOneShot();
+				}
+				else {
+					audio_beep.playOneShot();
+				}
 			}
 			// 「密です」
 			else if (rest_speakers > 0) {
@@ -678,6 +684,9 @@ void Game(MapStruct& map_struct, std::map<String, MapObject>& map_objects,
 
 					audio_mistake.playOneShot();
 				}
+			}
+			else if (rest_speakers == 0) {
+				audio_beep.playOneShot();
 			}
 		}
 
@@ -791,16 +800,16 @@ void Main() {
 	MapStruct stage1(1, map1, Duration(20), 10, 5, 3, 10, 10, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map2(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map2.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage2(2, map2, Duration(30), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage2(2, map2, Duration(60), 20, 15, 3, 10, 15, 10, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	GameMap map3(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map3.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage3(3, map3, Duration(70), 20, 15, 3, 20, 20, 30, 5, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage3(3, map3, Duration(90), 20, 15, 3, 20, 20, 30, 5, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 
 	GameMap map4(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map4.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(3, 45));
-	MapStruct stage4(4, map4, Duration(100), 30, 20, 8, 20, 30, 30, 10, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage4(4, map4, Duration(120), 30, 20, 8, 20, 30, 30, 10, Color(Palette::White), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 
 	GameMap map5(Unicode::Widen(CURRENT_DIR) + U"/data/maps/map5.csv", map_objects, characters[U"man"][U"player"][0], SquarePosition(15, 15));
-	MapStruct stage5(5, map5, Duration(300), 40, 30, 10, 20, 30, 30, 20, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
+	MapStruct stage5(5, map5, Duration(400), 40, 30, 10, 20, 30, 30, 20, Color(Palette::Black), Unicode::Widen(CURRENT_DIR) + U"/audio/bgm_stage1.mp3");
 	
 	// タイトル画面
 	while(System::Update()) {

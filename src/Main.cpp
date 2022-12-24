@@ -164,6 +164,7 @@ int HowToPlay() {
 	const Font font40(40);
 
 	// アイテム画像を読み込み
+	Texture speaker = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/speaker.png");
 	Texture food = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/chicken.png");
 	Texture watch = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/watch.png");
 	Texture bulldozer = Texture(Unicode::Widen(CURRENT_DIR) + U"/img/charactors/items/bulldozer.png");
@@ -179,12 +180,15 @@ int HowToPlay() {
 		font20(U"←↑↓→  ：マップ上を移動する\nSPACEキー : カップルに対して「密です」という or 障害物をブルドーザーで除去").draw(30, 270, TITLE_FONT_COLOR);
 
 		font25(U"アイテム").draw(30, 350, TITLE_FONT_COLOR);
-		food.resized(32, 32).draw(30, 390);
-		font20(U"チキン : HP が 10 回復します。").draw(135, 390, TITLE_FONT_COLOR);
-		watch.resized(32, 32).draw(30, 420);
-		font20(U"時計 : 残り時間を 10 秒追加します。").draw(135, 420, TITLE_FONT_COLOR);
-		bulldozer.resized(32, 32).draw(30, 450);
-		font20(U"ブルドーザー : 障害物（山や木、建物など）を取り除きます。").draw(135, 450, TITLE_FONT_COLOR);
+
+		speaker.resized(32, 32).draw(30, 390);
+		font20(U"拡声器 : 「密です」の回数を1回分増やします。").draw(70, 390, TITLE_FONT_COLOR);
+		food.resized(32, 32).draw(30, 420);
+		font20(U"チキン : HP が 10 回復します。").draw(70, 420, TITLE_FONT_COLOR);
+		watch.resized(32, 32).draw(30, 450);
+		font20(U"時計 : 残り時間を 10 秒追加します。").draw(70, 450, TITLE_FONT_COLOR);
+		bulldozer.resized(32, 32).draw(30, 480);
+		font20(U"ブルドーザー : 障害物（山や木、建物など）を取り除きます。").draw(70, 480, TITLE_FONT_COLOR);
 
 		font20(U"フリー素材・ライブラリ情報は                  をご覧ください。").draw(30, 550, TITLE_FONT_COLOR);
 
@@ -192,7 +196,7 @@ int HowToPlay() {
 			return 1;
 		}
 
-		if (SimpleGUI::Button(U"タイトルへ", Vec2(Scene::Width() / 2 - 70, Scene::Height() - 100))) {
+		if (SimpleGUI::Button(U"タイトルへ", Vec2(Scene::Width() - 150, Scene::Height() - 50))) {
 			break;
 		}
 	}

@@ -53,7 +53,7 @@ SPACEキー：カップルに対して「密です」という or 障害物を�
 4. 不具合等について
 不具合などございましたら、YotioSoftまでお気軽にお知らせください。
 YotioSoft コンタクトフォーム
-http://yotiosoft.com/contact-form/
+https://yotiosoft.com/support/
 
 
 2022年12月24日 YotioSoft
